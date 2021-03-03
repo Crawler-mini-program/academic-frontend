@@ -1,0 +1,791 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+
+.person-con {}
+
+.person-image {
+  width: 100%;
+  height: 180rpx;
+  position: absolute;
+  margin-top: 33rpx;
+
+}
+
+/**tab切换**/
+
+.body {
+  position: relative;
+  margin-bottom: 80rpx;
+}
+
+.nav {
+  width: 100%;
+  height: 70rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.default {
+  line-height: 75rpx;
+  text-align: center;
+  flex: 1;
+  color: #999;
+  font-size: 28rpx;
+}
+
+.checked {
+  line-height: 75rpx;
+  text-align: center;
+  color: #3bbab0;
+  flex: 1;
+  font-weight: bold;
+  font-size: 28rpx;
+}
+
+.show {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+.hidden {
+  display: none;
+  text-align: center;
+  line-height: 200px;
+}
+
+/*************个人、高校、院所详情*************/
+
+.top-content {
+  width: 100%;
+  height: 410rpx;
+  /* background: -webkit-linear-gradient(left, #72e3b3, #41b5a4); */
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-msg {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  padding-top: 50rpx;
+  padding-left: 20rpx;
+  padding-bottom: 20rpx;
+}
+
+.msg-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 30px;
+}
+
+.msg-name-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+
+.msg-position {
+  margin-left: 5rpx;
+  font-size: 24rpx;
+  color: #333;
+  width: 410rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.msg-name {
+  display: flex;
+  flex-direction: column;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  width: 120rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.msg-name-org {
+  display: flex;
+  flex-direction: column;
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  width: 550rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.msg-right {
+  display: flex;
+  margin-left: 20rpx;
+  flex-direction: column;
+  width: 570rpx;
+}
+
+.msg-right-unitorg {
+  margin-top: 7rpx;
+  display: flex;
+}
+
+.msg-school {
+  font-size: 24rpx;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.msg-back-1 {
+  align-self: center;
+  margin-left: 10rpx;
+  background: #999;
+  height: 20rpx;
+  width: 3rpx;
+  border-radius: 4rpx;
+}
+
+.msg-institution {
+  align-self: center;
+  margin-left: 10rpx;
+  flex-direction: row;
+  font-size: 24rpx;
+  color: #999;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  width: 350rpx;
+}
+
+.msg-num {
+  margin-top: 2rpx;
+  display: flex;
+  align-items: center;
+}
+
+.msg-num- {
+  margin-top: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.msg-num-left {
+  align-self: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.msg-num-back1 {
+  margin-left: 20rpx;
+  width: 1rpx;
+  height: 20rpx;
+  background: #999;
+}
+
+.msg-num-center {
+  margin-left: 20rpx;
+  align-self: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+
+.msg-num-right {
+  margin-left: 20rpx;
+  align-self: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+/****科技创新活跃度*****/
+
+.content-fields-msg {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 35rpx;
+  height: 178rpx;
+  display: flex;
+  align-items: center;
+  background: -webkit-linear-gradient(left, #72e3b3, #41b5a4);
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+  position: relative;
+  z-index: 10;
+}
+
+.backB {
+  height: 100rpx;
+  width: 100%;
+  position: fixed;
+  margin-top: 295rpx
+}
+
+.content-fields-left-msg {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 40rpx
+}
+
+.fields-msg-text {
+  font-size: 32rpx;
+  color: #fff;
+}
+
+.content-fields-left-num {
+  margin-top: 12rpx;
+  display: flex;
+}
+
+.fields-msg-left-num1 {
+  font-size: 28rpx;
+  color: #fff;
+  font-weight: bold;
+}
+
+.fields-msg-left-num2 {
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  color: #fff;
+  font-weight: bold;
+}
+
+.content-fields-right-msg {
+  display: flex;
+  width: 62%;
+  justify-content: center;
+}
+
+.fields-msg-right-num {
+  font-size: 108rpx;
+  color: #fff;
+  font-weight: bold;
+}
+
+.fields-msg-right-image {
+  margin-left: 15rpx;
+  margin-top: 35rpx;
+  width: 18rpx;
+  height: 16rpx;
+}
+
+swiper {
+  /* height: calc(100vh - 510rpx); */
+  height: calc(100vh - 80rpx);
+  overflow: auto;
+}
+
+swiper-item {
+  overflow: auto !important;
+}
+
+/****************科研影响力**************/
+
+.content-research {
+  position: relative;
+}
+
+.content-research-line {
+  position: relative;
+  height: 820rpx;
+}
+
+.content-research-adws {
+  position: relative;
+}
+
+.content-view {
+  height: 750rpx;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+.content-view-line {
+  height: 700rpx;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+.view-boo {
+  color: #333;
+  font-size: 26rpx;
+}
+
+ec-canvas {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+/****************研究领域排名**************/
+
+.content-fields-rank {
+  display: flex;
+  flex-direction: column;
+}
+
+.fields-rank-title {
+  margin-left: 20rpx;
+  height: 75rpx;
+  display: flex;
+  align-items: center;
+}
+
+.fields-rank-title-msg {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  height: 75rpx;
+  display: flex;
+  align-items: center;
+}
+
+.back-color {
+  background: #3bbab0;
+  border-radius: 4rpx;
+  width: 8rpx;
+  height: 26rpx;
+}
+
+.fields-rank-title-text {
+  margin-left: 8rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  width: 50%;
+}
+
+.fields-rank-back-1 {
+  height: 2rpx;
+  width: 100%;
+  background: #eaeaea;
+}
+
+/************一级领域********/
+
+.fields-one-title {
+  margin-top: 16rpx;
+  display: flex;
+  align-items: center
+}
+
+.fields-one-title-image {
+  width: 110rpx;
+  height: 34rpx;
+}
+
+.fields-one-title-rank {
+  margin-left: 430rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.fields-one-title-image-false {
+  width: 25rpx;
+  height: 25rpx;
+  margin-left: 10rpx
+}
+
+.fields-one-title-image-false-tv {
+  color: #629DC1;
+  font-size: 24rpx;
+  margin-left: 60rpx
+}
+
+.fields-one-item {
+  margin-top: 12rpx;
+  height: 110rpx;
+  display: flex;
+  background: #f5fbfc;
+}
+
+.fields-one-item- {
+  margin-top: 12rpx;
+  height: 110rpx;
+  display: flex;
+  background: #fff;
+}
+
+.fields-item-left {
+  width: 500rpx;
+  margin-left: 20rpx;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.fields-item-left-name {
+  font-size: 28rpx;
+  color: #195370;
+}
+
+.fields-item-left-english {
+  font-size: 28rpx;
+  color: #195370;
+}
+
+.fields-item-ranking {
+  align-self: center;
+  margin-left: 30rpx;
+  font-size: 28rpx;
+  color: #195370;
+}
+
+.fields-item-person {
+  margin-left: 35rpx;
+  width: 130rpx;
+  height: 40rpx;
+  font-size: 22rpx;
+  color: #195370;
+  border: 1rpx solid #999;
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 40rpx;
+  align-self: center;
+}
+
+/************二级领域********/
+
+.fields-two-title {
+  margin-top: 20rpx;
+  display: flex;
+}
+
+.fields-two-title-image {
+  width: 110rpx;
+  height: 34rpx;
+}
+
+.fields-two-title-rank {
+  margin-left: 480rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.fields-two-item {
+  margin-top: 12rpx;
+  height: 110rpx;
+  display: flex;
+  background: #fff8f1;
+}
+
+.fields-two-item-1 {
+  margin-top: 12rpx;
+  height: 110rpx;
+  display: flex;
+  background: #fff;
+}
+
+.fields-two-item-left {
+  width: 520rpx;
+  margin-left: 20rpx;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.fields-two-item-left-name {
+  font-size: 28rpx;
+  color: #a57a49;
+}
+
+.fields-two-item-left-english {
+  font-size: 28rpx;
+  color: #a57a49;
+}
+
+.fields-two-item-ranking {
+  align-self: center;
+  margin-left: 55rpx;
+  font-size: 28rpx;
+  color: #a57a49;
+}
+
+/*************科研影响力***************/
+
+/*************科研成果***************/
+
+.research-title-right {
+  font-size: 24rpx;
+  color: #999;
+  width: 100%;
+  text-align: right;
+  margin-right: 20rpx;
+}
+
+/****************** 论文 ******************/
+
+.research-paper {
+  margin-top: 40rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.research-paper-title {
+  display: flex;
+  align-items: center;
+}
+
+.paper-title-image {
+  width: 36rpx;
+  height: 36rpx;
+}
+
+.paper-title-text {
+  width: 90rpx;
+  margin-left: 10rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.paper-title-text-msg {
+  width: 190rpx;
+  margin-left: 10rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.paper-title-num {
+  margin-left: 10rpx;
+  font-size: 32rpx;
+  color: #333;
+  width: 60rpx;
+}
+
+.paper-title-more {
+  font-size: 24rpx;
+  color: #999;
+  width: 50%;
+  text-align: right;
+}
+
+.paper-title-more-msg {
+  font-size: 24rpx;
+  color: #999;
+  width: 70%;
+  text-align: right;
+}
+
+.paper-title-more- {
+  width: 17rpx;
+  height: 16rpx;
+  border-top: 2px solid #d8d8d8;
+  border-right: 2px solid #d8d8d8;
+  transform: rotate(45deg);
+}
+
+.paper-items {
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.paper-items-name {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.paper-items-msg {
+  margin-top: 10rpx;
+  display: flex;
+}
+
+.paper-items-msg-time {
+  margin-top: 5rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.paper-items-msg-num {
+  margin-left: 160rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.paper-items-publish {
+  margin-top: 5rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.paper-items-authors {
+  margin-top: 5rpx;
+  font-size: 28rpx;
+  color: #999;
+}
+
+/*************底部buttom***************/
+
+.view-bottom {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  bottom: 0;
+  background: #f9f9f9;
+  position: fixed;
+}
+
+.bottom-left {
+  display: flex;
+  align-items: center;
+}
+
+.bottom-bt {
+  display: flex;
+  float: left;
+  width: 33.333333%;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9f9;
+}
+
+.bottom-bt::after {
+  border: none;
+}
+
+.bottom-left-image {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.bottom-left-text {
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.bottom-back-1 {
+  width: 2rpx;
+  height: 30rpx;
+  background: #d8d8d8;
+}
+
+.bottom-right {
+  float: left;
+  width: 33.3333%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #f9f9f9;
+  border-radius: 0;
+  height: 80rpx;
+}
+
+.bottom-right::after {
+  border: none;
+}
+
+.bottom-right-image {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.bottom-right-text {
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.paper-items-back-1 {
+  margin-top: 20rpx;
+  background: #e5e5e5;
+  height: 2rpx;
+}
+
+.back20 {
+  width: 100%;
+  height: 20rpx;
+  display: flex;
+  background: #f5f5f5;
+}
+
+.round-click {
+  height: 90rpx;
+  width: 90rpx;
+  background-color: #41b5a4;
+  border-radius: 100%;
+  position: fixed;
+  bottom: 170rpx;
+  right: 40rpx;
+  z-index: 10;
+  padding: 0;
+  line-height: 4;
+  font-size: 22rpx;
+  color: #fff;
+  text-align: center;
+}
+
+/**科研趋势标注**/
+
+.line-title {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+
+.line-title-left {
+  float: left;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 40rpx;
+}
+
+.line-title-right {
+  float: left;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 40rpx;
+}
+
+.line-left-color {
+  height: 6rpx;
+  width: 20rpx;
+  border-radius: 4rpx;
+  background: #72e3b3;
+}
+
+.line-right-color {
+  height: 6rpx;
+  width: 20rpx;
+  border-radius: 4rpx;
+  background: #ecad17;
+}
+
+.line-right-text {
+  color: #999;
+  font-size: 18rpx;
+  margin-left: 10rpx;
+}

@@ -1,0 +1,12 @@
+<view class='container' >
+  <view class="top-title">{{topTitle}}</view>
+  <image class='image'  src="{{base64ImgUrl}}"  bindtap="previewImage"/>
+  <view class='netUrl' bindtap='urlBitp'>{{netUrl}}</view>
+  <view class='hint'>
+  <image src='../../../assets/icon-hint.png' style='width:25rpx; height:25rpx'></image>
+  <view class='icon-title'>由于iOS系统未上线，现仅支持安卓系统</view>
+  </view>
+
+</view>
+
+<web-view wx:if='{{!displayBoo}}' style="display:hide" src="{{netUrl}}" bindmessage="getMessage" bindload="loadSuccess" binderror="loadFail"> </web-view>

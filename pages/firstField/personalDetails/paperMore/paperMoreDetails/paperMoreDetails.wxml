@@ -1,0 +1,58 @@
+<!-- 点击一个论文后的论文详情页 -->
+<view class='content'>
+  <swiper>
+    <swiper-item>
+      <view class='content-menu'>
+        <view class='top-text'>{{parperMsg.title}}</view>
+        <view class='content-publish'>
+          <view class='publish-title-'>出版：</view>
+          <view class='publish-con' bindtap='venueBitp' wx:if='{{parperMsg.venue!=null}}'>《{{parperMsg.venue}}》</view>
+        </view>
+        <view class='content-top'>
+          <view class='publish-title'>发表时间：</view>
+          <view class='publish-title'>{{parperMsg.year}}</view>
+        </view>
+        <view class='content-top'>
+          <view class='publish-title'>被引量：</view>
+          <view class='publish-title' wx:if='{{parperMsg.citationNum!=null}}'>{{parperMsg.citationNum}}</view>
+          <view class='publish-title' wx:elif='{{parperMsg.citationNum==null}}'>0</view>
+        </view>
+        <view class='content-top'>
+          <view class='publish-title'>卷号：</view>
+          <view class='publish-title' wx:if='{{parperMsg.volume!=null}}'>{{parperMsg.volume}}</view>
+          <view class='publish-title' wx:elif='{{parperMsg.volume==null}}'>-</view>
+        </view>
+        <view class='paper-items-back-1'></view>
+        <view class='author-title'>作者</view>
+        <scroll-view scroll-x="true" scroll-with-animation style="width: 100%;height:230rpx;display:flex;white-space: nowrap">
+          <view wx:for='{{parperMsg.authorUrlVOS}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}' bindtap='authorBitp' style='display: inline-block;margin:10rpx'>
+            <view class='author-view'>
+              <image class='author-img-bg' src='../../../../../assets/authors_bg.png' wx:if='{{parperMsg.authorUrlVOS[index].id!=null}}'></image>
+              <view class='author-img-bg' wx:if='{{parperMsg.authorUrlVOS[index].id==null}}'></view>
+              <view class='author-msg'>
+                <image class='author-img' src='{{imgUrl[parperMsg.authorUrlVOS[index].id%5]}}'></image>
+                <view class='author-name'>{{parperMsg.authorUrlVOS[index].name}}</view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+        <view class='paper-items-back-1'></view>
+        <view class='msg-title'>摘要</view>
+        <view class="{{isShow ? 'on' : 'msg'}}" wx:if="{{parperMsg.abst!=null}}">{{parperMsg.abst}}</view>
+        <view class="msg-show" wx:if='{{!isShow&&parperMsg.abst!=null}}' bindtap='msgBitp'>查看全部</view>
+        <view class="msg-show" wx:elif='{{isShow}}' bindtap='msgBitp'>收起</view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class='bottom'>
+    <button class='bottom-left' open-type="share">
+      <image src='../../../../../assets/share.png' class='bottom-left-image'></image>
+      <view class='bottom-left-text'>分享</view>
+    </button>
+    <cover-view class='bottom-back-1'></cover-view>
+    <button class='bottom-left' bindtap="helpBitp">
+      <image src='../../../../../assets/paper-help.png' class='bottom-left-image'></image>
+      <view class='bottom-left-text'>求助全文</view>
+    </button>
+  </view>
+</view>

@@ -1,0 +1,65 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/find/find",
+    "pages/mine/mine",
+    "pages/home/search/search",
+    "pages/firstField/firstField",
+    "pages/firstField/secondField/secondField",
+    "pages/firstField/personalDetails/personalDetails",
+    "pages/firstField/manCelebrity/manCelebrity",
+    "pages/pk/pk",
+    "pages/index/index",
+    "pages/mine/followPeople/followPeople",
+    "pages/mine/aboutUs/aboutUs",
+    "pages/pk/pkResult/pkResult",
+    "pages/pk/pkSearch/pkSearch",
+    "pages/mine/downloadApp/downloadApp",
+    "pages/firstField/personalDetails/paperMore/paperMore",
+    "pages/firstField/personalDetails/patentMore/patentMore",
+    "pages/firstField/personalDetails/projectMore/projectMore",
+    "pages/firstField/personalDetails/paperMore/paperMoreDetails/paperMoreDetails",
+    "pages/firstField/personalDetails/patentMore/patentMoreDetails/patentMoreDetails",
+    "pages/firstField/personalDetails/projectMore/projectMoreDetails/projectMoreDetails",
+    "pages/firstField/personalDetails/venue/venue",
+    "pages/firstField/personalDetails/awardsDetails/awardsDetails",
+    "pages/index/indexFields/indexFields",
+    "pages/firstField/personalDetails/indexField/indexField",
+    "pages/home/report/expertReport/expertReport",
+    "pages/home/report/paperReport/paperReport",
+    "pages/home/report/expertReport/keywdSearch/keywdSearch",
+    "pages/home/report/expertReport/selectTitle/selectTitle",
+    "pages/tutor/tutor/tutor",
+    "pages/tutor/tutorGuide/tutorGuide",
+    "pages/tutor/selectFields/selectFields",
+    "pages/tutor/fieldsMore/fieldsMore",
+    "pages/tutor/orgsMore/orgsMore",
+    "pages/tutor/scholarsMore/scholarsMore"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "知兔",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "color": "#999",
+    "selectedColor": "#48C3AF",
+    "list": [
+      {
+        "text": "首页",
+        "pagePath": "pages/home/home",
+        "iconPath": "assets/home.png",
+        "selectedIconPath": "assets/home_active.png"
+      },
+      {
+        "text": "我的",
+        "pagePath": "pages/mine/mine",
+        "iconPath": "assets/mine.png",
+        "selectedIconPath": "assets/mine_active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,49 @@
+<view class='content-msg'>
+  <image src='{{personMsg.avatarMd}}' class='msg-image' wx:if='{{type==1}}'></image>
+  <image src='{{personMsg.logoUrl}}' class='msg-image' wx:if='{{type==2||type==3}}' mode="aspectFill"></image>
+  <view class='msg-right'>
+    <view class='msg-name-content'>
+      <view class='msg-name' wx:if='{{type==1}}'>{{personMsg.name}}</view>
+      <view class='msg-name-org' wx:elif='{{type==2||type==3}}'>{{personMsg.orgName}}</view>
+      <view class='msg-position' wx:if='{{type==1&&personMsg.position!=null}}'>{{personMsg.position}}</view>
+    </view>
+    <view class='msg-right-unitorg' wx:if='{{type==1}}'>
+      <view class='msg-school'>{{personMsg.orgName}}</view>
+      <view class='{{personMsg.department!=null?"msg-back-1":""}}'></view>
+      <view class='msg-institution' wx:if='{{personMsg.department!=null}}'>{{personMsg.department}}</view>
+    </view>
+    <view class='{{type==1?"msg-num":"msg-num-"}}'>
+      <view class='msg-num-left'>关注 {{personMsg.followCount}}</view>
+      <view class='msg-num-back1'></view>
+      <view class='msg-num-center'>粉丝
+        <text wx:if='{{type==1}}'>{{personMsg.fans}}</text>
+        <text wx:elif='{{type==2||type==3}}'>{{personMsg.fansCount}}</text>
+      </view>
+      <view class='msg-num-back1'></view>
+      <view class='msg-num-right'>点赞
+        <text wx:if='{{type==1}}'>{{personMsg.like}}</text>
+        <text wx:elif='{{type==2||type==3}}'>{{personMsg.likeCount}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="person-con">
+  <image class="person-image" src="../../../assets/person-back.png"></image>
+  <view class='content-fields-msg'>
+    <view class='content-fields-left-msg'>
+      <view class='fields-msg-text'>科技创新活跃度： </view>
+      <view class='content-fields-left-num'>
+        <view class='fields-msg-left-num1'>{{personMsg.increase}}</view>
+        <view class="fields-msg-left-num2">
+          <text wx:if='{{personMsg.increasePercentage<0}}'>{{personMsg.increasePercentage}}%</text>
+          <text wx:elif='{{personMsg.increasePercentage>0}}'>+{{personMsg.increasePercentage}}%</text>
+        </view>
+      </view>
+    </view>
+    <view class='content-fields-right-msg'>
+      <view class='fields-msg-right-num'>{{hotel.toFix(personMsg.innovationIndex,2)}}</view>
+      <image src='{{personMsg.increasePercentage>0?"../../../assets/up-true.png":"../../../assets/up-false.png"}}' class='fields-msg-right-image'></image>
+    </view>
+  </view>
+  
+</view>

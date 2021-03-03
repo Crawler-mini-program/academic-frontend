@@ -1,0 +1,141 @@
+<!-- 选择二级领域后点击全部按钮看到的学校 -->
+<view class="container">
+  <view class="back-10"></view>
+  <view class="search-content">
+    <input placeholder="查找高校、院所" class="search-input" placeholder-style='text-align:center' bindinput='listenerSearchInput' bindconfirm='toSearch' focus='ture' value="{{searchInput}}">
+    </input>
+  </view>
+  <view class="back-10"></view>
+  <view class='content-wrapper'>
+    <view class="tab-menu">
+      <view class="list-tab" catchtap='toggleView'>
+        <view class="{{nowRole==0?'checked-item':'default'}}" data-index="0">高校榜单</view>
+        <view class='bottom-back-1'></view>
+        <view class="{{nowRole==1?'checked-item':'default'}}" data-index="1">院所榜单</view>
+      </view>
+      <swiper current='{{currentIndex}}'>
+
+        <swiper-item catchtouchmove="stopTouchMove">
+
+          <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+            <view wx:if='{{noSearchOrg}}'>
+              <view class="msg-item flexR" wx:for="{{orgsList}}" wx:for-index="index" data-index='{{index}}' wx:for-item="item">
+                <!-- 基本信息 -->
+                <view class='content' bindtap='orgsBitp' data-index='{{index}}'>
+                  <view class="content-top">
+                    <image src='{{item.logoUrl}}' class='left-img' mode="aspectFill"></image>
+                    <view class="{{item.score!=null?'content-top-msg':'content-top-msg-'}}">
+                      <view style="color:#333333;font-size:36rpx;font-weight: bold">{{item.orgName}}</view>
+                      <view style="color:#999999;font-size:28rpx;margin-top:20rpx;">知兔排名
+                        <text style="color:#F4AB13;font-size:28rpx">NO.{{item.rank}}</text>
+                      </view>
+                    </view>
+                    <!-- right -->
+                    <view class="content-top-right" wx:if="{{item.score!=null}}">
+                      <view style="color:#6099F7;font-size:56rpx">{{item.score}}</view>
+                      <view style="color:#333333;font-size:28rpx">教育部评估</view>
+                      <view style="color:#999999;font-size:24rpx">（{{fieldName}}）</view>
+                    </view>
+                  </view>
+                  <view style="color:#666666;font-size:28rpx;margin-top:20rpx" wx:if="{{item.scholars.length>0}}">知名导师</view>
+                  <!-- 知名导师 -->
+                  <view class="scholar-con">
+                    <view class="scholar-second" wx:for="{{item.scholars}}" wx:for-index="indexScholar" wx:for-item="itemScholar" catchtap="scholarsItem"
+                    data-id="{{itemScholar.scholarId}}">
+                      <image src='{{itemScholar.avatar}}' class='scholar-img'></image>
+                      <view class="scholar-right-msg">
+
+                        <view class="right-msg-top ell">{{itemScholar.scholarName}}
+                          <image style="width:24rpx;height:24rpx" src="../../../assets/v.png" wx:if="{{itemScholar.claim == 1}}"></image>
+                          <text style="color:#999999;font-size:20rpx;margin-left:5rpx;" wx:if="{{itemScholar.title!=null}}">{{itemScholar.title}}</text>
+                        </view>
+                        <view style="color:#999999;font-size:20rpx;margin-top:6rpx;" wx:if="{{itemScholar.department!=null}}">{{itemScholar.department}}</view>
+                      </view>
+                    </view>
+                  </view>
+                  <!-- 报考 -->
+                  <view class="select-bt" catchtap="enterBitap" data-index='{{index}}'>报考</view>
+
+                </view>
+              </view>
+            </view>
+            <view class='content-item-show' wx:if='{{!noSearchOrg}}'>
+              <image class='item-show-image' src='../../../assets/no-search.png'></image>
+              <view class='item-show-text'>未搜索到相关内容</view>
+            </view>
+            <view class="weui-loadmore" hidden="{{isHideLoadMoreOrg}}">
+              <view class="weui-loading"></view>
+              <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+
+            <view class='no-more' hidden='{{isLoadMoreOrg}}'>
+              <view></view>
+              <text>我也是有底线的</text>
+              <view></view>
+            </view>
+
+          </scroll-view>
+        </swiper-item>
+
+
+        <swiper-item catchtouchmove="stopTouchMove">
+          <!-- <view class="header" hidden="{{isHideRefreshTalents}}">
+            <view>正在刷新...</view>
+            <view>{{refreshTime}}</view>
+          </view> -->
+          <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+            <view wx:if='{{noSearchInstitution}}'>
+              <view class="msg-item flexR" wx:for="{{orgsList}}" wx:for-index="index" data-index='{{index}}' wx:for-item="item">
+                <!-- 基本信息 -->
+                <view class='content' bindtap='orgsBitp' data-index='{{index}}'>
+                  <view class="content-top">
+                    <image src='{{item.logoUrl}}' class='left-img'></image>
+                    <view class="content-top-msg-">
+                      <view class="top-msg-name ell">{{item.orgName}}</view>
+                      <view style="color:#999999;font-size:28rpx;margin-top:20rpx;">知兔排名
+                        <text style="color:#F4AB13;font-size:28rpx">NO.{{item.rank}}</text>
+                      </view>
+                    </view>
+                  </view>
+                  <view style="color:#666666;font-size:28rpx;margin-top:30rpx;">知名导师</view>
+                  <view class="scholar-con">
+                    <view class="scholar-second" wx:for="{{item.scholars}}" wx:for-index="indexScholar" wx:for-item="itemScholar">
+                      <image src='{{itemScholar.avatar}}' class='scholar-img'></image>
+                      <view class="scholar-right-msg">
+                        <view class="right-msg-top ell">{{itemScholar.scholarName}}
+                          <image style="width:24rpx;height:24rpx" src="../../../assets/v.png" wx:if="{{itemScholar.claim == 1}}"></image>
+                          <text style="color:#999999;font-size:20rpx;margin-left:5rpx;" wx:if="{{itemScholar.title!=null}}">{{itemScholar.title}}</text>
+                        </view>
+                        <view style="color:#999999;font-size:20rpx;margin-top:6rpx;" wx:if="{{itemScholar.department!=null}}">{{itemScholar.department}}</view>
+                      </view>
+                    </view>
+                  </view>
+
+                  <view class="select-bt" catchtap="enterBitap" data-index='{{index}}'>报考</view>
+                </view>
+              </view>
+            </view>
+
+            <view class='content-item-show' wx:if='{{!noSearchInstitution}}'>
+              <image class='item-show-image' src='../../../assets/no-search.png'></image>
+              <view class='item-show-text'>未搜索到相关内容</view>
+            </view>
+
+            <view class="weui-loadmore" hidden="{{isHideLoadMoreInstitution}}">
+              <view class="weui-loading"></view>
+              <view class="weui-loadmore__tips">正在加载</view>
+            </view>
+
+            <view class='no-more' hidden='{{isLoadMoreInstitution}}'>
+              <view></view>
+              <text>我也是有底线的</text>
+              <view></view>
+            </view>
+
+          </scroll-view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+
+</view>

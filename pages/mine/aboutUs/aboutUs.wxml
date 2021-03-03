@@ -1,0 +1,6 @@
+<view class='container'>
+<image class='icon-image' src='../../../assets/logo.png'></image>
+      <view class='icon-title'>知兔    {{version}}</view>
+      <view class='icon-msg'>致力于打造国内第一个集动态学术排名、科技评价、知识服务于一体的互动平台</view>
+      <view class='icon-company'>北京国信利斯特科技有限公司</view>
+</view>

@@ -1,0 +1,232 @@
+.tab-menu {
+  width: 100%;
+  background: #fff;
+  border-bottom: #eee solid 1px;
+  z-index: 100000;
+}
+.top-content{
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+  height: 60rpx;
+}
+.top-text{
+margin-left: 20rpx;
+  font-size: 24rpx;
+  color: #999999;
+  align-self: center;
+}
+.top-sum-up{
+
+  font-size: 32rpx;
+  color: #D26161;
+  align-self: center;
+}
+.top-sum-down{
+
+  font-size: 32rpx;
+  color: #48C3AF;
+  align-self: center;
+}
+.top-num1-up{
+
+  font-size: 32rpx;
+  color: #D26161;
+  align-self: center;
+}
+.top-num1-down{
+
+  display: flex;
+  font-size: 32rpx;
+  color: #48C3AF;
+  align-self: center;
+}
+.top-num2-up{
+    margin-right: 50rpx;
+  font-size: 32rpx;
+  color: #D26161;
+  align-self: center;
+}
+.top-num2-down{
+  margin-right: 50rpx;
+  font-size: 32rpx;
+  color: #48C3AF;
+  align-self: center;
+}
+
+.swiper {
+  height: calc(100vh - 90rpx);
+  overflow: auto;
+}
+.swiper-search {
+  height: calc(100vh - 10rpx);
+  overflow: auto;
+}
+
+swiper-item {
+  overflow: auto !important;
+}
+
+.investment-sum-list {
+}
+
+.investment-sum-list view:nth-last-child(1) {
+}
+
+.investment-sum-list .item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 20rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+/* 标签 */
+
+.sum-icon {
+  width: 100%;
+  display: flex;
+  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.sum-icon-left {
+  margin-top: 8rpx;
+  margin-left: 120rpx;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  color: #999;
+}
+
+
+.sum-icon-center{
+  margin-top: 8rpx;
+  margin-left: 255rpx;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  color: #999;
+}
+
+.sum-icon-right {
+  margin-top: 8rpx;
+  margin-left: 190rpx;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  color: #999;
+}
+
+/* 排名的信息 */
+
+.sum-content {
+  display: flex;
+  width: 100%;
+}
+
+.sum-content-img {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 25px;
+}
+
+.sum-cotent-show {
+  align-self: center;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.sum-content-name {
+  font-size: 28rpx;
+  color: #4a494a;
+  align-self: center;
+  width: 320rpx;
+          overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.sum-content-scchoolName {
+  font-size: 20rpx;
+  color: #999;
+  align-self: center;
+  width: 300rpx;
+        overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+.sum-content-ranking{
+  align-self: center;
+  margin-left: 10rpx;
+  font-size: 32rpx;
+  color: #4a4a4a;
+}
+
+.sum-boo {
+  flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  align-self: center;
+}
+
+.sum-content-true {
+  height: 50rpx;
+  width: 140rpx;
+  background: #d26161;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 4rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.sum-content-false {
+  height: 50rpx;
+  width: 140rpx;
+  background: #48c3af;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 4rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.header{
+    width: 65%;
+  margin: 0.5em auto;
+  line-height: 1.6em;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+.flexC {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+.back10 {
+  width: 100%;
+  height: 10rpx;
+  display: flex;
+  background: #f5f5f5;
+}
+.back20 {
+  width: 100%;
+  height: 20rpx;
+  display: flex;
+  background: #f5f5f5;
+}

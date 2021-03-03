@@ -1,0 +1,9 @@
+<view class="container">
+  <image class="img-con" src="../../../assets/selectTutor.png"></image>
+  <view class="guide-text">多维度大数据,智能匹配导师</view>
+
+
+  <view class="guide-bottom">
+    <view class="guide-start" bindtap="startBitp">立即开始</view>
+  </view>
+</view>

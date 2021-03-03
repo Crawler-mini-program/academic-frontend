@@ -1,0 +1,60 @@
+<!-- 这个在人才下面的论文中是有的,高校下面的论文没有 -->
+<view class="tabTit box" wx:if='{{type==1}}'>
+  <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
+    <view class='tab-text'>
+      <text class="{{!tab[index]?' tab-name-true':'tab-name'}}">{{item}}</text>
+      <image src="/assets/up.png"></image>
+    </view>
+    <view style='width:2rpx;height:60rpx;background:#eee '></view>
+  </view>
+</view>
+<!--筛选项-->
+<view class="tabLayer" hidden="{{fieldTab}}">
+  <view class='fields-title'>二级领域</view>
+  <scroll-view scroll-y='true' class='{{orgList1.length>20?"content-msg-scr":"content-msg-scr-false"}}' onLoadMore='20rpx' upper-threshold='20rpx' style="margin-top:20rpx">
+    <view class="{{item.isChack?'activeScreen':'noActiveScreen'}}" wx:for="{{orgList1}}" wx:key="sx" wx:for-item="item" data-id="5" data-index="{{index}}" data-txt="{{item.name}}" bindtap='screenBitp'>{{item.name}}</view>
+  </scroll-view>
+  <view class='fields-title'>时间</view>
+  <view class='screen-input'>
+    <input placeholder="例:2013" value="{{inputLeft}}" class="search-input " bindinput='listenerSearchInput' data-type='left'></input>
+    <view class='input-back'></view>
+    <input placeholder="2016" value="{{inputRight}}" class="search-input " bindinput='listenerSearchInput' data-type='right'></input>
+  </view>
+
+  <view class='view-bottom'>
+    <button class='bottom-left' bindtap='resetBitp'>
+      <view class='bottom-left-text'>重置</view>
+    </button>
+    <view class='bottom-back-1'></view>
+    <button class='bottom-right' bindtap='conBitp'>
+      <view class='bottom-right-text'>确定</view>
+    </button>
+  </view>
+</view>
+
+<scroll-view scroll-y='true' class='{{type==1?"scroll-view":""}}' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+  <view class='paper-items' wx:for='{{paperMsg}}' wx:for-index='index' data-index='{{index}}' wx:for-item='page' bindtap='paperBitp'>
+    <view class='paper-items-name'>{{index+1}}.{{page.title}}</view>
+    <view class='paper-items-msg'>
+      <view class='paper-items-msg-time' wx:if='{{page.year!=null}}'>发表日期：{{page.year}}</view>
+      <view class='paper-items-msg-time' wx:elif='{{page.year==null}}'>发表日期：-</view>
+      <view class='paper-items-msg-num' wx:if='{{page.citationNum!=null}}'>引用量：{{page.citationNum}}</view>
+      <view class='paper-items-msg-num' wx:elif='{{page.citationNum==null}}'>引用量：0</view>
+    </view>
+    <view class='paper-items-publish' wx:if='{{page.venue!=null}}'>出版物：{{page.venue}}</view>
+    <view class='paper-items-publish' wx:elif='{{page.venue==null}}'>出版物：-</view>
+    <view class='paper-items-authors'>作者：{{page.writer}}</view>
+    <view class='paper-items-back-1'></view>
+  </view>
+  <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+
+  <view class='no-more' hidden='{{isLoadMore}}'>
+    <view></view>
+    <text>我也是有底线的</text>
+    <view></view>
+  </view>
+</scroll-view>
+<view class="dialog-mask" style="visibility:{{select ? 'visible':'hidden'}}" bindtap="hideMenuTap" />

@@ -1,0 +1,25 @@
+<!-- 高校和院所下面的论文? -->
+<scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+  <view class='paper-items' wx:for='{{venueMsg}}' wx:for-index='index' data-index='{{index}}' wx:for-item='page' bindtap='venueBitp'>
+    <view class='paper-items-back-10'></view>
+    <view class='paper-items-msg'>
+      <view class='paper-items-name'>{{index+1}}.{{page.title}}</view>
+      <view class='paper-items-con' wx:if='{{page.abst!=null}}'>{{page.abst}}</view>
+      <view class='items-num'>
+      <view class='num-title'>被引量：</view>
+        <view class='num-text' wx:if='{{page.citationNum!=null}}'>{{page.citationNum}}</view>
+        <view class='num-text' wx:elif='{{page.citationNum==null}}'>0</view>
+      </view>
+    </view>
+  </view>
+  <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+    <view class="weui-loading"></view>
+    <view class="weui-loadmore__tips">正在加载</view>
+  </view>
+
+  <view class='no-more' hidden='{{isLoadMore}}'>
+    <view></view>
+    <text>我也是有底线的</text>
+    <view></view>
+  </view>
+</scroll-view>

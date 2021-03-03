@@ -1,0 +1,24 @@
+<!-- 风云榜 -->
+<!--pages/firstField/firstField.wxml-->
+<view class='container'>
+  <view class="list-tabTop flexR" catchtap='toggleViewTop'>
+    <view class="navbarTop {{currentIndexTop==0?'checked-itemTop':''}}" data-index="0">人才</view>
+    <view class="navbarTop {{currentIndexTop==1?'checked-itemTop':''}}" data-index="1">高校</view>
+    <view class="navbarTop {{currentIndexTop==2?'checked-itemTop':''}}" data-index="2">院所</view>
+  </view>
+  <!--列表展示，这里三个部分采用相同组件的原因是相似度实在太高，各部分数据都一样  -->
+  <swiper class='swipperTop' bindchange="toggleSwiperTop" current='{{currentIndexTop}}'>
+    <!----- 人才  ------->
+    <swiper-item class='swipperTop-item' catchtouchmove="stopTouchMove">
+      <include src='scholars.wxml'></include>
+    </swiper-item>
+    <!----- 高校  ------->
+    <swiper-item class='swipperTop-item' catchtouchmove="stopTouchMove">
+      <include src='scholars.wxml'></include>
+    </swiper-item>
+    <!----- 院所  ------->
+    <swiper-item class='swipperTop-item' catchtouchmove="stopTouchMove">
+      <include src='scholars.wxml'></include>
+    </swiper-item>
+  </swiper>
+</view>

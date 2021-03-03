@@ -1,0 +1,16 @@
+<!-- 二级领域，点击一级领域后出现的界面 -->
+<view class='fields-rank-one'>
+  <view class='fields-one-title'>
+    <image src='../../../../assets/fields_two.png' class='fields-one-title-image'></image>
+    <view class='fields-one-title-rank'>排名</view>
+  </view>
+
+  <view class='{{(index+1)%2==0?"fields-one-item-":"fields-one-item"}}' wx:for='{{fieldMsg}}' wx:for-index='index' data-index='{{index}}' wx:for-item='item'>
+    <view class='fields-item-left'>
+      <view class='fields-item-left-name'>{{item.name}}</view>
+      <view class='fields-item-left-english'>{{item.englishName}}</view>
+    </view>
+    <view class='fields-item-ranking'>{{item.popularity}}</view>
+    <view class="fields-item-person" data-index='{{index}}' bindtap="fieldsBitp">人才排行榜</view>
+  </view>
+</view>

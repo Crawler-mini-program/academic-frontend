@@ -1,0 +1,115 @@
+<view class='back20'></view>
+<!-- 研究成果 -->
+<view class='content-research-adws'>
+  <view class='fields-rank-title'>
+    <view class='back-color'></view>
+    <view class='fields-rank-title-text'>研究成果</view>
+    <view class='research-title-right'>至今</view>
+  </view>
+  <view class='fields-rank-back-1'></view>
+  <!-- 论文 -->
+  <view class='research-paper'>
+    <view class='research-paper-title' bindtap='moreBitpPaper'>
+      <image class='paper-title-image' src='../../../assets/paper.png'></image>
+      <view class='paper-title-text'>论文</view>
+      <view class='paper-title-num'>({{totalElements}})</view>
+      <view class='paper-title-more-msg'>更多</view>
+      <view class='paper-title-more-'></view>
+    </view>
+    <view class='paper-items' wx:for='{{paperMsg}}' wx:for-index='index' data-index='{{index}}' wx:for-item='page' bindtap='paperDetailsBitp' wx:key>
+      <view class='paper-items-name'>{{index+1}}.{{page.title}}</view>
+      <view class='paper-items-msg'>
+
+        <view class='paper-items-msg-time'>发表日期：
+          <text wx:if='{{page.year!=null}}'>{{page.year}}</text>
+          <text wx:if='{{page.year==null}}'>-</text>
+        </view>
+
+        <view class='paper-items-msg-num'>引用量：
+          <text wx:if='{{page.citationNum!=null}}'>{{page.citationNum}}</text>
+          <text wx:if='{{page.citationNum==null}}'>0</text>
+        </view>
+      </view>
+      <view class='paper-items-publish'>出版物：
+        <text wx:if='{{page.venue!=null}}'>{{page.venue}}</text>
+        <text wx:if='{{page.venue==null}}'>-</text>
+      </view>
+      <view class='paper-items-authors'>作者：{{page.writer}}</view>
+      <view class='paper-items-back-1'></view>
+    </view>
+  </view>
+
+  <!-- 专利 -->
+  <view class='research-paper'>
+    <view class='research-paper-title' bindtap='moreBitpPatent'>
+      <image class='paper-title-image' src='../../../assets/patent.png'></image>
+      <view class='paper-title-text'>专利</view>
+      <view class='paper-title-num'>({{patentMsg.totalElements}})</view>
+      <view class='paper-title-more-msg'>更多</view>
+      <view class='paper-title-more-'></view>
+    </view>
+    <view class='paper-items' wx:for='{{patentMsg.content}}' wx:for-index='index' data-index='{{index}}' wx:for-item='page' bindtap='patentDetailsBitp' wx:key>
+      <view class='paper-items-name'>{{index+1}}.{{patentMsg.content[index].title}}</view>
+      <view class='paper-items-msg-time'>公开日期：{{patentMsg.content[index].publicData}}</view>
+      <view class='paper-items-authors'>发明人：{{patentMsg.content[index].inventorName}}</view>
+      <view class='paper-items-back-1'></view>
+    </view>
+  </view>
+  <!-- 项目 -->
+  <view class='research-paper'>
+    <view class='research-paper-title' bindtap='moreBitpProject'>
+      <image class='paper-title-image' src='../../../assets/project.png'></image>
+      <view class='paper-title-text'>项目</view>
+      <view class='paper-title-num'>({{projectMsg.totalElements}})</view>
+      <view class='paper-title-more-msg'>更多</view>
+      <view class='paper-title-more-'></view>
+    </view>
+
+    <view class='paper-items' wx:for='{{projectMsg.content}}' wx:for-index='index' data-index='{{index}}' wx:for-item='page' bindtap='projectDetailsBitp' wx:key>
+      <view class='paper-items-name'>{{index+1}}.{{projectMsg.content[index].title}}</view>
+
+      <view class='paper-items-msg-time'>批准年份：
+        <text wx:if='{{projectMsg.content[index].startYear!=null}}'>{{projectMsg.content[index].startYear}}</text>
+        <text wx:if='{{projectMsg.content[index].endYear!=null}}'>-{{projectMsg.content[index].endYear}}</text>
+      </view>
+
+      <view class="paper-items-publish"> 项目类别：
+        <text wx:if="{{projectMsg.content[index].typeFirst!=null}}">{{projectMsg.content[index].typeFirst}}-</text>
+        <text wx:if="{{projectMsg.content[index].typeSecondary!=null}}">{{projectMsg.content[index].typeSecondary}}</text>
+        <text wx:if="{{projectMsg.content[index].typeTertiary!=null}}">-{{projectMsg.content[index].typeTertiary}}</text>
+      </view>
+
+      <view class='paper-items-back-1'></view>
+    </view>
+  </view>
+</view>
+
+<!-- 获奖信息 -->
+<view class='back20' wx:if='{{type==1}}'></view>
+<view class='content-research-adws' wx:if='{{type==1}}'>
+  <view class='fields-rank-title-msg' bindtap='moreBitp'>
+    <view class='back-color'></view>
+    <view class='paper-title-text-msg'>获奖信息</view>
+    <view class='paper-title-num'>({{adwardsMsg.length}})</view>
+    <view class='paper-title-more-msg'>更多</view>
+    <view class='paper-title-more-'></view>
+  </view>
+  <view class='fields-rank-back-1'></view>
+  <view class='paper-items' wx:for='{{adwardsMsg}}' wx:for-index='index' data-index='{{index}}' wx:for-item='page' bindtap='awardsBitp'>
+    <view class='paper-items-name'>{{index+1}}.
+      <text wx:if='{{adwardsMsg[index].awardProject!=null}}'>{{adwardsMsg[index].awardProject}}</text>
+      <text wx:elif='{{adwardsMsg[index].awardProject==null}}'> - </text>
+    </view>
+
+    <view class='paper-items-name'>获得奖项：
+      <text wx:if='{{adwardsMsg[index].awardName!=null}}'>{{adwardsMsg[index].awardName}}</text>
+      <text wx:elif='{{adwardsMsg[index].awardName == null}}'> - </text>
+    </view>
+
+    <view class='paper-items-name'>获奖时间：
+      <text wx:if='{{adwardsMsg[index].year}}!=null}}'>{{adwardsMsg[index].year}}</text>
+      <text wx:elif='{{adwardsMsg[index].year}} == null}}'> - </text>
+    </view>
+    <view class='paper-items-back-1'></view>
+  </view>
+</view>

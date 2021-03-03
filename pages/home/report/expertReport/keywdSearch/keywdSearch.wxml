@@ -1,0 +1,23 @@
+<!-- 专家列表报告第一行点进去 -->
+<view class="container">
+  <view class="search-view">
+    <view class="search-content">
+      <input type='text' placeholder="请输入领域或技术名称" class="search-input" maxlength="30" confirm-type="搜索" bindinput='listenerSearchInput' bindconfirm='toSearch'>
+      </input>
+      <image src="../../../../../assets/search-pic.png" class="search-icon" />
+      <view class='search-btn' bindtap="itemBitp" data-type="search">确定
+      </view>
+    </view>
+  </view>
+
+  <!-- 输入搜索词后，下方自动跳出搜索结果，点击确定返回上一个页面，同时添加搜索条件 -->
+  <view class="search-msg">
+    <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+      <view class="search-msg" wx:for='{{msgList}}' data-name="{{item}}" bindtap="itemBitp">
+        <view class="search-msg-item">{{item}}</view>
+        <view class="back-item"></view>
+      </view>
+    </scroll-view>
+  </view>
+
+</view>

@@ -1,0 +1,19 @@
+<!-- 论文开题报告和技术分析报告都由这个组件表示，根据type不同显示不同的文字 -->
+<view class="container">
+  <view class="keywords-msg">
+    <view class="keywords-title">
+      <view class="keywords-title-back"></view>
+      <view class="keywords-title-name">关键词</view>
+    </view>
+    <input placeholder="{{keywordsInputName}}" value="{{msgInput}}" class="keywords-input " bindinput='listenerMsgsInput'></input>
+  </view>
+  <view class="keywords-msg">
+    <view class="keywords-title">
+      <view class="keywords-title-back"></view>
+      <view class="keywords-title-name">邮箱</view>
+    </view>
+    <input placeholder="请输入您的邮箱" value="{{emailInput}}" class="keywords-input " bindinput='listenerEmailInput'></input>
+  </view>
+
+  <view class="bottom-commit" bindtap="commitBitp">{{bottomName}}</view>
+</view>

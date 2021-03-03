@@ -1,0 +1,105 @@
+<!-- 引入wxs脚本 -->
+<wxs module="hotel" src="../../../../../utils/sub.wxs"></wxs>
+<view class='container'>
+  <swiper>
+    <swiper-item>
+      <view class='content-msg'>
+        <view class='paper-name-msg'>
+          <view class='title'>
+            <view class='name-title-xing'>专利名称</view>
+            <image class='title-xing' src='../../../../../assets/xing.png'></image>
+          </view>
+          <view class='name-text'>{{patentMsg.title}}</view>
+        </view>
+        <view class='paper-name-msg'>
+          <view class='title'>
+            <view class='name-title-xing'>专利类型</view>
+            <image class='title-xing' src='../../../../../assets/xing.png'></image>
+          </view>
+          <view class='name-text'>{{patentMsg.patentType}}</view>
+        </view>
+        <view class='patent-items-back-10'></view>
+        <view class='paper-name-msg'>
+          <view class='title'>
+            <view class='name-title-xing'>发明人</view>
+            <image class='title-xing' src='../../../../../assets/xing.png'></image>
+          </view>
+          <view class='name-text'>{{patentMsg.inventorName}}</view>
+        </view>
+        <view class='paper-name-msg'>
+          <view class='title'>
+            <view class='name-title-xing'>申请人</view>
+            <image class='title-xing' src='../../../../../assets/xing.png'></image>
+          </view>
+          <view class='name-text'>{{patentMsg.applicantName}}</view>
+        </view>
+        <view class='paper-name-msg'>
+          <view class='title'>
+            <view class='name-title-xing'>申请时间</view>
+            <image class='title-xing' src='../../../../../assets/xing.png'></image>
+          </view>
+
+          <view class='name-text'>{{hotel.Sub(patentMsg.applicationDate,0,10)}}</view>
+        </view>
+        <view class='patent-items-back-10'></view>
+        <view class='paper-name-msg'>
+          <view class='name-title'>专利授权号</view>
+          <view class='name-text' wx:if='{{patentMsg.authorizationNum!=null}}'>{{patentMsg.authorizationNum}}</view>
+          <view class='name-text' wx:elif='{{patentMsg.authorizationNum==null}}'>-</view>
+        </view>
+        <view class='paper-name-msg'>
+          <view class='name-title'>专利申请号</view>
+          <view class='name-text'>{{patentMsg.applicationNum}}</view>
+        </view>
+        <view class='paper-name-msg-'>
+          <view class='name-title-msg'>摘要</view>
+          <view class="{{isShow ? 'on' : 'msg'}}">{{patentMsg.summary}}</view>
+                  <view class="msg-show" wx:if='{{!isShow}}' bindtap='msgBitp'>查看全部</view>
+        <view class="msg-show" wx:elif='{{isShow}}' bindtap='msgBitp'>收起</view>
+        </view>
+        <view class='patent-items-back-10'></view>
+        <view class='paper-name-msg'>
+          <view class='name-title'>专利分类号</view>
+          <view class='name-text'>{{patentMsg.classCode}}</view>
+        </view>
+        <view class='paper-name-msg'>
+          <view class='name-title'>公开号</view>
+          <view class='name-text'>{{patentMsg.publicationNum}}</view>
+        </view>
+        <view class='patent-items-back-10'></view>
+        <view class='paper-name-msg'>
+          <view class='name-title'>公开日期</view>
+          <view class='name-text'>{{hotel.Sub(patentMsg.publicationDate,0,10)}}</view>
+        </view>
+        <view class='paper-name-msg'>
+          <view class='name-title'>专利国家代码</view>
+          <view class='name-text'>{{patentMsg.pubOrgCode}}</view>
+        </view>
+        <view class='paper-name-msg'>
+          <view class='name-title'>优先权日</view>
+          <view class='name-text' wx:if="{{patentMsg.priorityDate!=null}}">{{hotel.Sub(patentMsg.priorityDate,0,10)}}</view>
+        </view>
+        <view class='paper-name-msg'>
+          <view class='name-title'>页数</view>
+          <view class='name-text'>{{patentMsg.pageCnt}}</view>
+        </view>
+        <view class='patent-items-back-10'></view>
+        <view class='paper-name-msg'>
+          <view class='name-title'>权利状态</view>
+          <view class='name-text'>{{patentMsg.legalStatus}}</view>
+        </view>
+        <view class='patent-items-back-10'></view>
+        <view class='paper-name-msg'>
+          <view class='name-title-'>申请人及区域代码</view>
+          <view class='name-text'>{{patentMsg.applicationAreaCode}}</view>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+  <view class='bottom'>
+    <button class='bottom-left' open-type="share">
+      <image src='../../../../../assets/share.png' class='bottom-left-image'></image>
+      <view class='bottom-left-text'>分享</view>
+    </button>
+  </view>
+</view>

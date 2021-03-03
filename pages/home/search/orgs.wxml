@@ -1,0 +1,42 @@
+    <swiper-item catchtouchmove="stopTouchMove">
+      <!-- <view class="header" hidden="{{isHideRefreshInstitution}}">
+        <view>正在刷新...</view>
+        <view>{{refreshTime}}</view>
+      </view> -->
+      <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+        <view class='content-item' wx:if='{{noSearchInstitution}}'>
+          <view class='content-hot' wx:if='{{hotType}}'>热门搜索</view>
+          <view wx:for='{{institutionMsg}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}'>
+            <!-- 机构和人才的详情页面是相似的，只是名字不同，因此这里也使用personBitp方法 -->
+            <view class='content-item-msg' bindtap='personBitp' data-index='{{index}}'>
+              <view class='content-msg'>
+                <image class='item-msg-image' src='{{item.avgImg}}' wx:if='{{numType==0}}'></image>
+                <image class='item-msg-image' src='{{item.avatarUrl}}' wx:elif='{{numType==1}}' mode="aspectFill"></image>
+                <view class='university-msg-name' wx:if='{{numType==0}}'>{{item.orgName}}</view>
+                <view class='university-msg-name' wx:elif='{{numType==1}}'>{{item.name}}</view>
+                <view class='item-msg-num'>{{item.innovationIndex}}</view>
+              </view>
+              <view class='content-msg-bottom' catchtap='rankCatp' data-index='{{index}}'>
+                <image class='content-msg-image' src='../../../assets/person-icon.png'></image>
+                <view class='content-msg-school'>人才排行榜</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='content-item-show' wx:if='{{!noSearchInstitution}}'>
+          <image class='item-show-image' src='../../../assets/no-search.png'></image>
+          <view class='item-show-text'>未搜索到相关内容</view>
+        </view>
+        <view class="weui-loadmore" hidden="{{isHideLoadMoreInstitution}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+
+        <view class='no-more' hidden='{{isLoadMoreInstitution}}'>
+          <view></view>
+          <text>我也是有底线的</text>
+          <view></view>
+        </view>
+
+      </scroll-view>
+    </swiper-item>

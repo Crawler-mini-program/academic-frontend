@@ -1,0 +1,10 @@
+var Sub = function (val, a, b) {
+  if (val.length == 0 || val == undefined) {
+    return;
+  }
+  if (val.length > 5) {
+    return val.substring(a, b);
+  }
+}
+//exports: 通过该属性，对外共享本模块的私有变量与函数。
+module.exports.Sub = Sub;

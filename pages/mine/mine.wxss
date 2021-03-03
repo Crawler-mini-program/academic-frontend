@@ -1,0 +1,117 @@
+.container {
+  background-color: #f5f5f5;
+}
+
+.userinfo {
+  padding: 20rpx;
+  width: 100%;
+  height: 222rpx;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.userinfo-avatar {
+  margin-left: 20rpx;
+  width: 128rpx;
+  height: 128rpx;
+  border-radius: 50%;
+}
+.userinfo-msg{
+  display: flex;
+  flex-direction: column;
+  justify-content: center
+}
+.userinfo-nickname {
+  margin-left: 20rpx;
+  color: #333;
+  font-size: 40rpx;
+}
+.userinfo-seedMsg{
+  margin-top: 10rpx;
+  margin-left: 20rpx;
+  height: 40rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.seedMsg-province{
+  color: #999;
+  font-size: 28rpx;
+}
+.seedMsg-back-1{
+  margin-left: 15rpx;
+  background: #999;
+  height: 30rpx;
+  width: 3rpx;
+}
+.seedMsg-status{
+  margin-left: 15rpx;
+color: #999;
+  font-size: 28rpx;
+}
+
+.list-item {
+  background: #fff;
+  margin-top: 20rpx;
+  padding-left: 38rpx;
+  padding-right: 20rpx;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.myAttention {
+  display: flex;
+  height: 100rpx;
+  align-items: center;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+
+.myAttention-text {
+  color: #666;
+  font-size: 32rpx;
+}
+
+.myAttention-num {
+  color: #666;
+  font-size: 32rpx;
+  position: absolute;
+  right: 30rpx;
+}
+
+.about {
+  display: flex;
+  height: 100rpx;
+  align-items: center;
+  border-bottom: 2rpx solid #f5f5f5;
+  color: #666;
+  font-size: 32rpx;
+}
+
+.app {
+  display: flex;
+  height: 100rpx;
+  align-items: center;
+  border-bottom: 2rpx solid #f5f5f5;
+  color: #666;
+  font-size: 32rpx;
+}
+
+.contactWay {
+  padding-left: 38rpx;
+  padding-right: 20rpx;
+  background: #fff;
+  margin-top: 20rpx;
+  display: flex;
+  height: 108rpx;
+  align-items: center;
+  border-bottom: 2rpx solid #f5f5f5;
+  color: #666;
+  font-size: 32rpx;
+}
+
+/* .userinfo-back-1{
+    height: 34rpx;
+    background: #
+  } */

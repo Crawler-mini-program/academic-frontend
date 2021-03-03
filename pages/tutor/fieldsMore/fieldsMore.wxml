@@ -1,0 +1,52 @@
+<!-- 报考时输入专业之后点击全部按钮之后出现的界面 -->
+<!-- 引入wxs脚本 -->
+<wxs module="indexOf" src="../../../utils/indexOf.wxs"></wxs>
+<view class="container">
+  <view style="height:10rpx;background:#F1F1F1"></view>
+  <view class="top-title">
+    <!-- <text style="width:18%">知兔排名</text> -->
+    <text style="width:50%">专业名称</text>
+    <text style="width:30%;text-align:right">综合得分</text>
+  </view>
+  <swiper>
+    <swiper-item>
+      <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+        <view wx:for='{{fieldsList}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}' wx:key>
+          <view class="content" bindtap="itemBitp">
+            <!-- <view class="content-left">
+              <image src='../../../assets/gold{{index}}.png' wx:if="{{index<3}}"></image>
+              <view wx:elif="{{index>=3}}" style="color:#999999;font-size:28rpx">{{index+1}}</view>
+            </view> -->
+            <view style="width:50%;font-size:28rpx;color:#6099F7">{{item.name}}</view>
+            <view style="display:flex;flex-direction: column;width:30%;text-align:right">
+              <text style="color:#666666;font-size:28rpx">{{item.innovationIndex}}</text>
+              <text style="color:#E14D4D;font-size:20rpx" wx:if="{{!indexOf(item.active,'-')}}">+{{item.active}}</text>
+              <text wx:else style="color:#39B493;font-size:20rpx">{{item.active}}</text>
+            </view>
+            <view class="select-bt" catchtap="enterBitap" data-index='{{index}}'>报考</view>
+          </view>
+        </view>
+        <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+
+        <view class='no-more' hidden='{{isLoadMore}}'>
+          <view></view>
+          <text>我也是有底线的</text>
+          <view></view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+  <view class="bottom">
+    <image src='../../../assets/logo.png'></image>
+    <view style="display:flex;flex-direction:column;padding-left:26rpx;width:65%">
+      <text style="color:#333333;font-size:32rpx">知兔</text>
+      <text style="color:#999999;font-size:28rpx;margin-top:6rpx">下载app进入领域学术圈</text>
+    </view>
+    <view style="display:flex;justify-content:flex-end">
+      <view class="select-bt" bindtap="itemBitp">下载</view>
+    </view>
+  </view>
+</view>

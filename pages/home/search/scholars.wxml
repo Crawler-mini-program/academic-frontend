@@ -1,0 +1,46 @@
+    <swiper-item catchtouchmove="stopTouchMove">
+      <!-- <view class="header" hidden="{{isHideRefreshPerson}}">
+        <view>正在刷新...</view>
+        <view>{{refreshTime}}</view>
+      </view> -->
+      <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+        <view class='{{reportType==0?"content-item":"content-itemType"}}' wx:if='{{noSearchPerson}}'>
+          <view class='content-hot' wx:if='{{hotType}}'>热门搜索</view>
+          <view wx:for='{{personMsg}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}'>
+            <view class='content-item-msg' bindtap='personBitp' data-index='{{index}}'>
+              <view class='content-msg'>
+                <!-- <image class='item-msg-image' src='{{item.avgImg}}' wx:if='{{numType==0}}'></image>
+                <image class='item-msg-image' src='{{item.avatarUrl}}' wx:elif='{{numType==1}}'></image> -->
+                <image class='item-msg-image' src='{{imgUrl[item.id%5]}}' wx:if='{{numType==0}}'></image>
+                <image class='item-msg-image' src='{{imgUrl[item.id%5]}}' wx:elif='{{numType==1}}'></image>
+                <view class='item-msg-msg'>
+                  <view class='msg-name'>{{item.name}}</view>
+                  <view class='msg-fields'>{{item.fieldName}}</view>
+                </view>
+                <view class='item-msg-num'>{{item.innovationIndex}}</view>
+              </view>
+              <view class='content-msg-bottom'>
+                <image class='content-msg-image' src='../../../assets/location-icon.png'></image>
+                <view class='content-msg-school' wx:if='{{numType==0}}'>{{item.orgName}}</view>
+                <view class='content-msg-school' wx:elif='{{numType==1}}'>{{item.ownName}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class='content-item-show' wx:if='{{!noSearchPerson}}'>
+          <image class='item-show-image' src='../../../assets/no-search.png'></image>
+          <view class='item-show-text'>未搜索到相关内容</view>
+        </view>
+        <view class="weui-loadmore" hidden="{{isHideLoadMorePerson}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+
+        <view class='no-more' hidden='{{isLoadMorePerson}}'>
+          <view></view>
+          <text>我也是有底线的</text>
+          <view></view>
+        </view>
+
+      </scroll-view>
+    </swiper-item>

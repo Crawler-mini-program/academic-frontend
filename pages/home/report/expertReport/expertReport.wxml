@@ -1,0 +1,66 @@
+<!-- 专家列表报告 -->
+<view class="container">
+  <!-- 关键词 -->
+  <view class="keywords-msg">
+    <view class="keywords-title">
+      <view class="keywords-title-back"></view>
+      <view class="keywords-title-name">关键词</view>
+    </view>
+    <!-- 没有输入领域名称时，点击这一行会跳转到下一搜索页面，也就是keywdSearch -->
+    <!-- 这里的外层循环中包含的是数字，实际上是关键词栏的个数，有几个关键词就循环显示几个栏出来 -->
+    <view class="input-msg" wx:for='{{keywordsNum}}' wx:for-index='index' data-index="{{index}}">
+      <view class="keywords-name" data-index="{{index}}" bindtap="keywordsBitp">{{keywdName[index]}}</view>
+      <view class="keywords-input-add" data-index="{{index}}" catchtap="keywordsAddCatap">添加</view>
+      <view class="keywords-input-delete" data-index="{{index}}" catchtap="keywordsDeleteCatap">删除</view>
+    </view>
+  </view>
+  <!-- 职称 -->
+  <view class="keywords-msg">
+    <view class="keywords-title">
+      <view class="keywords-title-back"></view>
+      <view class="select-title-name">职称</view>
+      <view class="select-title-select" bindtap="selectBitp">选择</view>
+    </view>
+    <!-- 这里的selectTitle就是selectTitle中的selectMsg -->
+    <view class="select-msg">
+      <view class="select-msg-name" wx:for='{{selectTitle}}'>{{item}}</view>
+    </view>
+  </view>
+  <!-- 人数 -->
+  <view class="back"></view>
+  <view class="keywords-msg">
+    <view class="keywords-title">
+      <view class="keywords-title-back"></view>
+      <view class="keywords-title-name">人数</view>
+      <view class="keywords-title-num">(10-100人)</view>
+    </view>
+    <input placeholder="10" value="{{numInput}}" class="keywords-input " bindinput='listenerNumInput'></input>
+  </view>
+  <!-- 地区 -->
+  <view class="back"></view>
+  <view class="keywords-msg">
+    <view class="keywords-title">
+      <view class="keywords-title-back"></view>
+      <view class="keywords-title-name">地区</view>
+    </view>
+    <view class="picker-content">
+      <picker bindchange="changeCountry" value="{{countryIndex}}" range="{{countryList}}">
+        <view class="address-msg">{{countryList[countryIndex]}}</view>
+      </picker>
+    </view>
+
+  </view>
+  <!-- 邮箱 -->
+  <view class="back"></view>
+  <view class="keywords-msg">
+    <view class="keywords-title">
+      <view class="keywords-title-back"></view>
+      <view class="keywords-title-name">邮箱</view>
+      <view class="keywords-title-icon">*</view>
+    </view>
+    <input placeholder="请输入您的邮箱" value="{{emailInput}}" class="keywords-input " bindinput='listenerEmailInput'></input>
+  </view>
+  <view class="back"></view>
+
+  <view class="bottom-commit" bindtap="commitBitp">生成专家列表报告</view>
+</view>

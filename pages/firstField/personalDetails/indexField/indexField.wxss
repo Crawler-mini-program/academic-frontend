@@ -1,0 +1,87 @@
+/************一级领域********/
+
+.fields-rank-one {
+  display: flex;
+  flex-direction: column;
+}
+
+.fields-one-title {
+  margin-top: 16rpx;
+  display: flex;
+  align-items: center;
+}
+
+.fields-one-title-image {
+  width: 110rpx;
+  height: 34rpx;
+}
+
+.fields-one-title-rank {
+  margin-left: 400rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+.fields-one-title-image-false {
+  width: 25rpx;
+  height: 25rpx;
+  margin-left: 10rpx;
+}
+
+.fields-one-title-image-false-tv {
+  color: #629dc1;
+  font-size: 24rpx;
+  margin-left: 60rpx;
+}
+
+.fields-one-item {
+  margin-top: 12rpx;
+  height: 110rpx;
+  display: flex;
+  background: #f5fbfc;
+}
+
+.fields-one-item- {
+  margin-top: 12rpx;
+  height: 110rpx;
+  display: flex;
+  background: #fff;
+}
+
+.fields-item-left {
+  width: 500rpx;
+  margin-left: 20rpx;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.fields-item-left-name {
+  font-size: 28rpx;
+  color: #195370;
+}
+
+.fields-item-left-english {
+  font-size: 28rpx;
+  color: #195370;
+}
+
+.fields-item-ranking {
+  width: 30rpx;
+  align-self: center;
+  font-size: 28rpx;
+  color: #195370;
+}
+
+.fields-item-person {
+  margin-left: 50rpx;
+  width: 130rpx;
+  height: 40rpx;
+  font-size: 22rpx;
+  color: #195370;
+  border: 1rpx solid #999;
+  border-radius: 8rpx;
+  text-align: center;
+  line-height: 40rpx;
+  align-self: center;
+}

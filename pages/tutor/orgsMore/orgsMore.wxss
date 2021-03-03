@@ -1,0 +1,262 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.search-content {
+  display: flex;
+  height: 80rpx;
+  width: 100%;
+}
+
+.search-input {
+  width: 100%;
+  height: 60rpx;
+  background: #f9f9f9;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+  font-size: 28rpx;
+  align-self: center;
+  border-radius: 40rpx;
+  padding-left: 20rpx;
+}
+
+swiper {
+  height: calc(100vh - 178rpx);
+  overflow: auto;
+}
+
+swiper-item {
+  overflow: auto !important;
+}
+
+/**tab切换**/
+
+.bottom-back-1 {
+  width: 2rpx;
+  height: 40rpx;
+  background: #eee;
+}
+
+.back-10 {
+  width: 100%;
+  height: 10rpx;
+  background: #eee;
+}
+
+
+
+.content {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding: 20rpx;
+  border-radius: 8rpx;
+  box-shadow:0px 0px 4px #BDBDBD;
+  margin-left:20rpx;
+  margin-right:20rpx;
+  margin-top:20rpx
+}
+.content-top{
+  display: flex;
+  flex-direction: row;
+  
+}
+.left-img {
+  width: 18%;
+  height: 120rpx;
+  border-radius: 50%;
+}
+.content-top-msg{
+  display: flex;
+  flex-direction: column;
+  width: 55%;
+  padding-left: 16rpx;
+}
+.content-top-msg-{
+  display: flex;
+  flex-direction: column;
+  padding-left: 16rpx;
+  width: 80%
+}
+.top-msg-name{
+color:#333333;
+font-size:36rpx;
+font-weight: bold;
+}
+.content-top-right{
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  text-align: center
+}
+.scholar-con{
+  display:flex;
+  margin-top:14rpx
+}
+.scholar-second{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  border-radius: 4rpx;
+  background: #FAFAFA;
+  padding: 20rpx;
+  margin-right: 20rpx;
+  align-items: center
+}
+.scholar-img{
+  width: 23%;
+  height: 60rpx;
+  border-radius: 50%;
+}
+.scholar-right-msg{
+  display:flex;
+  flex-direction: column;
+  margin-left: 10rpx;
+  width: 70%
+}
+.right-msg-top{
+  color:#333333;
+  font-size:28rpx;
+  font-weight: bold
+}
+
+
+
+.header {
+  width: 65%;
+  margin: 0.5em auto;
+  line-height: 1.6em;
+  font-size: 14px;
+  text-align: center;
+}
+
+.back-top {
+  background: #f5f5f5;
+  height: 1rpx;
+}
+.ell{
+    overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.select-bt {
+  margin-right: 20rpx;
+  height: 46rpx;
+  width: 102rpx;
+  display: flex;
+  background: #39B493;
+  align-items: center;
+  justify-content: center;
+  border-radius: 27rpx;
+  color: #fff;
+  font-size: 24rpx;
+  align-self: flex-end;
+  margin-top: 40rpx;
+}
+
+
+
+
+
+
+
+
+
+/* *************************************** */
+.content-wrapper {
+  width: 100%;
+  flex: 1;
+}
+.tab-menu {
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  border-bottom: #eee solid 1px;
+  z-index: 100000;
+}
+.list-tab {
+    width: 100%;
+  height: 78rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1rpx solid #eee;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.list-tab .checked-item {
+    line-height: 60rpx;
+  text-align: center;
+  color: #3bbab0;
+  flex: 1;
+  font-weight: bold;
+  font-size: 28rpx;
+  
+}
+.list-tab .default {
+  line-height: 60rpx;
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+  flex: 1;
+}
+
+.investment-small-list {
+}
+
+.investment-small-list view:nth-last-child(1) {
+  border-bottom: 0;
+}
+
+.investment-small-list .item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 10rpx;
+  padding-top: 10rpx;
+  border-bottom: 10rpx solid #f5f5f5;
+}
+
+
+.flexC {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.flexR {
+  display: flex;
+  /* align-items: center; */
+}
+  /* 未搜索到内容 */
+.content-item-show {
+  height: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.item-show-image {
+  margin-top: 240rpx;
+  width: 500rpx;
+  height: 370rpx;
+}
+
+.item-show-text {
+  margin-top: 50rpx;
+  color: #999;
+  font-size: 24rpx;
+}
+
+

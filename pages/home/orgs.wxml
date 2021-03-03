@@ -1,0 +1,27 @@
+      <view class='top'>
+        <view class='top-back'></view>
+        <view class='top-title'>高校</view>
+      </view>
+      <view style='width:100%;height:2rpx;background:#f5f5f5;margin-top:10rpx'></view>
+      <scroll-view scroll-x="true" scroll-with-animation style="width: 100%;height:320rpx;display:flex;white-space: nowrap">
+        <view wx:for="{{orgztionList}}" wx:for-index="index" data-index='{{index}}' wx:for-item="item"  wx:key="index" style='display: inline-block;margin-right:15rpx;margin-top:20rpx;margin-left:15rpx'>
+          <view class='orgztion-msg' bindtap='orgztionBitp' data-orgId='{{item.orgId}}'>
+            <view class='orgztion-msg-shchool'>
+              <image class='orgztion-msg-image' src='{{item.avatarUrl}}' mode="aspectFill"></image>
+              <view class='orgztion-msg-right'>
+                <view class='orgztion-msg-shchoolName'>{{item.name}}</view>
+                <view class='orgztion-msg-shchoolNum'>{{item.innovationIndex}}</view>
+              </view>
+            </view>
+            <!-- 高校---一级领域 -->
+            <view class='orgztion-msg-shchool-fields'>
+              <view wx:for="{{item.fieldLevel1}}" wx:for-item="itemFields" wx:for-index="index" data-index='{{index}}' wx:key="index">
+                <view class='orgztion-msg-shchool-fields-view'>
+                  <view class='orgztion-msg-shchool-fields-view-fiendName'>{{itemFields.fieldName}}</view>
+                  <view class='orgztion-msg-shchool-fields-view-fiendRank'>{{itemFields.rank}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>

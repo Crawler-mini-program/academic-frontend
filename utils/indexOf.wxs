@@ -1,0 +1,11 @@
+var filters = {
+  toFix: function (value, string) {
+    if (value.indexOf(string) >= 0){
+      return true
+    }
+    return false
+  }
+}
+module.exports = {
+  toFix: filters.toFix
+}

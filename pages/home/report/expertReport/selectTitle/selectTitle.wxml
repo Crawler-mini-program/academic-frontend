@@ -1,0 +1,13 @@
+<!-- 职称 -->
+<view class='container'>
+  <view class="item-msg-">
+    <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+      <view class="item-msg" wx:for='{{selectMsgList}}' bindtap="selectBitp" wx:for-index='index' data-index='{{index}}'>
+        <view class="item-name">{{item.selectName}}</view>
+<image class='item-select' src='../../../../../assets/icon-title.png' wx:if='{{!item.select}}'></image>
+<image class='item-select' src='../../../../../assets/icon-title-select.png' wx:if='{{item.select}}'></image>
+      </view>
+    </scroll-view>
+  </view>
+  <view class=" bottom-commit" bindtap="commitBitp">确定</view>
+</view>

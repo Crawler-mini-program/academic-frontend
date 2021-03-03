@@ -1,0 +1,106 @@
+<!-- 风云人物 -->
+<view class="tab-menu">
+  <view class='back10'></view>
+  <view class="top-content" wx:if='{{searchType==0}}'>
+    <text class='top-text'>科技创新指数：</text>
+    <view class='{{innovationIndex>0?"top-sum-up":"top-sum-down"}}'>{{innovationIndex}}</view>
+
+    <view class='top-num1-up' wx:if='{{increase>0}}'>+{{increase}}%</view>
+    <view class='top-num1-down' wx:elif='{{increase<0}}'>{{increase}}%</view>
+
+    <view class='top-num2-up' wx:if='{{increasePercentage>0}}'>+{{increasePercentage}}%</view>
+    <view class='top-num2-down' wx:elif='{{increasePercentage<0}}'>{{increasePercentage}}%</view>
+  </view>
+  <!--列表展示  -->
+  <view class='back20' wx:if='{{searchType==0}}'></view>
+          <!-- 总排名--标签 -->
+        <view class='sum-icon'>
+          <view class='sum-icon-left'>专家</view>
+          <view class='sum-icon-center'>排名</view>
+          <view class='sum-icon-right'>涨幅</view>
+        </view>
+        <!-- 23行~62行和66~105行的代码除了第一行的searchType之外，其余都一样 -->
+  <swiper class='swiper' wx:if='{{searchType==0}}'>
+    <!--------------------------------  总排名  ------------------------------>
+    <swiper-item>
+      <!-- <view class="header" hidden="{{isHideRefresh}}">
+        <view>正在刷新...</view>
+        <view>{{refreshTime}}</view>
+      </view> -->
+      <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore"  style="height: 100%">
+
+        <view class="investment-sum-list flexC">
+          <view class="item flexR" wx:for="{{apiRankingList}}" wx:for-index='index' data-index='{{index}}'>
+            <view class='sum-content' bindtap='personCatchTap' data-index='{{index}}'>
+              <image class='sum-content-img' src='{{item.avatarUrl}}'></image>
+              <view class='sum-cotent-show'>
+                <view class='sum-content-name'>{{item.name}}</view>
+                <view class='sum-content-scchoolName'>{{item.ownName}}</view>
+              </view>
+              <view class='sum-content-ranking'>{{item.rank}}</view>
+              <!-- 判断分数是否涨跌 -->
+              <view class='sum-boo'>
+                <view class="sum-content-true" wx:if="{{item.increasePercentage>0}}">+{{item.increasePercentage}}%</view>
+                <view class="sum-content-false" wx:else="{{item.increasePercentage<0}}">{{item.increasePercentage}}%</view>
+              </view>
+            </view>
+            <!-- 结尾 -->
+          </view>
+        </view>
+        <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+
+        <view class='no-more' hidden='{{isLoadMore}}'>
+          <view></view>
+          <text>我也是有底线的</text>
+          <view></view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+
+
+
+  <swiper class='swiper-search' wx:if='{{searchType!=0}}'>
+    <!--------------------------------  总排名  ------------------------------>
+    <swiper-item>
+      <!-- <view class="header" hidden="{{isHideRefresh}}">
+        <view>正在刷新...</view>
+        <view>{{refreshTime}}</view>
+      </view> -->
+      <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+
+        <view class="investment-sum-list flexC">
+          <view class="item flexR" wx:for="{{apiRankingList}}" wx:for-index='index' data-index='{{index}}'>
+            <view class='sum-content' bindtap='personCatchTap' data-index='{{index}}'>
+              <image class='sum-content-img' src='{{item.avatarUrl}}'></image>
+              <view class='sum-cotent-show'>
+                <view class='sum-content-name'>{{item.name}}</view>
+                <view class='sum-content-scchoolName'>{{item.ownName}}</view>
+              </view>
+              <view class='sum-content-ranking'>{{item.rank}}</view>
+              <!-- 判断分数是否涨跌 -->
+              <view class='sum-boo'>
+                <view class="sum-content-true" wx:if="{{item.increasePercentage>0}}">+{{item.increasePercentage}}%</view>
+                <view class="sum-content-false" wx:else="{{item.increasePercentage<0}}">{{item.increasePercentage}}%</view>
+              </view>
+            </view>
+            <!-- 结尾 -->
+          </view>
+        </view>
+        <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+
+        <view class='no-more' hidden='{{isLoadMore}}'>
+          <view></view>
+          <text>我也是有底线的</text>
+          <view></view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

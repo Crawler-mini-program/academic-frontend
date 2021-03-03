@@ -1,0 +1,9 @@
+<!-- 第二行的学科（领域） -->
+<scroll-view class='tab-wrapper' scroll-x="true">
+  <!-- 这里的wx:for-items和wx:for是一样的，只是写法不同 -->
+        <view class="type-box" wx:for-items="{{apifields}}" wx:for-index='index' data-index='{{index}}'>
+          <view data-type='{{item.name}}' class="navbarTop {{currentTab == index ? 'tab-active' : ''}}" catchtap="switchTab" data-index='{{index}}'>
+            {{item.name}}
+          </view>
+        </view>
+      </scroll-view>

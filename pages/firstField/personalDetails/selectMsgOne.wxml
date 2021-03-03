@@ -1,0 +1,120 @@
+<!----------------------- 研究领域排名 ------------------------->
+      <view class='back20'></view>
+      <view class='content-fields-rank'>
+        <view class='fields-rank-title'>
+          <view class='back-color'></view>
+          <view class='fields-rank-title-text'>研究领域排名</view>
+        </view>
+        <view class='fields-rank-back-1'></view>
+        <!-- 一级领域 -->
+        <view class='fields-rank-one' wx:if='{{type==1}}'>
+          <view class='fields-one-title'>
+            <image src='../../../assets/fields_one.png' class='fields-one-title-image'></image>
+            <view class='fields-one-title-rank'>排名</view>
+          </view>
+
+          <view class='fields-one-item' bindtap='fieldsBitp'>
+            <view class='fields-item-left'>
+              <view class='fields-item-left-name'>{{personMsg.primaryFields[0].fieldName}}</view>
+              <view class='fields-item-left-english'>{{personMsg.primaryFields[0].fieldEnglishName}}</view>
+            </view>
+            <view class='fields-item-ranking'>{{personMsg.primaryFields[0].rank}}</view>
+          </view>
+        </view>
+        <!-- 一级领域 -->
+        <view class='fields-rank-one' wx:elif='{{type==2||type==3}}'>
+          <view class='fields-one-title'>
+            <image src='../../../assets/fields_one.png' class='fields-one-title-image'></image>
+            <view class='fields-one-title-rank'>排名</view>
+            <view wx:if='{{fieldsShow}}' style='display:flex;align-items:center' bindtap='fieldsShowBitp'>
+              <view class='fields-one-title-image-false-tv'>展开</view>
+              <image class='fields-one-title-image-false' src='../../../assets/up.png'></image>
+            </view>
+            <view wx:elif='{{!fieldsShow}}' style='display:flex;align-items:center' bindtap='fieldsShowBitp'>
+              <view class='fields-one-title-image-false-tv'>收起</view>
+              <image class='fields-one-title-image-false' src='../../../assets/down.png'></image>
+            </view>
+          </view>
+          <!-- 下面有一块极为相似的代码，只是循环的数组有区别，但目前没看出区别在哪里 -->
+          <view wx:if='{{fieldsShow}}' class='{{(index+1)%2==0?"fields-one-item-":"fields-one-item"}}' wx:for='{{fieldsMsg}}' wx:for-index='index' data-index='{{index}}' wx:for-item='item' bindtap='indexFieldsBitp'>
+            <view class='fields-item-left'>
+              <view class='fields-item-left-name'>{{item.name}}</view>
+              <view class='fields-item-left-english'>{{item.engName}}</view>
+            </view>
+            <view class='fields-item-ranking'>{{item.rank}}</view>
+            <view class="fields-item-person" data-index='{{index}}' catchtap="fieldsBitp">人才排行榜</view>
+          </view>
+
+          <view wx:if='{{!fieldsShow}}' class='{{(index+1)%2==0?"fields-one-item-":"fields-one-item"}}' wx:for='{{fieldsMsgShow}}' wx:for-index='index' data-index='{{index}}' wx:for-item='item' bindtap='indexFieldsBitp'>
+            <view class='fields-item-left'>
+              <view class='fields-item-left-name'>{{item.name}}</view>
+              <view class='fields-item-left-english'>{{item.engName}}</view>
+            </view>
+            <view class='fields-item-ranking'>{{item.rank}}</view>
+            <view class="fields-item-person" data-index='{{index}}' catchtap="fieldsBitp">人才排行榜</view>
+          </view>
+        </view>
+        <!----------- 二级领域 ---------------->
+        <view class='fields-rank-two' wx:if='{{type==1}}'>
+          <view class='fields-two-title'>
+            <image src='../../../assets/fields_two.png' class='fields-two-title-image'></image>
+            <view class='fields-two-title-rank'>排名</view>
+          </view>
+
+          <view wx:for="{{personMsg.fieldsTwo}}" wx:for-index="index" data-index='{{index}}' wx:for-item="item" bindtap='fieldsTwoBitp'>
+            <view class='fields-two-item' wx:if='{{(index+1)%2!=0}}'>
+              <view class='fields-two-item-left'>
+                <view class='fields-two-item-left-name'>{{item.fieldName}}</view>
+                <view class='fields-two-item-left-english'>{{item.fieldEnglishName}}</view>
+              </view>
+              <view class='fields-two-item-ranking'>{{item.rank}}</view>
+            </view>
+            <view class='fields-two-item-1' wx:elif='{{(index+1)%2==0}}'>
+              <view class='fields-two-item-left'>
+                <view class='fields-two-item-left-name'>{{item.fieldName}}</view>
+                <view class='fields-two-item-left-english'>{{item.fieldEnglishName}}</view>
+              </view>
+              <view class='fields-two-item-ranking'>{{item.rank}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 关系图谱 -->
+      <view class='back20'></view>
+      <view class='content-research'>
+        <view class='fields-rank-title-msg'>
+          <view class='back-color'></view>
+          <view class='fields-rank-title-text'>科研关系图谱</view>
+          <view class='paper-title-more'>至今</view>
+        </view>
+        <view class='fields-rank-back-1'></view>
+        <view class="content-view">
+          <view class='view-boo' wx:if='{{viewBoo}}'>loading...</view>
+          <ec-canvas id="mychart-dom-pie" canvas-id="mychart-pie" ec="{{ec}}"></ec-canvas>
+        </view>
+      </view>
+
+      <!-- 趋势图 -->
+      <view class='back20'></view>
+      <view class='content-research-line'>
+        <view class='fields-rank-title-msg'>
+          <view class='back-color'></view>
+          <view class='fields-rank-title-text'>科研趋势</view>
+        </view>
+        <view class='fields-rank-back-1'></view>
+
+        <view class="content-view-line">
+          <view class='view-boo' wx:if='{{viewBooLine}}'>loading...</view>
+          <view class='line-title' wx:if='{{!viewBooLine}}'>
+            <view class='line-title-left'>
+              <view class='line-left-color'></view>
+              <view class='line-right-text'>成果数（个）</view>
+            </view>
+            <view class='line-title-right'>
+              <view class='line-right-color'></view>
+              <view class='line-right-text'>被引量（次）</view>
+            </view>
+          </view>
+          <ec-canvas id="mychart-dom-line" canvas-id="mychart-line" ec="{{ec}}"></ec-canvas>
+        </view>
+      </view>

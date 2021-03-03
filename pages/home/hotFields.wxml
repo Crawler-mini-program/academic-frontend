@@ -1,0 +1,41 @@
+      <!-- 标题 -->
+      <view class='top'>
+      	<view class='top-back'></view>
+      	<view class='top-title'>热门领域</view>
+      	<view class='top-title-more' bindtap='fieldsMoreBitp'>
+      		<view class='title-more'>更多</view>
+      		<image class='title-img' src='../../assets/jiantou_right.png'></image>
+      	</view>
+      </view>
+      <view style='width:100%;height:2rpx;background:#f5f5f5;margin-top:10rpx'></view>
+      <!-- 一级领域，第一行的那一个领域 -->
+      <view class='hot-fields-content'>
+      	<view class='fields-one-top' bindtap='hotFieldsBitp'>
+      		<view class='fields-one-top-name'>{{hotOneFieldList.fieldName}}</view>
+      		<view class='fields-one-top-num1'>{{hotOneFieldList.innovationIndex}}</view>
+
+      		<view class='fields-one-top-num' wx:if='{{hotOneFieldList.increase>0}}'>+{{hotOneFieldList.increase}}%</view>
+      		<view class='fields-one-top-num-false' wx:elif='{{hotOneFieldList.increase<0}}'>{{hotOneFieldList.increase}}%</view>
+
+      		<view class='fields-one-top-num' wx:if='{{hotOneFieldList.increasePercentage>0}}'>+{{hotOneFieldList.increasePercentage}}%</view>
+      		<view class='fields-one-top-num-false' wx:elif='{{hotOneFieldList.increasePercentage<0}}'>{{hotOneFieldList.increasePercentage}}%</view>
+
+      		<view class='fields-one-top-image'>
+      			<view class='fields-one-top-image-1'></view>
+      			<view class='fields-one-top-image-1'></view>
+      			<view class='fields-one-top-image-1'></view>
+      		</view>
+      	</view>
+      	<!-- 热门领域---二级领域，下面的6个领域 -->
+      	<view class='fields-two-msg'>
+      		<view class='fields-two-msg-view' wx:for="{{hotAppletsFieldList}}" wx:for-index="index" data-index='{{index}}' wx:for-item="item" bindtap='hotAppletsBitp'>
+      			<view class='{{index%3==0?"back12":"back11"}}'></view>
+      			<view class='two-msg'>
+      				<view class='two-msg-fieldName'>{{item.fieldName}}</view>
+      				<view class='two-msg-fieldNum'>{{item.innovationIndex}}</view>
+      				<view class='two-msg-fieldNum1' wx:if='{{item.increasePercentage>0}}'>+{{hotel.toFix(item.increasePercentage,1)}}%</view>
+      				<view class='two-msg-fieldNum1-false' wx:elif='{{item.increasePercentage<0}}'>{{item.increasePercentage}}%</view>
+      			</view>
+      		</view>
+      	</view>
+      </view>

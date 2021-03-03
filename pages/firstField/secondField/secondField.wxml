@@ -1,0 +1,86 @@
+<!-- 引入wxs脚本 -->
+<wxs module="hotel" src="../../../utils/sub_line.wxs"></wxs>
+<!-- 二级领域 -->
+<view class='container'>
+  <view class='back20'></view>
+  <view class='top-content'>
+    <view class='stair'>
+      <view class='stair-torr'>{{fieldsMsg[0].name}}</view>
+      <view class='stair-red'>{{fieldsMsg[0].innovationIndex}}</view>
+
+      <text class='stair-red' wx:if='{{fieldsMsg[0].increase>0}}'>+{{hotel.toFix(fieldsMsg[0].increase,1)}}</text>
+      <text class='stair-green' wx:elif='{{fieldsMsg[0].increase<0}}'>{{hotel.toFix(fieldsMsg[0].increase,1)}}</text>
+
+      <text class='stair-red' wx:if='{{fieldsMsg[0].increasePercentage>0}}'>+{{hotel.toFix(fieldsMsg[0].increasePercentage,1)}}</text>
+      <text class='stair-green' wx:elif='{{fieldsMsg[0].increasePercentage<0}}'>{{hotel.toFix(fieldsMsg[0].increasePercentage,1)}}</text>
+
+
+    </view>
+    <view class='second'>
+      <view class='second-torr'>{{secondName}}</view>
+      <view class='second-red'>{{innovationIndex}}</view>
+
+      <text class='second-red' wx:if="{{increase>0}}">+{{increase}}.0</text>
+      <text class='second-green' wx:elif="{{increase<0}}">{{increase}}</text>
+
+      <text class="second-red" wx:if='{{increasePercentage>0}}'>+{{increasePercentage}}.0%</text>
+      <text class="second-green" wx:elif='{{increasePercentage<0}}'>{{increasePercentage}}%</text>
+
+    </view>
+  </view>
+  <view class='back20'></view>
+  <!----------------------- 专家排名 ------------------------->
+
+  <!-- 总排名--标签 -->
+  <view class='sum-icon'>
+    <view class='sum-icon-left ' wx:if='{{type==1}}'>专家</view>
+    <view class='sum-icon-left ' wx:if='{{type==2}}'>高校</view>
+    <view class='sum-icon-left ' wx:if='{{type==3}}'>院所</view>
+    <view class='{{type==1?"sum-icon-center-nearly":"sum-icon-center-far"}}'>排名</view>
+    <view class='{{type==1?"sum-icon-right-nearly":"sum-icon-right-far"}}'>涨幅</view>
+  </view>
+  <swiper>
+    <swiper-item>
+      <!-- <view class="header" hidden="{{isHideRefresh}}">
+        <view>正在刷新...</view>
+        <view>{{refreshTime}}</view>
+      </view> -->
+      <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+
+        <view class="msg-item flexR" wx:for="{{orgMsg}}" wx:for-index="index" data-index='{{index}}' wx:for-item="item">
+          <!-- 基本信息 -->
+          <view class='person-content' catchtap='personCatchTap' data-index='{{index}}'>
+            <image src='{{item.avatarUrl}}' class='person-img'></image>
+            <view class='person-cotent-msg-show' wx:if='{{type==1}}'>
+              <view class='person-name-show'>{{item.name}}</view>
+              <view class='person-schoolName-show'>{{item.ownName}}</view>
+            </view>
+            <view class='person-cotent-msg-hide' wx:elif='{{type==2||type==3}}'>
+              <view class='person-name-hide'>{{item.name}}</view>
+            </view>
+            <view class='{{type==1?"content-container-hide":"content-container-show"}}' catchtap='manCatchat' data-index='{{index}}'>
+              <text class='container-text'>风云人物</text>
+            </view>
+            <view class='{{type==1?"person-ranking-nearly":"person-ranking-far"}}'>{{item.rank}}</view>
+            <!-- 判断分数是否涨跌 -->
+            <view class='person-boo'>
+              <view class="person-num2-true" wx:if="{{item.increasePercentage>0}}">+{{item.increasePercentage}}%</view>
+              <view class="person-num2-false" wx:elif="{{item.increasePercentage<0}}">{{item.increasePercentage}}%</view>
+            </view>
+          </view>
+        </view>
+        <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+
+        <view class='no-more' hidden='{{isLoadMore}}'>
+          <view></view>
+          <text>我也是有底线的</text>
+          <view></view>
+        </view>
+
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+</view>

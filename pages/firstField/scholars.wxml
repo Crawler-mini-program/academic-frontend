@@ -1,0 +1,141 @@
+<include src="fieldsTopTitle.wxml">
+</include>
+<view class='content-wrapper' wx:if='{{currentTab>=0}}'>
+  <view class="tab-menu">
+    <view class='back20'></view>
+    <view class="list-tab" catchtap='toggleView'>
+      <view class="{{nowRole==0?'checked-item':''}}" data-index="0">子领域列表</view>
+      <view class='back1'></view>
+      <view class="{{nowRole==1?'checked-item':''}}" data-index="1">总排名</view>
+    </view>
+    <!--列表展示  -->
+    <view class='back10'></view>
+    <!-- 总排名--标签 -->
+    <view class='sum-icon' wx:if='{{currentIndex==1||nowRole==1}}'>
+      <view class='sum-icon-left'>
+        <text wx:if='{{typeNum==1}}'>专家</text>
+        <text wx:elif='{{typeNum==2}}'>高校</text>
+        <text wx:elif='{{typeNum==3}}'>院所</text>
+      </view>
+      <view class='{{typeNum==1?"sum-icon-center-nearly":"sum-icon-center-far"}}'>排名</view>
+      <view class='{{typeNum==1?"sum-icon-right-nearly":"sum-icon-right-far"}}'>涨幅</view>
+    </view>
+    <swiper bindchange="toggleSwiper" current='{{currentIndex}}'>
+      <!-----------------------  子领域列表-------------------->
+      <swiper-item>
+        <!-- <view class="header" hidden="{{isHideRefresh}}">
+            <view>正在刷新...</view>
+            <view>{{refreshTime}}</view>
+          </view> -->
+        <!-- bindscrolltoupper="refresh" -->
+        <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+
+          <view class="investment-small-list flexC">
+            <view class="item flexR" wx:for="{{apifieldsMsg}}" wx:for-index="index" data-index='{{index}}' wx:for-item="item">
+              <!-- 二级领域--信息 -->
+              <view class='field-content' catchtap='fieldCatchTap' data-index='{{index}}'>
+                <view class='field-name'>{{item.name}}</view>
+                <view class='field-sum'>{{item.innovationIndex}}</view>
+                <view class='field-num1-true' wx:if='{{item.increasePercentage>0}}'>+{{item.increasePercentage}}.0%</view>
+                <view class='field-num1-false' wx:elif='{{item.increasePercentage<0}}'>{{item.increasePercentage}}%</view>
+                <view class='field-more'>更多</view>
+                <image class='field-img' src='../../assets/jiantou_right.png'></image>
+              </view>
+              <view class='back1-w'></view>
+              <!-- 标签 -->
+              <view class='person-icon'>
+                <view class='icon-left'>
+                  <text wx:if='{{typeNum==1}}'>专家</text>
+                  <text wx:elif='{{typeNum==2}}'>高校</text>
+                  <text wx:elif='{{typeNum==3}}'>院所</text>
+                </view>
+                <view class='icon-center'>排名</view>
+                <view class='icon-right'>涨幅</view>
+              </view>
+              <!-- 人的基本信息 -->
+              <view class='person-content' catchtap='personCatchTap' data-index='{{index}}'>
+                <image src='{{item.talents[0].avatarUrl}}' class='person-img' binderror='imageError' data-index="{{index}}"></image>
+                <view class='person-cotent-msg-show' wx:if='{{typeNum==1}}'>
+                  <view class='person-name-show'>{{item.talents[0].name}}</view>
+                  <view class='person-schoolName-show'>{{item.talents[0].ownName}}</view>
+                </view>
+                <view class='person-cotent-msg-hide' wx:elif='{{typeNum==2||typeNum==3}}'>
+                  <view class='person-name-hide'>{{item.talents[0].name}}</view>
+                </view>
+                <!-- 风云人物是高校和院所标签下有的 -->
+                <view class='{{typeNum==1?"person-content-container-hide":"person-content-container-show"}}' catchtap='manCatchtap' data-index='{{index}}' data-type='school'>
+                  <text class='person-container-text'>风云人物</text>
+                </view>
+                <view class='person-ranking' wx:if='{{typeNum==1}}'>{{item.talents[0].rank}}</view>
+                <view class='person-ranking-org' wx:elif='{{typeNum!=1}}'>{{item.talents[0].rank}}</view>
+                <!-- 判断分数是否涨跌 -->
+                <view class='person-boo'>
+                  <view class="person-num2-true" wx:if="{{item.talents[0].increasePercentage>0}}">+{{item.talents[0].increasePercentage}}%</view>
+                  <view class="person-num2-false" wx:else="{{item.talents[0].increasePercentage<0}}">{{item.talents[0].increasePercentage}}%</view>
+                </view>
+              </view>
+              <!-- 结尾 -->
+            </view>
+          </view>
+
+          <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+          </view>
+
+          <view class='no-more' hidden='{{isLoadMore}}'>
+            <view></view>
+            <text>我也是有底线的</text>
+            <view></view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+      <!----------------  总排名------------->
+
+      <swiper-item>
+        <!-- <view class="header" hidden="{{isHideRefreshTalents}}">
+            <view>正在刷新...</view>
+            <view>{{refreshTime}}</view>
+          </view> -->
+        <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+
+          <view class="investment-sum-list flexC">
+            <view class="item flexR" wx:for="{{apifieldsTalents}}" data-type="orgnization" wx:for-index='index' data-index='{{index}}'>
+              <view class='sum-content' catchtap='personCatchTap' data-index='{{index}}'>
+                <image class='sum-content-img' src='{{item.avatarUrl}}'></image>
+                <view class='sum-cotent-show' wx:if='{{typeNum==1}}'>
+                  <view class='sum-content-name-show'>{{item.name}}</view>
+                  <view class='sum-content-scchoolName-show'>{{item.ownName}}</view>
+                </view>
+                <view class='sum-cotent-hide' wx:elif='{{typeNum==2||typeNum==3}}'>
+                  <view class='sum-content-scchoolName-hide'>{{item.name}}</view>
+                </view>
+
+                <view class='{{typeNum==1?"sum-content-container-hide":"sum-content-container-show"}}' catchtap='manCatchtap' data-index='{{index}}'>
+                  <text class='sum-container-text'>风云人物</text>
+                </view>
+                <view class='{{typeNum==1?"sum-content-ranking-nearly":"sum-content-ranking-far"}}'>{{item.rank}}</view>
+                <!-- 判断分数是否涨跌 -->
+                <view class='sum-boo'>
+                  <view class="sum-content-true" wx:if="{{item.increasePercentage>0}}">+{{item.increasePercentage}}%</view>
+                  <view class="sum-content-false" wx:else="{{item.increasePercentage<0}}">{{item.increasePercentage}}%</view>
+                </view>
+              </view>
+              <!-- 结尾 -->
+            </view>
+          </view>
+          <view class="weui-loadmore" hidden="{{isHideLoadMoreTalents}}">
+            <view class="weui-loading"></view>
+            <view class="weui-loadmore__tips">正在加载</view>
+          </view>
+
+          <view class='no-more' hidden='{{isLoadMoreTalents}}'>
+            <view></view>
+            <text>我也是有底线的</text>
+            <view></view>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

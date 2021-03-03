@@ -1,0 +1,8 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <image style="width:160rpx;height:160rpx;margin-top:150rpx" src="../../assets/logo.png"></image>
+  <view style='width:100%;font-size: 22rpx;margin-top:10rpx;color:#666'>登陆之后查看更多学者信息</view>
+  <view style="display:flex;position:fixed;justify-content:center;bottom:200rpx;width:100%">
+    <button open-type="getUserInfo" lang="zh_CN" withCredentials='true' bindgetuserinfo="bindGetUserInfo" class="save-btn">微信快速登录</button>
+  </view>
+</view> 

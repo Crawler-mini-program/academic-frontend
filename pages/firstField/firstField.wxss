@@ -1,0 +1,625 @@
+/* pages/firstField/firstField.wxss */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: #fafafa;
+}
+
+.list-tabTop {
+  padding-right: 100rpx;
+  padding-left: 100rpx;
+  width: 100%;
+  height: 65rpx;
+  border-bottom: 1px solid #eee;
+  justify-content: space-around;
+  text-align: center;
+}
+
+.navbarTop {
+  color: #999;
+}
+
+.list-tabTop view {
+  width: 33.33%;
+  font-size: 32rpx;
+  line-height: 65rpx;
+}
+
+.list-tabTop .checked-itemTop {
+  color: #3bbab0;
+  font-size: 32rpx;
+  line-height: 65rpx;
+  width: 33.33%;
+  font-weight: 600;
+}
+
+.hideBack {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hide-image {
+  padding-top: 260rpx;
+  width: 396rpx;
+  height: 368rpx;
+}
+
+.hide-text {
+  margin-top: 50rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+
+.type-navbar-item {
+  color: #999;
+}
+
+.tab-wrapper {
+  /* padding-left: 40rpx; 
+  padding-right: 40rpx; */
+  white-space: nowrap;
+  height: 68rpx;
+  width: 100%;
+  background-color: #fff;
+}
+
+.type-box {
+  width: 150rpx;
+  box-sizing: content-box;
+  font-size: 28rpx;
+  line-height: 64rpx;
+  text-align: center;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.tab-active {
+  display: inline-block;
+  border-bottom: 4rpx solid #3bbab0;
+  color: #3bbab0;
+  font-weight: 600;
+}
+
+.content-wrapper {
+  width: 100%;
+  flex: 1;
+}
+
+.tab-menu {
+  position: fixed;
+  width: 100%;
+  background: #fff;
+  border-bottom: #eee solid 1px;
+  z-index: 100000;
+}
+
+.list-tab {
+  width: 100%;
+  height: 66rpx;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 120rpx;
+  padding-right: 145rpx;
+}
+
+.list-tab view {
+  font-size: 28rpx;
+  color: #999;
+  line-height: 64rpx;
+}
+
+.list-tab .checked-item {
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+  line-height: 60rpx;
+  align-self: center;
+}
+
+.swipperTop {
+  height: calc(100vh - 67rpx);
+  overflow: auto;
+}
+
+.swiperTop-item {
+  overflow: auto !important;
+}
+
+swiper {
+  height: calc(100vh - 218rpx);
+  overflow: auto;
+}
+
+swiper-item {
+  overflow: auto !important;
+}
+
+/******************************子领域排名******************************/
+
+.investment-small-list {
+}
+
+.investment-small-list view:nth-last-child(1) {
+  border-bottom: 0;
+}
+
+.investment-small-list .item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 10rpx;
+  padding-top: 10rpx;
+  border-bottom: 10rpx solid #f5f5f5;
+}
+
+/* 二级领域--信息 */
+
+.field-content {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-bottom: 10rpx;
+  width: 100%;
+  display: flex;
+}
+
+.field-name {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+  width: 350rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.field-sum {
+  font-size: 32rpx;
+  color: #d26161;
+  font-weight: bold;
+  width: 150rpx;
+}
+
+.field-num1-true {
+  margin-left: 5rpx;
+  font-size: 32rpx;
+  color: #d26161;
+  font-weight: bold;
+  width: 130rpx;
+}
+
+.field-num1-false {
+  margin-left: 23rpx;
+  font-size: 32rpx;
+  color: #48c3af;
+  font-weight: bold;
+}
+
+.field-more {
+  align-self: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.field-img {
+  margin-left: 10rpx;
+  align-self: center;
+  width: 15rpx;
+  height: 20rpx;
+}
+
+/* 标签 */
+
+.person-icon {
+  display: flex;
+  width: 100%;
+}
+
+.icon-left {
+  margin-top: 8rpx;
+  padding: 1rpx 8rpx 1rpx 8rpx;
+  margin-left: 100rpx;
+  font-size: 20rpx;
+  background: #f2f2f2;
+  border-radius: 4rpx;
+  color: #999;
+}
+
+.icon-center {
+  margin-top: 8rpx;
+  padding: 1rpx 8rpx 1rpx 8rpx;
+  margin-left: 315rpx;
+  font-size: 20rpx;
+  background: #f2f2f2;
+  border-radius: 4rpx;
+  color: #999;
+}
+
+.icon-right {
+  margin-top: 8rpx;
+  padding: 1rpx 8rpx 1rpx 8rpx;
+  margin-left: 110rpx;
+  font-size: 20rpx;
+  background: #f2f2f2;
+  border-radius: 4rpx;
+  color: #999;
+}
+
+/* 个人详细信息 */
+
+.person-content {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  margin-top: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+}
+
+.person-img {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 25px;
+}
+
+.person-cotent-msg-show {
+  align-self: center;
+  flex-direction: column;
+  margin-left: 10rpx;
+}
+
+.person-name-show {
+  font-size: 28rpx;
+  color: #4a494a;
+  width: 370rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.person-schoolName-show {
+  font-size: 20rpx;
+  color: #999;
+  align-self: center;
+  width: 370rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.person-cotent-msg-hide {
+  align-self: center;
+  flex-direction: column;
+  margin-left: 10rpx;
+}
+
+.person-name-hide {
+  font-size: 28rpx;
+  color: #4a494a;
+  align-self: center;
+  width: 240rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.person-content-container-show {
+  display: block;
+  margin-left: 10rpx;
+  align-self: center;
+  width: 100rpx;
+  height: 30rpx;
+  border: 2rpx solid #67a8f3;
+}
+
+.person-content-container-hide {
+  display: none;
+}
+
+.person-container-text {
+  font-size: 20rpx;
+  color: #67a8f3;
+  justify-content: center;
+  line-height: 26rpx;
+  display: flex;
+}
+
+.person-ranking {
+  align-self: center;
+  font-size: 32rpx;
+  color: #4a4a4a;
+  margin-left: 30rpx
+}
+
+.person-ranking-org {
+  align-self: center;
+  margin-left: 50rpx;
+  font-size: 32rpx;
+  color: #4a4a4a;
+}
+
+.person-boo {
+  flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  align-self: center;
+}
+
+.person-num2-true {
+  height: 50rpx;
+  width: 140rpx;
+  background: #d26161;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 4rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.person-num2-false {
+  height: 50rpx;
+  width: 140rpx;
+  background: #48c3af;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 4rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.header {
+  width: 65%;
+  margin: 0.5em auto;
+  line-height: 1.6em;
+  font-size: 14px;
+  text-align: center;
+}
+
+/******************************总排名******************************/
+
+.investment-sum-list {
+}
+
+.investment-sum-list view:nth-last-child(1) {
+}
+
+.investment-sum-list .item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 20rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  padding-top: 20rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+/* 标签 */
+
+.sum-icon {
+  width: 100%;
+  display: flex;
+  padding-bottom: 10rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.sum-icon-left {
+  margin-top: 8rpx;
+  margin-left: 120rpx;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  color: #999;
+}
+
+.sum-icon-center-far {
+  margin-top: 8rpx;
+  margin-left: 340rpx;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  color: #999;
+}
+
+.sum-icon-center-nearly {
+  margin-top: 8rpx;
+  margin-left: 240rpx;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  color: #999;
+}
+
+.sum-icon-right-far {
+  margin-top: 8rpx;
+  margin-left: 90rpx;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  color: #999;
+}
+
+.sum-icon-right-nearly {
+  margin-top: 8rpx;
+  margin-left: 190rpx;
+  font-size: 20rpx;
+  border-radius: 4rpx;
+  color: #999;
+}
+
+/* 排名的信息 */
+
+.sum-content {
+  display: flex;
+  width: 100%;
+}
+
+.sum-content-img {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 25px;
+}
+
+.sum-cotent-show {
+  align-self: center;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.sum-content-name-show {
+  font-size: 28rpx;
+  color: #4a494a;
+  align-self: center;
+}
+
+.sum-content-scchoolName-show {
+  font-size: 20rpx;
+  color: #999;
+  align-self: center;
+  width: 290rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.sum-cotent-hide {
+  align-self: center;
+  flex-direction: column;
+  margin-left: 20rpx;
+}
+
+.sum-content-scchoolName-hide {
+  width: 210rpx;
+  font-size: 28rpx;
+  color: #4a494a;
+  align-self: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.sum-content-container-show {
+  display: block;
+  margin-left: 10rpx;
+  align-self: center;
+  width: 100rpx;
+  height: 30rpx;
+  border: 2rpx solid #67a8f3;
+}
+
+.sum-content-container-hide {
+  display: none;
+}
+
+.sum-container-text {
+  font-size: 20rpx;
+  color: #67a8f3;
+  justify-content: center;
+  line-height: 26rpx;
+  display: flex;
+}
+
+.sum-content-ranking-far {
+  align-self: center;
+  margin-left: 90rpx;
+  font-size: 32rpx;
+  color: #4a4a4a;
+}
+
+.sum-content-ranking-nearly {
+  align-self: center;
+  margin-left: 20rpx;
+  font-size: 32rpx;
+  color: #4a4a4a;
+}
+
+.sum-boo {
+  flex: 1;
+  display: flex;
+  flex-direction: row-reverse;
+  align-self: center;
+}
+
+.sum-content-true {
+  height: 50rpx;
+  width: 140rpx;
+  background: #d26161;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 4rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.sum-content-false {
+  height: 50rpx;
+  width: 140rpx;
+  background: #48c3af;
+  font-size: 28rpx;
+  color: #fff;
+  border-radius: 4rpx;
+  line-height: 50rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.flexR {
+  display: flex;
+  /* align-items: center; */
+}
+
+.flexC {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.back10 {
+  width: 100%;
+  height: 10rpx;
+  display: flex;
+  background: #f5f5f5;
+}
+
+.back20 {
+  width: 100%;
+  height: 20rpx;
+  display: flex;
+  background: #f5f5f5;
+}
+
+.back1 {
+  height: 30rpx;
+  background: #d8d8d8;
+  width: 2rpx;
+  display: flex;
+  align-self: center;
+}
+
+.back1-w {
+  height: 2rpx;
+  background: #f5f5f5;
+  width: 100%;
+  display: flex;
+}

@@ -1,0 +1,7 @@
+
+<view wx:key wx:for='{{item.data}}' wx:for-item="itemList" wx:for-index="itemIndex">
+  <view class="list-content" data-type="{{item.type}}" bindtap="fieldsBitp" data-id="{{itemList.orgId}}">
+    <view class="list-name">{{itemList.name}}</view>
+    <view class="select-bt" catchtap="enterCatap" data-index='{{index}}' data-type="{{item.type}}" data-itemindex="{{itemIndex}}">报考</view>
+  </view>
+</view>

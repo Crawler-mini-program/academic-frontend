@@ -1,0 +1,91 @@
+<!-- 点击报考学校后会弹出导师信息，点击最下方查看全部后弹出的界面 -->
+<view class="container">
+  <swiper>
+    <swiper-item>
+      <scroll-view scroll-y='true' class='scroll-view' style="height: 100%">
+        <view wx:for="{{scholarList}}" wx:for-index="index" wx:for-item="item" wx:key>
+          <!-- 基本信息 -->
+          <view class='content' bindtap='itemBitp' data-index='{{index}}' data-id="{{item.scholarId}}">
+            <view class="rank">TOP.{{index+1}}</view>
+            <view class="scholars-msg">
+              <image src='{{item.avatarUrl}}' class='img'></image>
+              <view class="select-bt-false" catchtap="attentionBitp" data-index='{{index}}' wx:if='{{!item.follow}}'>关注</view>
+              <view class='select-bt-true' catchtap='attentionBitp' data-index='{{index}}' wx:if='{{item.follow}}'>已关注</view>
+            </view>
+            <view class="scholars-msg-center">
+              <view class="msg-center-name ell">{{item.name}}
+                <image src="../../../assets/v.png" wx:if="{{item.verify}}"></image>
+                <text style="font-weight:normal;margin-left:12rpx" wx:if="{{item.title!=null}}">{{item.title}}</text> </view>
+              <view style="margin-top:6rpx"> {{item.orgName}}
+                <text class="msg-center-back" wx:if="{{item.ownName!=null}}">|</text>
+                <text wx:if="{{item.ownName!=null}}">{{item.ownName}}</text>
+              </view>
+            </view>
+            <view class="ell" style="color:#666666;font-size:20rpx;margin-top:16rpx" wx:if="{{item.paperTitle!=null}}">最新论文：
+              <text class="paper-text">{{item.paperTitle}}</text>
+            </view>
+            <view class="num-msg">
+              <view class="num-flex">
+                <text class="num-text-top">{{item.paperCount}}</text>
+                <text class="num-text">论文</text>
+              </view>
+              <view class="num-text-back"></view>
+              <view class="num-flex">
+                <text class="num-text-top">{{item.patentCount}}</text>
+                <text class="num-text">专利</text>
+              </view>
+              <view class="num-text-back"></view>
+              <view class="num-flex">
+                <text class="num-text-top">{{item.projectCount}}</text>
+                <text class="num-text">项目</text>
+              </view>
+            </view>
+            <view style="color:#999999;font-size:24rpx;margin-top:10rpx" wx:if="{{item.innovationIndex!=null}}">创新活跃度：
+              <text style="color:#52CFAE;font-size:32rpx">{{item.innovationIndex}}</text>
+            </view>
+            <view style="color:#666666;font-size:20rpx;margin-top:10rpx" wx:if="{{item.emailHide!=null}}">导师邮箱：
+              <text catchtap="emailCatap" style="color:#6099F7;font-size:20rpx;text-decoration:underline">{{item.emailHide}}</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+
+        <view class='loadApp' hidden='{{isLoadMore}}' bindtap="showDialogBitp">
+          <text>小程序仅展示top10的导师数据哟~\n查看更多请下载app</text>
+        </view>
+
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+
+  <view class="bottom">
+    <image src='../../../assets/logo.png'></image>
+    <view style="display:flex;flex-direction:column;padding-left:26rpx;width:65%">
+      <text style="color:#333333;font-size:32rpx">知兔</text>
+      <text style="color:#999999;font-size:28rpx;margin-top:6rpx">下载app查看全部导师排行
+</text>
+    </view>
+    <view style="display:flex;justify-content:flex-end">
+      <view class="select-bt" bindtap="showDialogBitp">下载</view>
+    </view>
+  </view>
+
+  <!-- 弹出下载app引导页 -->
+  <!-- <view class="dialog-mask" style="visibility:{{select ? 'visible':'hidden'}}" bindtap="itemBitp">
+    <image class="dialog-image" src="../../../assets/back-downApp.png"></image>
+    <view class="bottom">
+      <image class="bottom-img" src='../../../assets/logo.png'></image>
+      <view style="display:flex;flex-direction:column;padding-left:26rpx;width:66%">
+        <text style="color:#333333;font-size:32rpx">知兔</text>
+        <text style="color:#999999;font-size:28rpx;margin-top:6rpx">下载app进入领域学术圈</text>
+      </view>
+      <view style="display:flex;justify-content:flex-end">
+        <view class="select-bt" bindtap="downBitp">下载</view>
+      </view>
+    </view>
+  </view> -->
+</view>

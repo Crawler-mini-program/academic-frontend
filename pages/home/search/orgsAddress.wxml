@@ -1,0 +1,27 @@
+<!-- 机构的筛选地点 -->
+  <view class="tabLayerPro" hidden="{{tab[3]}}">
+    <!-- 市区 -->
+    <view class='province-content' wx:if='{{cityBoo}}'>
+      <view class='content-top-text'>请选择市区</view>
+      <view class='city-msg'>
+        <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' style="height: 100%">
+          <view class="{{city_id==0?'active':'pro-name'}}" data-id="4" data-index="0" data-txt="地点" bindtap="filter">不限</view>
+          <view wx:for='{{placeArray}}' wx:for-item="item" wx:for-index='index' data-index='{{index}}'>
+            <view class='{{city_id==index+1?"active":"pro-name"}}' data-id="4" data-index="{{index+1}}" bindtap="filter" wx:if='{{hotel.Sub(cityCode,0,2)==hotel.Sub(item.item_code,0,2)&&hotel.Sub(item.item_code,2,6)!="0000"}}' data-txt="{{item.item_name}}">{{item.item_name}}</view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+    <!-- 省份 -->
+    <view class='province-content'>
+      <view class='content-top-text'>省份</view>
+      <view class='content-msg-pro'>
+        <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' style="height: 100%">
+          <view class="{{place_id==0?'active':'pro-name'}}" data-id="3" data-index="0" data-txt="地点" bindtap="filter">不限</view>
+          <view wx:for='{{placeArray}}' wx:for-item="item" wx:for-index='index' data-index='{{index}}'>
+            <view class='{{place_id==index+1?"active":"pro-name"}}' data-id="3" data-index="{{index+1}}" bindtap="filter" wx:if='{{hotel.Sub(item.item_code,2,6)=="0000"}}' data-txt="{{item.item_name}}" data-code="{{item.item_code}}">{{item.item_name}}</view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>

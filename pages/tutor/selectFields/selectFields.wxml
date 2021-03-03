@@ -1,0 +1,34 @@
+<view class="container">
+  <view class="fields-text">你想报考的专业是？</view>
+  <!-- 选择框 -->
+  <view class='selected'>
+    <view class='top-selected' bindtap='bindShowMsg'>
+      <input placeholder='请搜索/选择专业' class='seach-info-input' bindinput='listenerSearchInput' bindconfirm='toSearch' value="{{searchMsg}}" type='text' confirm-type="search" focus="{{searchFocus}}" hold-keyboard></input>
+      <image class='top-selected-image' src='../../../assets/up.png'></image>
+      <!-- <image class='top-selected-image' src='../../../assets/down.png' wx:if='{{select}}'></image> -->
+    </view>
+    <!-- 下拉需要显示的列表 -->
+    <view class="{{dataMsg.length>7?'select_box':'select_box-'}}" wx:if="{{select}}">
+      <scroll-view scroll-y='true' class='scroll-view' style="height: 100%">
+        <view wx:for="{{dataMsg}}" wx:key="unique" wx:for-index="index">
+          <view class="select" wx:if="{{item.isFirst}}">{{item.classType}}</view>
+          <view class="select_text" bindtap="selectBitp" data-index="{{index}}">{{item.courseName}}</view>
+        </view>
+
+        <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+
+        <view class='no-more' hidden='{{isLoadMore}}'>
+          <view></view>
+          <text>暂无内容</text>
+          <view></view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+  <view class="fields-start" catchtap="startBitp">下一步</view>
+
+</view>

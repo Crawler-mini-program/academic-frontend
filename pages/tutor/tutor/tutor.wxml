@@ -1,0 +1,135 @@
+<view class="container">
+	<scroll-view scroll-top='{{toView}}' scroll-y='true' class='scroll-view'>
+		<block wx:key wx:for='{{msgList}}' wx:for-index="index">
+			<view id='item{{index}}'>
+				<!-- 单个消息 客服发出（左） -->
+				<view wx:if='{{item.resever=="left"&&item.type!="scholar"}}' id='msg-{{index}}' style='display: flex; padding: 2vw 11vw 2vw 2vw;'>
+					<view style='width: 11vw; height: 11vw;'>
+						<image style='width: 11vw; height: 11vw; border-radius: 10rpx;' src='../../../assets/icon-left.png'></image>
+					</view>
+					<view style='width: 4vw; height: 11vw; margin-left: 0.5vw; display: flex; align-items: center; z-index: 9;'>
+						<view class="left-icon" style='width: 4vw;'></view>
+					</view>
+					<view class="leftMsg" style="display: flex;flex-direction: column;">
+						<view class='leftMsg-text'>{{item.content}}</view>
+						<view class="view-line"></view>
+						<!-- 报考按钮在orgs里面 -->
+						<include src='orgs.wxml'></include>
+						<view class="left-all">
+							<view class='left-all-text' bindtap="viewMoreBitp" data-index="{{index}}" data-itemindex="{{itemIndex}}" data-type="{{item.type}}">查看全部</view>
+							<view class='left-all-arrows'></view>
+						</view>
+					</view>
+				</view>
+
+				<!-- 单个消息 导师列表（左） -->
+				<view wx:if='{{item.resever=="left"&&item.type=="scholar"}}' id='msg-{{index}}' style='display: flex; padding: 2vw 11vw 2vw 2vw;'>
+					<view style='width: 11vw; height: 11vw;'>
+						<image style='width: 11vw; height: 11vw; border-radius: 10rpx;' src='../../../assets/icon-left.png'></image>
+					</view>
+					<view style='width: 4vw; height: 11vw; margin-left: 0.5vw; display: flex; align-items: center; z-index: 9;'>
+						<view class="left-icon" style='width: 4vw;'></view>
+					</view>
+					<view class="leftMsg" style="display: flex;flex-direction: column;">
+						<view class='leftMsg-text'>{{item.content}}</view>
+						<view class="view-line"></view>
+						<view wx:for='{{item.data}}' wx:for-item="scholarItem" wx:for-index="scholarIndex" wx:key>
+							<view class='content' data-type="{{item.type}}" bindtap="fieldsBitp" data-id="{{scholarItem.scholarId}}">
+								<view class="scholars-msg">
+									<image src='{{scholarItem.avatarUrl}}' class='img'></image>
+									<view class="select-bt-false" catchtap="attentionBitp" data-index='{{index}}' data-scholarIndex="{{scholarIndex}}" wx:if='{{!scholarItem.follow}}'>关注</view>
+									<view class='select-bt-true' catchtap='attentionBitp' data-index='{{index}}' data-scholarIndex="{{scholarIndex}}" wx:if='{{scholarItem.follow}}'>已关注</view>
+								</view>
+								<view class="scholars-msg-center">
+									<view class="msg-center-name ell">{{scholarItem.name}}
+										<image src="../../../assets/v.png" wx:if="{{scholarItem.verify}}"></image>
+										<text style="font-weight:normal;margin-left:12rpx" wx:if="{{scholarItem.title!=null}}">{{scholarItem.title}}</text>
+									</view>
+									<view style="margin-top:6rpx"> {{scholarItem.orgName}}
+										<text class="msg-center-back" wx:if="{{scholarItem.ownName!=null}}">|</text>
+										<text wx:if="{{scholarItem.ownName!=null}}">{{scholarItem.ownName}}</text>
+									</view>
+								</view>
+								<view class="ell" style="color:#666666;font-size:20rpx;margin-top:16rpx" wx:if="{{scholarItem.paperTitle!=null}}">最新论文：
+									<text class="paper-text">{{scholarItem.paperTitle}}</text>
+								</view>
+								<view class="num-msg">
+									<view class="num-flex">
+										<text class="num-text-top">{{scholarItem.paperCount}}</text>
+										<text class="num-text">论文</text>
+									</view>
+									<view class="num-text-back"></view>
+									<view class="num-flex">
+										<text class="num-text-top">{{scholarItem.patentCount}}</text>
+										<text class="num-text">专利</text>
+									</view>
+									<view class="num-text-back"></view>
+									<view class="num-flex">
+										<text class="num-text-top">{{scholarItem.projectCount}}</text>
+										<text class="num-text">项目</text>
+									</view>
+								</view>
+								<view style="color:#999999;font-size:24rpx;margin-top:10rpx;height:40rpx" wx:if="{{scholarItem.innovationIndex!=null}}">创新活跃度：
+									<text style="color:#52CFAE;font-size:32rpx">{{scholarItem.innovationIndex}}</text>
+								</view>
+								<view style="color:#666666;font-size:20rpx;margin-top:10rpx" wx:if="{{scholarItem.emailHide!=null}}">导师邮箱：
+									<text catchtap="emailCatap" style="color:#6099F7;font-size:20rpx;text-decoration:underline">{{scholarItem.emailHide}}</text>
+								</view>
+							</view>
+
+						</view>
+						<view class="left-all-scholar">
+							<view class='left-all-text-scholar' bindtap="viewMoreBitp" data-index="{{index}}" data-type="{{item.type}}">查看全部>></view>
+						</view>
+					</view>
+				</view>
+
+
+				<!-- 单个消息 用户发出（右） -->
+				<view wx:if='{{item.resever=="right"}}' id='msg-{{index}}' style='display: flex; justify-content: flex-end; padding: 2vw 2vw 2vw 11vw;'>
+					<view class='rightMsg'>{{item.rightContent}}</view>
+					<view style='width: 4vw; height: 11vw; margin-right: 0.5vw; display: flex; align-items: center; z-index: 9;'>
+						<view style='width: 4vw;' class="right-icon"></view>
+					</view>
+					<view style='width: 11vw; height: 11vw;'>
+						<image style='width: 11vw; height: 11vw; border-radius: 10rpx;' src='../../../assets/icon-right.png'></image>
+					</view>
+				</view>
+			</view>
+		</block>
+
+		<button class='back-share' bindtap="shareBitp" wx:if="{{backHome}}">
+			<image class='bottom-img' src="../../../assets/share_green.jpg"></image>
+			<view class='bottom-text'>分享给朋友</view>
+		</button>
+		<view class="back-home" bindtap="backHomeBitp" wx:if="{{backHome}}">回到首页 ></view>
+		<view style='width: 100%; height: 10vw;'></view>
+	</scroll-view>
+
+	<!-- 弹出下载app引导页 -->
+
+	<!--	<view class="dialog-mask" style="visibility:{{select ? 'visible':'hidden'}}">
+		<image class="dialog-image" src="../../../assets/share_tutor.png"></image>
+		<view class="bottom">
+
+			<button class='bottom-style left-text' open-type='share'>
+				直接分享
+			</button>
+			<view class="bottom-style right-text" bindtap="downBitp">
+				<view>保存到相册</view>
+			</view>
+		</view>
+	</view> -->
+
+	<view class="dialog-mask" style="visibility:{{select ? 'visible':'hidden'}}">
+		<image class="cancle;margin-left:15rpx" src="../../../assets/delete_tutor.png" catchtap="cancelCatp"></image>
+		<image class="dialog-image" src="../../../assets/share_tutor.png"></image>
+		<button class='bottom-style left-text' open-type='share'>
+			直接分享
+		</button>
+		<view class="bottom-style right-text" bindtap="saveImageBitp">
+			保存到相册
+		</view>
+
+	</view>
+</view>

@@ -1,0 +1,28 @@
+<view class='back20'></view>
+<!-- 领域前沿度分析 -->
+<view class='content-research'>
+  <view class='fields-rank-title-msg'>
+    <view class='back-color'></view>
+    <view class='fields-rank-title-text'>领域前沿度分析</view>
+    <view class='paper-title-more'>至今</view>
+  </view>
+  <view class='fields-rank-back-1'></view>
+  <view class="content-view-line">
+    <view class='view-boo' wx:if='{{viewBooTrend}}'>loading...</view>
+    <ec-canvas id="mychart-dom-trend" canvas-id="mychart-trend" ec="{{ec}}"></ec-canvas>
+  </view>
+</view>
+<!-- 领域相关度 -->
+<view class='back20'></view>
+<view class='content-research'>
+  <view class='fields-rank-title-msg'>
+    <view class='back-color'></view>
+    <view class='fields-rank-title-text'>领域相关度</view>
+    <view class='paper-title-more'>至今</view>
+  </view>
+  <view class='fields-rank-back-1'></view>
+  <view class="content-view">
+    <view class='view-boo' wx:if='{{viewBooChord}}'>loading...</view>
+    <ec-canvas id="mychart-dom-chord" canvas-id="mychart-chord" ec="{{ec}}"></ec-canvas>
+  </view>
+</view>

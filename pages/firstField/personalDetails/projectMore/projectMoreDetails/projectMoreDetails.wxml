@@ -1,0 +1,47 @@
+<view class='container'>
+  <view class='content-msg'>
+    <view class='title'>{{projectMsg.title}}</view>
+    <view class='patent-items-back-1'></view>
+    <view class='project-msg'>
+      <view class='project-title'>项目编号：</view>
+      <view class='project-text'>{{projectMsg.id}}</view>
+    </view>
+    <view class='project-msg'>
+      <view class='project-title-'>项目负责人：</view>
+      <view class='project-text-'>{{projectMsg.leader}}</view>
+    </view>
+    <view class='project-msg'>
+      <view class='project-title'>项目金额（万元）：</view>
+      <view class='project-text' wx:if='{{projectMsg.fund!=null}}'>{{projectMsg.fund}}</view>
+      <view class='project-text' wx:elif='{{projectMsg.fund==null}}'>0</view>
+    </view>
+    <view class='project-msg'>
+      <view class='project-title-'>项目类别：</view>
+      <view class='project-text-'>{{sort}}</view>
+    </view>
+    <view class='project-msg'>
+      <view class='project-title'>所属机构：</view>
+      <view class='project-text' wx:if='{{projectMsg.org!=null}}'>{{projectMsg.org}}</view>
+      <view class='project-text' wx:elif='{{projectMsg.org==null}}'>-</view>
+    </view>
+    <view class='project-msg'>
+      <view class='project-title'>所属学部：</view>
+      <view class='project-text' wx:if='{{projectMsg.department!=null}}'>{{projectMsg.department}}</view>
+      <view class='project-text' wx:elif='{{projectMsg.department==null}}'>-</view>
+    </view>
+    <view class='project-msg'>
+      <view class='project-title'>批准年份：</view>
+      <view class='project-text'>{{year}}</view>
+    </view>
+    <view class='project-msg'>
+      <view class='project-title-'>学科分类：</view>
+      <view class='project-text-'>{{discipline}}</view>
+    </view>
+  </view>
+    <view class='bottom'>
+    <button class='bottom-left' open-type="share">
+      <image src='../../../../../assets/share.png' class='bottom-left-image'></image>
+      <view class='bottom-left-text'>分享</view>
+    </button>
+  </view>
+</view>

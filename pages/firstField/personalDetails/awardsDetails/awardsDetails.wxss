@@ -1,0 +1,42 @@
+.content{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+}
+.msg {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+.title{
+  margin-top: 20rpx;
+  color: #333;
+  font-size: 40rpx;
+  font-weight: bold
+}
+.name-msg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 50rpx;
+}
+.name-msg- {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.name-title {
+  font-size: 28rpx;
+  color: #333;
+}
+.name-text {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  color: #666;
+}

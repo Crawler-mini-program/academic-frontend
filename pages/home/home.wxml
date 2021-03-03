@@ -1,0 +1,61 @@
+<!-- 引入wxs脚本 -->
+<wxs module="hotel" src="../../utils/sub_line.wxs"></wxs>
+<view class="home-menu">
+  <scroll-view scroll-y='true' class='scroll-view' style="height: 100%">
+    <!-- <view class='home-top'>
+      <view class="top-banner">
+        <!--banner图片  -->
+        <!-- <image src="../../assets/home-image.png" bindtap="homeSearch"></image>
+      </view> -->
+      <!-- 搜索框 -->
+      <!-- <view class="seach-info" bindtap='homeSearch'>
+        <image src="/assets/search-pic.png" class="search-img" mode="widthFix"> </image>
+        <input placeholder='搜索' disabled='false' class='seach-info-input'></input>
+      </view>
+    </view> --> 
+    <!-- <view class='back10'></view> -->
+    <!-- 报告 -->
+    <!-- <view class="home-report">
+      <view class="home-report-item" wx:for="{{reportMsg}}" bindtap="reportBitp" wx:for-index="index" data-index='{{index}}' wx:key="index">
+        <image class="home-report-item-img" src="{{item.reportImgUrl}}"></image>
+        <view class="home-report-item-name">{{item.reportName}}</view>
+      </view>
+    </view> -->
+
+
+    <!-- 导师匹配 -->
+    <view style="height:154rpx;margin-left:20rpx;margin-right:20rpx;margin-bottom:20rpx">
+      <image style="height:100%;width:100%" src="../../assets/home_tutor.jpg" bindtap="imageBitp"></image>
+    </view>
+
+    <!-- 热门领域-->
+    <view class='genius-content' wx:if='{{hotField}}'>
+      <include src="hotFields.wxml"></include>
+    </view>
+    <view class='back10'></view>
+    <!-- 牛人 -->
+    <!-- <view class='genius-content'>
+      <include src="genius.wxml"></include>
+    </view> -->
+    <!-- <view class='back10'></view> -->
+    <!-- 高校 -->
+    <!-- <view class='genius-content'>
+      <include src="orgs.wxml"></include>
+    </view>
+    <view class='back10'></view> -->
+    <!-- 比一比 -->
+    <!-- <view class='genius-content'>
+      <view class='top'>
+        <view class='top-back'></view>
+        <view class='top-title'>比一比</view>
+      </view>
+      <view style='width:100%;height:2rpx;background:#f5f5f5;margin-top:10rpx'></view>
+      <view class='pk-content'>
+        <image class='pk-image' src='/assets/pkTeacher.png' bindtap='pkBitp' data-type='0'></image>
+        <image class='pk-image' src='/assets/pkSchool.png' bindtap='pkBitp' data-type='1'></image>
+        <image class='pk-image' src='/assets/pkCompany.png' bindtap='pkBitp' data-type='2'></image>
+      </view>
+    </view> -->
+    <!-- <view class='back10'></view> --> 
+  </scroll-view>
+</view>

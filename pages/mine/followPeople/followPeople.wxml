@@ -1,0 +1,75 @@
+<view class="container">
+  <view class="nav bc_white">
+    <view class="{{selected==1?'checked':'default'}}" bindtap="selected" data-type='1'>人才</view>
+    <view class='bottom-back-1'></view>
+    <view class="{{selected==2?'checked':'default'}}" bindtap="selected" data-type='2'>机构</view>
+  </view>
+  <view class="back-top"></view>
+  <!-- 人才 -->
+  <view class="{{selected==1?'show':'hidden'}}">
+    <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+
+      <view class="msg-item flexR" wx:for="{{personMsg}}" wx:for-index="index" data-index='{{index}}' wx:for-item="item">
+        <!-- 基本信息 -->
+        <view class='left-content' bindtap='personBitp' data-index='{{index}}'>
+          <image src='{{item.avatar}}' class='left-img' ></image>
+          <view class='left-msg'>
+            <view class='left-msg-name'>{{item.realName}}</view>
+            <view class='left-msg-schoolName'>{{item.org}}</view>
+          </view>
+          <button class='right-bottom-true' catchtap='followCatp' data-index='{{index}}' wx:if='{{item.hasFollow}}'>
+            <view class='right-bottom-true-text'>已关注</view>
+          </button>
+          <button class='right-bottom-false' catchtap='followCatp' data-index='{{index}}' wx:elif='{{!item.hasFollow}}'>
+            <view class='right-bottom-false-text'>关注</view>
+          </button>
+        </view>
+      </view>
+      <view class="weui-loadmore" hidden="{{isHideLoadMore}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+      </view>
+
+      <view class='no-more' hidden='{{isLoadMore}}'>
+        <view></view>
+        <text>我也是有底线的</text>
+        <view></view>
+      </view>
+    </scroll-view>
+
+  </view>
+  <!-- 机构 -->
+  <view class="{{selected==2?'show':'hidden'}}">
+    <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+
+      <view class="msg-item flexR" wx:for="{{orgMsg}}" wx:for-index="index" data-index='{{index}}' wx:for-item="item">
+        <!-- 基本信息 -->
+        <view class='left-content' bindtap='personBitp' data-index='{{index}}'>
+          <image src='{{item.avatar}}' class='left-img' mode="aspectFill"></image>
+          <view class='left-msg'>
+            <view class='left-msg-name'>{{item.realName}}</view>
+          </view>
+          <button class='right-bottom-true' catchtap='orgCatp' data-index='{{index}}' wx:if='{{item.hasFollow}}'>
+            <view class='right-bottom-true-text'>已关注</view>
+          </button>
+          <button class='right-bottom-false' catchtap='orgCatp' data-index='{{index}}' wx:elif='{{!item.hasFollow}}'>
+            <view class='right-bottom-false-text'>关注</view>
+          </button>
+        </view>
+      </view>
+      <view class="weui-loadmore" hidden="{{isHideLoadMoreOrg}}">
+        <view class="weui-loading"></view>
+        <view class="weui-loadmore__tips">正在加载</view>
+      </view>
+
+      <view class='no-more' hidden='{{isLoadMoreOrg}}'>
+        <view></view>
+        <text>我也是有底线的</text>
+        <view></view>
+      </view>
+    </scroll-view>
+
+  </view>
+
+
+</view>

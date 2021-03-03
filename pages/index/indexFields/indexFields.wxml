@@ -1,0 +1,30 @@
+<!-- 新注册的用户才能看见 -->
+<view class='container'>
+<view class='fidles-top-text'>选择一个你想要关注的领域吧！</view>
+  <!-- 一级领域 -->
+  <view class='fields-content'>
+    <view class='fields-text'>一级领域</view>
+    <view class='fields-msg-pro'>
+      <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' style="height: 100%">
+        <view wx:for='{{apifields}}' wx:for-item="item" wx:for-index='index' data-index='{{index}}'>
+          <view class='{{place_id==index?"active":"pro-name"}}' data-id="3" data-index="{{index}}" bindtap="filter">{{item.name}}</view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+
+      <!-- 二级领域 -->
+    <view class='fields-content-two' wx:if='{{cityBoo}}'>
+      <view class='fields-text'>请选择二级领域（可多选）</view>
+      <view class='two-msg'>
+        <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' style="height: 100%">
+          <view wx:for='{{apifieldsTwo}}' wx:for-item="item" wx:for-index='index' data-index='{{index}}'>
+
+            <view class='{{item.isChack?"active":"pro-name"}}' data-index="{{index}}" bindtap="filterBitp">{{item.name}}</view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+
+    <view class='bottom-view' bindtap='finishBitp'>完成</view>
+</view>

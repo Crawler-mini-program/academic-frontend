@@ -1,0 +1,21 @@
+<view class='content'>
+  <view class='msg'>
+  <view class='title' wx:if='{{awardProject!="null"}}'>{{awardProject}}</view>
+  <view class='title' wx:elif='{{awardProject=="null"}}'>-</view>
+    <view class='name-msg'>
+      <view class='name-title'>获得奖项：</view>
+      <view class='name-text'>{{awardName}}</view>
+    </view>
+    <view class='name-msg-'>
+      <view class='name-title'>奖项登记：</view>
+      <view class='name-text' wx:if='{{degree==1}}'>一等奖</view>
+      <view class='name-text' wx:elif='{{degree==2}}'>二等奖</view>
+      <view class='name-text' wx:elif='{{degree==3}}'>三等奖</view>
+    </view>
+    <view class='name-msg-'>
+      <view class='name-title'>获奖时间：</view>
+      <view class='name-text' wx:if='{{year!="null"}}'>{{year}}</view>
+      <view class='name-text' wx:elif='{{year=="null"}}'>-</view>
+    </view>
+  </view>
+</view>
