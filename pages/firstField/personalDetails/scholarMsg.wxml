@@ -8,7 +8,7 @@
       <view class='msg-position' wx:if='{{type==1&&personMsg.title!=null}}'>{{personMsg.title}}</view>
     </view>
     <view class='msg-name-content'>
-      <view wx:if='{{type==1}}'>{{personMsg.email}}</view>
+      <view style="font-size: 30rpx" wx:if='{{type==1&&personMsg.email!=null}}'>{{personMsg.email}}</view>
     </view>
     <view class='msg-right-unitorg' wx:if='{{type==1}}'>
       <view class='msg-school'>{{personMsg.orgName}}</view>
