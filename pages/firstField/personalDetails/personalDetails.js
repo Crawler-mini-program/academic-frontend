@@ -45,7 +45,7 @@ Page({
     },
     categories: [],
     nodes: [],
-    links: []
+    links: [],
   },
 
   /**
@@ -61,10 +61,15 @@ Page({
     //判断人才、高校、院所进入的风云榜
     let _fieldId = options.fieldId
     let _type = options.type
+    let _scholar_str = options.scholarInfo
+    let _scholar_item = decodeURIComponent(_scholar_str)
+    let _scholarInfo = JSON.parse(_scholar_item)
+    console.log(_scholarInfo.paperTitle);
     that.setData({
       type: _type,
       fieldId: _fieldId,
-      vertexId: _vertexId
+      vertexId: _vertexId,
+      personMsg: _scholarInfo
     })
     if (_type == 1) {
       orgType = 'scholars'
@@ -77,18 +82,17 @@ Page({
         title: '机构详情'
       })
     }
-
   },
   onShow: function() {
     let that = this
-    that.login()
+    // that.login()
     let _token = wx.getStorageSync('token')
     if (_token) {
       let _type = that.data.type
       let _selected = that.data.selected
       if (_type == 1 && _selected == 1) {
         orgType = 'scholars'
-        that.personApiNet()
+        // that.personApiNet()
       } else if (_type == 2 || _type == 3) {
         orgType = 'organizations'
         that.sumApiNet()
@@ -100,10 +104,10 @@ Page({
         that.getOptionChord()
         return
       }
-      that.echartsComponnet = that.selectComponent('#mychart-dom-pie');
-      that.getOptionAuthors()
-      that.echartsComponnetLine = that.selectComponent('#mychart-dom-line');
-      that.getOptionCount()
+      // that.echartsComponnet = that.selectComponent('#mychart-dom-pie');
+      // that.getOptionAuthors()
+      // that.echartsComponnetLine = that.selectComponent('#mychart-dom-line');
+      // that.getOptionCount()
     }
   },
 

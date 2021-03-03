@@ -456,9 +456,12 @@ Page({
    * item弹窗
    */
   fieldsBitp: function (e) {
+
     let that = this
     let _type = e.currentTarget.dataset.type
     let _loginType = 0
+    let _info_item = JSON.stringify(e.currentTarget.dataset.info)
+    let _info = encodeURIComponent(_info_item)
     if (_type == "field") {
       wx.showModal({
         content: '下载app查看领域学术圈哟',
@@ -480,8 +483,10 @@ Page({
       } else if (_type == "scholar") {
         typeNum = 1
       }
+      
       wx.navigateTo({
-        url: '/pages/firstField/personalDetails/personalDetails?fieldId=' + id + "&type=" + typeNum
+        url: '/pages/firstField/personalDetails/personalDetails?fieldId=' + id 
+        + "&type=" + typeNum + "&scholarInfo=" + _info
       })
     }
   },

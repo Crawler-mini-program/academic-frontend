@@ -34,7 +34,7 @@
 						<view class='leftMsg-text'>{{item.content}}</view>
 						<view class="view-line"></view>
 						<view wx:for='{{item.data}}' wx:for-item="scholarItem" wx:for-index="scholarIndex" wx:key>
-							<view class='content' data-type="{{item.type}}" bindtap="fieldsBitp" data-id="{{scholarItem.scholarId}}">
+							<view class='content' data-type="{{item.type}}" data-info="{{scholarItem}}" bindtap="fieldsBitp" data-id="{{scholarItem.scholarId}}">
 								<view class="scholars-msg">
 									<image src='{{scholarItem.avatarUrl}}' class='img'></image>
 									<view class="select-bt-false" catchtap="attentionBitp" data-index='{{index}}' data-scholarIndex="{{scholarIndex}}" wx:if='{{!scholarItem.follow}}'>关注</view>

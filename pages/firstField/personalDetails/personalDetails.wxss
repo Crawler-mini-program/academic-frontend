@@ -789,3 +789,39 @@ ec-canvas {
   font-size: 18rpx;
   margin-left: 10rpx;
 }
+
+.paper-text {
+  color: #999;
+  font-size: 20rpx;
+}
+
+.num-msg {
+  display: flex;
+  border-radius: 8rpx;
+  margin-top: 40rpx;
+  height: 88rpx;
+}
+
+.num-flex {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  align-items: center;
+}
+
+.num-text-back {
+  background: #eee;
+  height: 72rpx;
+  width: 2rpx;
+}
+
+.num-text-top {
+  color: #333;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.num-text {
+  color: #999;
+  font-size: 24rpx;
+}

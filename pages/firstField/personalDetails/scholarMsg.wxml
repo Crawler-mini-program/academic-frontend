@@ -1,18 +1,21 @@
 <view class='content-msg'>
-  <image src='{{personMsg.avatarMd}}' class='msg-image' wx:if='{{type==1}}'></image>
+  <image src='{{personMsg.avatarUrl}}' class='msg-image' wx:if='{{type==1}}'></image>
   <image src='{{personMsg.logoUrl}}' class='msg-image' wx:if='{{type==2||type==3}}' mode="aspectFill"></image>
   <view class='msg-right'>
     <view class='msg-name-content'>
       <view class='msg-name' wx:if='{{type==1}}'>{{personMsg.name}}</view>
       <view class='msg-name-org' wx:elif='{{type==2||type==3}}'>{{personMsg.orgName}}</view>
-      <view class='msg-position' wx:if='{{type==1&&personMsg.position!=null}}'>{{personMsg.position}}</view>
+      <view class='msg-position' wx:if='{{type==1&&personMsg.title!=null}}'>{{personMsg.title}}</view>
+    </view>
+    <view class='msg-name-content'>
+      <view wx:if='{{type==1}}'>{{personMsg.email}}</view>
     </view>
     <view class='msg-right-unitorg' wx:if='{{type==1}}'>
       <view class='msg-school'>{{personMsg.orgName}}</view>
       <view class='{{personMsg.department!=null?"msg-back-1":""}}'></view>
-      <view class='msg-institution' wx:if='{{personMsg.department!=null}}'>{{personMsg.department}}</view>
+      <view class='msg-institution' wx:if='{{personMsg.ownName!=null}}'>| {{personMsg.ownName}}</view>
     </view>
-    <view class='{{type==1?"msg-num":"msg-num-"}}'>
+    <!-- <view class='{{type==1?"msg-num":"msg-num-"}}'>
       <view class='msg-num-left'>关注 {{personMsg.followCount}}</view>
       <view class='msg-num-back1'></view>
       <view class='msg-num-center'>粉丝
@@ -24,7 +27,23 @@
         <text wx:if='{{type==1}}'>{{personMsg.like}}</text>
         <text wx:elif='{{type==2||type==3}}'>{{personMsg.likeCount}}</text>
       </view>
-    </view>
+    </view> -->
+  </view>
+</view>
+<view class="num-msg">
+  <view class="num-flex">
+    <text class="num-text-top">{{personMsg.paperCount}}</text>
+    <text class="num-text">论文</text>
+  </view>
+  <view class="num-text-back"></view>
+  <view class="num-flex">
+    <text class="num-text-top">{{personMsg.patentCount}}</text>
+    <text class="num-text">专利</text>
+  </view>
+  <view class="num-text-back"></view>
+  <view class="num-flex">
+    <text class="num-text-top">{{personMsg.projectCount}}</text>
+    <text class="num-text">项目</text>
   </view>
 </view>
 <view class="person-con">
@@ -46,4 +65,8 @@
     </view>
   </view>
   
+</view>
+<view style="color:#666666;font-size:24rpx;margin: 16rpx 0 0 16rpx" wx:if="{{personMsg.paperTitle != null}}">
+  最新论文：
+  <text class="paper-text">{{personMsg.paperTitle}}</text>
 </view>
