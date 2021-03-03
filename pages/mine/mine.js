@@ -164,5 +164,8 @@ Page({
    */
   logout: function() {
     wx.setStorageSync('token', null)
+    wx.switchTab({
+      url: '/pages/home/home',
+    })
   }
 })

@@ -23,16 +23,16 @@
                 <!-- 基本信息 -->
                 <view class='content' bindtap='orgsBitp' data-index='{{index}}'>
                   <view class="content-top">
-                    <image src='{{item.logoUrl}}' class='left-img' mode="aspectFill"></image>
+                    <image src='{{item.avatarUrl}}' class='left-img' mode="aspectFill"></image>
                     <view class="{{item.score!=null?'content-top-msg':'content-top-msg-'}}">
-                      <view style="color:#333333;font-size:36rpx;font-weight: bold">{{item.orgName}}</view>
-                      <view style="color:#999999;font-size:28rpx;margin-top:20rpx;">知兔排名
+                      <view style="color:#333333;font-size:36rpx;font-weight: bold">{{item.name}}</view>
+                      <view style="color:#999999;font-size:28rpx;margin-top:20rpx;">排名
                         <text style="color:#F4AB13;font-size:28rpx">NO.{{item.rank}}</text>
                       </view>
                     </view>
                     <!-- right -->
-                    <view class="content-top-right" wx:if="{{item.score!=null}}">
-                      <view style="color:#6099F7;font-size:56rpx">{{item.score}}</view>
+                    <view class="content-top-right" wx:if="{{item.innovationIndex!=null}}">
+                      <view style="color:#6099F7;font-size:56rpx">{{item.innovationIndex}}</view>
                       <view style="color:#333333;font-size:28rpx">教育部评估</view>
                       <view style="color:#999999;font-size:24rpx">（{{fieldName}}）</view>
                     </view>

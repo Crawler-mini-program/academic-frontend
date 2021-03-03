@@ -10,7 +10,7 @@ Page({
     secondFieldName: "",
     searchInput: '', //输入框输入的内容
     orgsList: [],
-    nowRole: 0,
+    nowRole: 1,
     currentIndex: 0,
     isHideLoadMoreOrg: true,
     isHideLoadMoreInstitution: true,
@@ -117,87 +117,177 @@ Page({
       mask: true
     })
     let _token = wx.getStorageSync('token')
-    api.fetchRequest('organizations/' + that.data.secondFieldId + '/top-organizations', {
-      content: that.data.searchInput,
-      courseName: that.data.fieldName,
-      orgType: type,
-      pageNo: pageNo,
-      pageSize: 10
-    }, 'GET', 0, {
-      'Authorization': 'Bearer' + _token
-    }, true).then(function(res) {
-      let code = res.data.code;
-      if (code == 200) {
-        let data = res.data.data
-        if (data != null && data.length > 0) {
-          let _orgsList = that.data.orgsList
-          for (let i in data) {
-            _orgsList.push(data[i])
+    wx.request({
+      url: 'http://47.92.240.36/academic/api/v1/rank/top-organizations-by-orgInnovation',
+      method: "GET",
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        sortType: 'innovationIndex',
+        field: that.data.secondFieldId,
+        orgType: 'university',
+        page: pageNo,
+        num: 10
+      },
+      success: function(res) {
+        let code = res.data.code;
+        if (code == 200) {
+          let data = res.data.data
+          console.log(data);
+          if (data != null && data.length > 0) {
+            let _orgsList = that.data.orgsList
+            for (let i in data) {
+              _orgsList.push(data[i])
+            }
+            //0代表高校，1代表院所
+            if (that.data.nowRole == 0) {
+              that.setData({
+                orgsList: _orgsList,
+                isLoadMoreOrg: true,
+                isHideLoadMoreOrg: true,
+                noSearchOrg: true
+              })
+            } else {
+              that.setData({
+                orgsList: _orgsList,
+                isLoadMoreInstitution: true,
+                isHideLoadMoreInstitution: true,
+                noSearchInstitution: true
+              })
+            }
+          } else {
+            if(pageNo!=0){
+              if (that.data.nowRole == 0) {
+                that.setData({
+                  isLoadMoreOrg: false,
+                  isHideLoadMoreOrg: true,
+                  noSearchOrg:true
+                })
+              } else {
+                that.setData({
+                  isLoadMoreInstitution: false,
+                  isHideLoadMoreInstitution: true,
+                  noSearchInstitution:true
+                })
+              }
+            }else{
+              if (that.data.nowRole == 0) {
+                that.setData({
+                  isLoadMoreOrg: true,
+                  isHideLoadMoreOrg: true,
+                  noSearchOrg: false
+                })
+              } else {
+                that.setData({
+                  isLoadMoreInstitution: true,
+                  isHideLoadMoreInstitution: true,
+                  noSearchInstitution: false
+                })
+              }
+            }
           }
+        } else {
+  
           if (that.data.nowRole == 0) {
             that.setData({
-              orgsList: _orgsList,
-              isLoadMoreOrg: true,
+              isLoadMoreOrg: false,
               isHideLoadMoreOrg: true,
               noSearchOrg: true
             })
           } else {
             that.setData({
-              orgsList: _orgsList,
-              isLoadMoreInstitution: true,
+              isLoadMoreInstitution: false,
               isHideLoadMoreInstitution: true,
               noSearchInstitution: true
             })
           }
-        } else {
-          if(pageNo!=0){
-            if (that.data.nowRole == 0) {
-              that.setData({
-                isLoadMoreOrg: false,
-                isHideLoadMoreOrg: true,
-                noSearchOrg:true
-              })
-            } else {
-              that.setData({
-                isLoadMoreInstitution: false,
-                isHideLoadMoreInstitution: true,
-                noSearchInstitution:true
-              })
-            }
-          }else{
-            if (that.data.nowRole == 0) {
-              that.setData({
-                isLoadMoreOrg: true,
-                isHideLoadMoreOrg: true,
-                noSearchOrg: false
-              })
-            } else {
-              that.setData({
-                isLoadMoreInstitution: true,
-                isHideLoadMoreInstitution: true,
-                noSearchInstitution: false
-              })
-            }
-          }
         }
-      } else {
-
-        if (that.data.nowRole == 0) {
-          that.setData({
-            isLoadMoreOrg: false,
-            isHideLoadMoreOrg: true,
-            noSearchOrg: true
-          })
-        } else {
-          that.setData({
-            isLoadMoreInstitution: false,
-            isHideLoadMoreInstitution: true,
-            noSearchInstitution: true
-          })
-        }
+        wx.hideLoading()
       }
-      wx.hideLoading()
     })
+
+    // api.fetchRequest('organizations/' + that.data.secondFieldId + '/top-organizations', {
+    //   content: that.data.searchInput,
+    //   courseName: that.data.fieldName,
+    //   orgType: type,
+    //   pageNo: pageNo,
+    //   pageSize: 10
+    // }, 'GET', 0, {
+    //   'Authorization': 'Bearer' + _token
+    // }, true).then(function(res) {
+    //   let code = res.data.code;
+    //   if (code == 200) {
+    //     let data = res.data.data
+    //     if (data != null && data.length > 0) {
+    //       let _orgsList = that.data.orgsList
+    //       for (let i in data) {
+    //         _orgsList.push(data[i])
+    //       }
+    //       if (that.data.nowRole == 0) {
+    //         that.setData({
+    //           orgsList: _orgsList,
+    //           isLoadMoreOrg: true,
+    //           isHideLoadMoreOrg: true,
+    //           noSearchOrg: true
+    //         })
+    //       } else {
+    //         that.setData({
+    //           orgsList: _orgsList,
+    //           isLoadMoreInstitution: true,
+    //           isHideLoadMoreInstitution: true,
+    //           noSearchInstitution: true
+    //         })
+    //       }
+    //     } else {
+    //       if(pageNo!=0){
+    //         if (that.data.nowRole == 0) {
+    //           that.setData({
+    //             isLoadMoreOrg: false,
+    //             isHideLoadMoreOrg: true,
+    //             noSearchOrg:true
+    //           })
+    //         } else {
+    //           that.setData({
+    //             isLoadMoreInstitution: false,
+    //             isHideLoadMoreInstitution: true,
+    //             noSearchInstitution:true
+    //           })
+    //         }
+    //       }else{
+    //         if (that.data.nowRole == 0) {
+    //           that.setData({
+    //             isLoadMoreOrg: true,
+    //             isHideLoadMoreOrg: true,
+    //             noSearchOrg: false
+    //           })
+    //         } else {
+    //           that.setData({
+    //             isLoadMoreInstitution: true,
+    //             isHideLoadMoreInstitution: true,
+    //             noSearchInstitution: false
+    //           })
+    //         }
+    //       }
+    //     }
+    //   } else {
+
+    //     if (that.data.nowRole == 0) {
+    //       that.setData({
+    //         isLoadMoreOrg: false,
+    //         isHideLoadMoreOrg: true,
+    //         noSearchOrg: true
+    //       })
+    //     } else {
+    //       that.setData({
+    //         isLoadMoreInstitution: false,
+    //         isHideLoadMoreInstitution: true,
+    //         noSearchInstitution: true
+    //       })
+    //     }
+    //   }
+    //   wx.hideLoading()
+    // })
   },
   /**
    * 报考

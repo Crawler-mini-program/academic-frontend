@@ -110,8 +110,6 @@ Page({
       },
       success: function (res) {
         let code = res.data.code;
-        console.log('一级领域下的二级领域：');
-        console.log(res.data.data);
         if (code == 200) {
           let data = res.data.data
           let msgList = that.data.msgList
@@ -229,7 +227,6 @@ Page({
               toView: that.data.numToView * 600,
               numToView: that.data.numToView + 1,
             })
-            console.log(that.data.msgList)
           }
           wx.hideLoading()
         }
@@ -307,7 +304,6 @@ Page({
             numToView: that.data.numToView + 1,
             backHome: true
           })
-          console.log(that.data.msgList)
         }
       }
     })

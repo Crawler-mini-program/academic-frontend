@@ -42,14 +42,19 @@ Page({
       mask: true
     })
     let _token = wx.getStorageSync('token')
-    api.fetchRequest('scholars/getOutTeacher', {
-      orgId:that.data.orgId,
-      fieldId: that.data.secondFieldId,
-      page: page,
-      num: 10
-    }, 'GET', 0, {
-        'Authorization': 'Bearer' + _token
-      },true).then(function (res) {
+    wx.request({
+      url: 'http://47.92.240.36/academic/api/v2/scholars/suggest-scholar',
+      method: 'GET',
+      header: {
+        'content-type': 'application/json'
+      },
+      data: {
+        orgId:that.data.orgId,
+        fieldId: that.data.secondFieldId,
+        page: page,
+        num: 10
+      },
+      success: function (res) {
         let code = res.data.code;
         if (code == 200) {
           let data = res.data.data
@@ -65,7 +70,33 @@ Page({
           }
         }
         wx.hideLoading()
-      })
+      }
+    })
+
+    // api.fetchRequest('scholars/getOutTeacher', {
+    //   orgId:that.data.orgId,
+    //   fieldId: that.data.secondFieldId,
+    //   page: page,
+    //   num: 10
+    // }, 'GET', 0, {
+    //     'Authorization': 'Bearer' + _token
+    //   },true).then(function (res) {
+    //     let code = res.data.code;
+    //     if (code == 200) {
+    //       let data = res.data.data
+    //       let _scholarList = that.data.scholarList
+    //       if(data!=null&&data.length>0){
+    //         for (let i in data) {
+    //           _scholarList.push(data[i])
+    //         }
+    //         that.setData({
+    //           scholarList: _scholarList,
+    //           isLoadMore:false
+    //         })
+    //       }
+    //     }
+    //     wx.hideLoading()
+    //   })
 
   },
 
