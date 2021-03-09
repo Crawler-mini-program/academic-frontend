@@ -21,6 +21,7 @@ Page({
     fieldsShow: true,
     totalElements: '',
     personMsg: [],
+    scholarInfo: {},
     fieldsMsg: [],
     fieldsMsgShow: [],
     paperMsg: [],
@@ -52,6 +53,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    console.log(options);
     // wx.showLoading({
     //   title: '加载中...',
     //   mask: true
@@ -61,15 +63,19 @@ Page({
     //判断人才、高校、院所进入的风云榜
     let _fieldId = options.fieldId
     let _type = options.type
+    let _personId = options.personId
     let _scholar_str = options.scholarInfo
     let _scholar_item = decodeURIComponent(_scholar_str)
     let _scholarInfo = JSON.parse(_scholar_item)
-    console.log(_scholarInfo.paperTitle);
+
+    console.log(_scholarInfo);
+
     that.setData({
       type: _type,
       fieldId: _fieldId,
       vertexId: _vertexId,
-      personMsg: _scholarInfo
+      personId: _personId,
+      scholarInfo: _scholarInfo
     })
     if (_type == 1) {
       orgType = 'scholars'
@@ -92,7 +98,7 @@ Page({
       let _selected = that.data.selected
       if (_type == 1 && _selected == 1) {
         orgType = 'scholars'
-        // that.personApiNet()
+        that.personApiNet()
       } else if (_type == 2 || _type == 3) {
         orgType = 'organizations'
         that.sumApiNet()
@@ -159,30 +165,55 @@ Page({
     })
     let that = this
     let _token = wx.getStorageSync('token')
-    api.fetchRequest(orgType + '/' + that.data.fieldId, {}, 'GET', '0', {
-      'Authorization': 'Bearer' + _token
-    }).
-    then(function(res) {
-      let code = res.data.code;
-      if (code == 200) {
-        // that.setData({
-        //   personMsg: res.data.data,
-        // })
-        let _personMsg = res.data.data
-        let _fieldsTwo = []
-        for (let i = 0; i < _personMsg.fieldsTwo.length; i++) {
-          _fieldsTwo.push(_personMsg.fieldsTwo[i].fieldEnglishName)
+    let _personId = that.data.personId
+    wx.request({
+      url: 'http://47.92.240.36/academic/api/v1/scholars/' + _personId,
+      method: 'GET',
+      success: function(res) {
+        let code = res.data.code;
+        if (code == 200) {
+          console.log(res);
+          let _personMsg = res.data.data
+          let _fieldsTwo = []
+          for (let i = 0; i < _personMsg.fieldsTwo.length; i++) {
+            _fieldsTwo.push(_personMsg.fieldsTwo[i].fieldEnglishName)
+          }
+          let _id = res.data.data.id
+          that.setData({
+            personMsg: res.data.data,
+            fieldsTwo: _fieldsTwo,
+            personId: _id
+          })
+          // that.sumApiNetAdwards()
         }
-        let _id = res.data.data.id
-        that.setData({
-          personMsg: res.data.data,
-          fieldsTwo: _fieldsTwo,
-          personId: _id
-        })
-        that.sumApiNetAdwards()
+        wx.hideLoading()
       }
-      wx.hideLoading()
     })
+
+    // api.fetchRequest(orgType + '/' + that.data.fieldId, {}, 'GET', '0', {
+    //   'Authorization': 'Bearer' + _token
+    // }).
+    // then(function(res) {
+    //   let code = res.data.code;
+    //   if (code == 200) {
+    //     // that.setData({
+    //     //   personMsg: res.data.data,
+    //     // })
+    //     let _personMsg = res.data.data
+    //     let _fieldsTwo = []
+    //     for (let i = 0; i < _personMsg.fieldsTwo.length; i++) {
+    //       _fieldsTwo.push(_personMsg.fieldsTwo[i].fieldEnglishName)
+    //     }
+    //     let _id = res.data.data.id
+    //     that.setData({
+    //       personMsg: res.data.data,
+    //       fieldsTwo: _fieldsTwo,
+    //       personId: _id
+    //     })
+    //     that.sumApiNetAdwards()
+    //   }
+    //   wx.hideLoading()
+    // })
   },
   /**
    * 高校、机构详情

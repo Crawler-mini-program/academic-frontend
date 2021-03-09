@@ -6,7 +6,8 @@
       <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
         <view class='{{reportType==0?"content-item":"content-itemType"}}' wx:if='{{noSearchPerson}}'>
           <view class='content-hot' wx:if='{{hotType}}'>热门搜索</view>
-          <view wx:for='{{personMsg}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}'>
+          <view wx:for='{{personMsg}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}'
+          wx:key='index'>
             <view class='content-item-msg' bindtap='personBitp' data-index='{{index}}'>
               <view class='content-msg'>
                 <!-- <image class='item-msg-image' src='{{item.avgImg}}' wx:if='{{numType==0}}'></image>

@@ -5,30 +5,31 @@
   <view class='top-content'>
     <include src='scholarMsg.wxml'></include>
   </view>
-<!-- <view class="body"> -->
-    <!-- <view class="nav bc_white">
-      <view class="{{selected==1?'checked':'default'}}" bindtap="selected" data-type='1'>基本信息</view>
-      <view class='bottom-back-1'></view>
-      <view class="{{selected==2?'checked':'default'}}" bindtap="selected" data-type='2'>详细信息</view>
-      <view class='bottom-back-1'></view>
-      <view class="{{selected==3?'checked':'default'}}" bindtap="selected" data-type='3' wx:if='{{type==1}}'>领域分析</view>
-    </view> -->
+  <view class="body" style="margin-top: 220rpx">
+      <!-- <view class="nav bc_white">
+        <view class="{{selected==1?'checked':'default'}}" bindtap="selected" data-type='1'>基本信息</view>
+        <view class='bottom-back-1'></view>
+        <view class="{{selected==2?'checked':'default'}}" bindtap="selected" data-type='2'>详细信息</view>
+        <view class='bottom-back-1'></view>
+        <view class="{{selected==3?'checked':'default'}}" bindtap="selected" data-type='3' wx:if='{{type==1}}'>领域分析</view>
+      </view> -->
 
-    <!--—————————————— 基本信息 ——————————————-->
-    <!-- <view class="{{selected==1?'show':'hidden'}}">
-      <include src='selectMsgOne.wxml'></include>
-      <view class='back20'></view>
-    </view> -->
-    <!--—————————————— 详细信息 ——————————————-->
-    <!-- <view class="{{selected==2?'show':'hidden'}}">
-      <include src='selectMsgTwo.wxml'></include>
-    </view> -->
-    <!--—————————————— 领域分析 ——————————————-->
-    <!-- <view class="{{selected==3?'show':'hidden'}}">
-      <include src='selectFieldMsg.wxml'></include>
-    </view> -->
+      <!--—————————————— 基本信息 ——————————————-->
+      <view class="{{selected==1?'show':'hidden'}}">
+        <include src='selectMsgOne.wxml'></include>
+        <view class='back20'></view>
+      </view>
+      <!--—————————————— 详细信息 ——————————————-->
+      <!-- <view class="{{selected==2?'show':'hidden'}}">
+        <include src='selectMsgTwo.wxml'></include>
+      </view> -->
+      <!--—————————————— 领域分析 ——————————————-->
+      <!-- <view class="{{selected==3?'show':'hidden'}}">
+        <include src='selectFieldMsg.wxml'></include>
+      </view> -->
 
-  <!-- </view>  -->
+    <!-- </view>  -->
+  </view>
 </view>
 
 <!-- 底部button -->

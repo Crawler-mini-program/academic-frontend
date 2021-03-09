@@ -45,8 +45,8 @@ Page({
     cityBoo: false,
     // 顶部tab
     numType: 0,
-    currentIndex: 0,
-    nowRole: 0,
+    currentIndex: 1,
+    nowRole: 1,
     searchInput: '',
     personMsg: [],
     institutionMsg: [],
@@ -94,32 +94,43 @@ Page({
       mask: true
     })
     let that = this
-    api.fetchRequest('s/top-searches-type', {
-      type: type
-    }).then(function(res) {
-      let code = res.data.code;
-      if (code == 200) {
-        if (res.data.data.length != 0) {
-          if (that.data.currentIndex == 0) {
-            that.setData({
-              personMsg: res.data.data,
-              numType: 0
-            })
-          } else if (that.data.currentIndex == 1) {
-            that.setData({
-              institutionMsg: res.data.data,
-              numType: 0
-            })
-          } else if (that.data.currentIndex == 2) {
-            that.setData({
-              fieldsMsg: res.data.data,
-              numType: 0
-            })
-          }
-        }
-        wx.hideLoading()
-      }
-    })
+
+    if(that.data.currentIndex == 1) {
+      this.searchInstitutionApiNet('北京')
+    }
+    else if(that.data.currentIndex == 2) {
+
+      this.searchFieldsApiNet('计算机')
+    }
+    wx.hideLoading()
+
+    // api.fetchRequest('s/top-searches-type', {
+    //   type: type
+    // }).then(function(res) {
+    //   let code = res.data.code;
+    //   if (code == 200) {
+    //     if (res.data.data.length != 0) {
+    //       // if (that.data.currentIndex == 0) {
+    //       //   that.setData({
+    //       //     personMsg: res.data.data,
+    //       //     numType: 0
+    //       //   })
+    //       // } 
+    //       if (that.data.currentIndex == 1) {
+    //         that.setData({
+    //           institutionMsg: res.data.data,
+    //           numType: 0
+    //         })
+    //       } else if (that.data.currentIndex == 2) {
+    //         that.setData({
+    //           fieldsMsg: res.data.data,
+    //           numType: 0
+    //         })
+    //       }
+    //     }
+    //     wx.hideLoading()
+    //   }
+    // })
   },
 
   /**
@@ -172,11 +183,11 @@ Page({
     } else if (_currentIndex == 1) {
       that.data.institutionMsg = []
       type = 4
-      that.searchInstitutionApiNet()
+      that.searchInstitutionApiNet(that.data.searchInput)
     } else if (_currentIndex == 2) {
       that.data.fieldsMsg = []
       type = 3
-      that.searchFieldsApiNet()
+      that.searchFieldsApiNet(that.data.searchInput)
     }
   },
   /**
@@ -265,7 +276,7 @@ Page({
    * 获取数据、机构
    * 机构下方也会出现一个栏，为地点
    */
-  searchInstitutionApiNet: function() {
+  searchInstitutionApiNet: function(searchContent) {
     wx.showLoading({
       title: '加载中...',
       mask: true
@@ -283,95 +294,195 @@ Page({
         _location = proName + '-' + cityName
       }
     }
-    api.fetchRequest('s', {
-      content: that.data.searchInput,
-      type: type,
-      page: page,
-      num: num,
-      location: _location
-    }, 'GET', '0', {}).then(function(res) {
-      let code = res.data.code;
-      if (code == 200) {
-        if (res.data.data != null && res.data.data.length != 0) {
-          for (let i = 0; i < res.data.data.length; i++) {
-            let _institutionMsg = that.data.institutionMsg
-            _institutionMsg.push(res.data.data[i])
-            that.setData({
-              numType: 1,
-              institutionMsg: _institutionMsg,
-              isHideLoadMoreInstitution: true,
-              isLoadMoreInstitution: true,
-              noSearchInstitution: true,
-            })
-          }
-        } else {
-          if (page == 0) {
-            that.setData({
-              isHideLoadMoreInstitution: true,
-              isLoadMoreInstitution: true,
-              noSearchInstitution: false
-            })
-          } else {
-            that.setData({
-              isHideLoadMoreInstitution: true,
-              isLoadMoreInstitution: false,
-              noSearchInstitution: true,
-            })
-          }
 
+    wx.request({
+      url: 'http://localhost:8086/search-org',
+      method: 'GET',
+      header: {
+        'token': wx.getStorageSync('token'),
+        'content-type': 'application/json'
+      },
+      data: {
+        page_size: num,
+        page_no: page,
+        content: searchContent,
+      },
+      success: function(res) {
+        let code = res.data.code;
+        if (code == 200) {
+          if (res.data.data != null && res.data.data.length != 0) {
+            for (let i = 0; i < res.data.data.length; i++) {
+              let _institutionMsg = that.data.institutionMsg
+              _institutionMsg.push(res.data.data[i])
+              that.setData({
+                numType: 1,
+                institutionMsg: _institutionMsg,
+                isHideLoadMoreInstitution: true,
+                isLoadMoreInstitution: true,
+                noSearchInstitution: true,
+              })
+            }
+          } else {
+            if (page == 0) {
+              that.setData({
+                isHideLoadMoreInstitution: true,
+                isLoadMoreInstitution: true,
+                noSearchInstitution: false
+              })
+            } else {
+              that.setData({
+                isHideLoadMoreInstitution: true,
+                isLoadMoreInstitution: false,
+                noSearchInstitution: true,
+              })
+            }
+  
+          }
+          wx.hideLoading()
         }
-        wx.hideLoading()
       }
     })
+
+    // api.fetchRequest('s', {
+    //   content: that.data.searchInput,
+    //   type: type,
+    //   page: page,
+    //   num: num,
+    //   location: _location
+    // }, 'GET', '0', {}).then(function(res) {
+    //   let code = res.data.code;
+    //   if (code == 200) {
+    //     if (res.data.data != null && res.data.data.length != 0) {
+    //       for (let i = 0; i < res.data.data.length; i++) {
+    //         let _institutionMsg = that.data.institutionMsg
+    //         _institutionMsg.push(res.data.data[i])
+    //         that.setData({
+    //           numType: 1,
+    //           institutionMsg: _institutionMsg,
+    //           isHideLoadMoreInstitution: true,
+    //           isLoadMoreInstitution: true,
+    //           noSearchInstitution: true,
+    //         })
+    //       }
+    //     } else {
+    //       if (page == 0) {
+    //         that.setData({
+    //           isHideLoadMoreInstitution: true,
+    //           isLoadMoreInstitution: true,
+    //           noSearchInstitution: false
+    //         })
+    //       } else {
+    //         that.setData({
+    //           isHideLoadMoreInstitution: true,
+    //           isLoadMoreInstitution: false,
+    //           noSearchInstitution: true,
+    //         })
+    //       }
+
+    //     }
+    //     wx.hideLoading()
+    //   }
+    // })
   },
   /**
    * 获取数据、领域
    */
-  searchFieldsApiNet: function() {
-    wx.showLoading({
-      title: '加载中...',
-      mask: true
-    })
+  searchFieldsApiNet: function(searchContent) {
+    // wx.showLoading({
+    //   title: '加载中...',
+    //   mask: true
+    // })
     let that = this
-    api.fetchRequest('s', {
-      content: that.data.searchInput,
-      type: type,
-      page: page,
-      num: num
-    }, 'GET', '0', {}).then(function(res) {
-      let code = res.data.code;
-      if (code == 200) {
-        if (res.data.data != null && res.data.data.length != 0) {
-          for (let i = 0; i < res.data.data.length; i++) {
-            let _fieldsMsg = that.data.fieldsMsg
-            _fieldsMsg.push(res.data.data[i])
-            that.setData({
-              numType: 1,
-              fieldsMsg: _fieldsMsg,
-              isHideLoadMoreFields: true,
-              isLoadMoreFields: true,
-              noSearchFields: true,
-            })
-          }
-        } else {
-          if (page == 0) {
-            that.setData({
-              isHideLoadMoreFields: true,
-              isLoadMoreFields: true,
-              noSearchFields: false
-            })
-          } else {
-            that.setData({
-              isHideLoadMoreFields: true,
-              isLoadMoreFields: false,
-              noSearchFields: true,
-            })
-          }
 
+    wx.request({
+      url: 'http://localhost:8086/search-parent-field',
+      method: 'GET',
+      header: {
+        'token': wx.getStorageSync('token'),
+        'content-type': 'application/json'
+      },
+      data: {
+        page_size: num,
+        page_no: page,
+        content: searchContent,
+      },
+      success: function(res) {
+        let code = res.data.code;
+        if (code == 200) {
+          console.log(res);
+          if (res.data.data != null && res.data.data.length != 0) {
+            for (let i = 0; i < res.data.data.length; i++) {
+              let _fieldsMsg = that.data.fieldsMsg
+              _fieldsMsg.push(res.data.data[i])
+              console.log(_fieldsMsg);
+              that.setData({
+                numType: 1,
+                fieldsMsg: _fieldsMsg,
+                isHideLoadMoreFields: true,
+                isLoadMoreFields: true,
+                noSearchFields: true,
+              })
+            }
+          } else {
+            if (page == 0) {
+              that.setData({
+                isHideLoadMoreFields: true,
+                isLoadMoreFields: true,
+                noSearchFields: false
+              })
+            } else {
+              that.setData({
+                isHideLoadMoreFields: true,
+                isLoadMoreFields: false,
+                noSearchFields: true,
+              })
+            }
+  
+          }
+          //wx.hideLoading()
         }
-        wx.hideLoading()
       }
     })
+
+    // api.fetchRequest('s', {
+    //   content: that.data.searchInput,
+    //   type: type,
+    //   page: page,
+    //   num: num
+    // }, 'GET', '0', {}).then(function(res) {
+    //   let code = res.data.code;
+    //   if (code == 200) {
+    //     if (res.data.data != null && res.data.data.length != 0) {
+    //       for (let i = 0; i < res.data.data.length; i++) {
+    //         let _fieldsMsg = that.data.fieldsMsg
+    //         _fieldsMsg.push(res.data.data[i])
+    //         that.setData({
+    //           numType: 1,
+    //           fieldsMsg: _fieldsMsg,
+    //           isHideLoadMoreFields: true,
+    //           isLoadMoreFields: true,
+    //           noSearchFields: true,
+    //         })
+    //       }
+    //     } else {
+    //       if (page == 0) {
+    //         that.setData({
+    //           isHideLoadMoreFields: true,
+    //           isLoadMoreFields: true,
+    //           noSearchFields: false
+    //         })
+    //       } else {
+    //         that.setData({
+    //           isHideLoadMoreFields: true,
+    //           isLoadMoreFields: false,
+    //           noSearchFields: true,
+    //         })
+    //       }
+
+    //     }
+    //     wx.hideLoading()
+    //   }
+    // })
   },
   /**
    * 点击人才item
@@ -464,9 +575,9 @@ Page({
       if (_currentIndex == 0) {
         that.searchPersonApiNet()
       } else if (_currentIndex == 1) {
-        that.searchInstitutionApiNet()
+        that.searchInstitutionApiNet(that.data.searchInput)
       } else if (_currentIndex == 2) {
-        that.searchFieldsApiNet()
+        that.searchFieldsApiNet(that.data.searchInput)
       }
     }
 
@@ -517,7 +628,7 @@ Page({
       } else {
         that.data.institutionMsg = []
         page = 0
-        that.searchInstitutionApiNet()
+        that.searchInstitutionApiNet(that.data.searchInput)
       }
     } else if (currentIndex == 2) {
       type = 3
@@ -526,7 +637,7 @@ Page({
       } else {
         that.data.fieldsMsg = []
         page = 0
-        that.searchFieldsApiNet()
+        that.searchFieldsApiNet(that.data.searchInput)
       }
     }
   },
@@ -683,7 +794,7 @@ Page({
         type = 4;
         page = 0;
         self.data.institutionMsg = []
-        self.searchInstitutionApiNet()
+        self.searchInstitutionApiNet(that.data.searchInput)
       }
     } else {
       wx.showToast({

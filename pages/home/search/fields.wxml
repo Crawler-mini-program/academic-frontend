@@ -2,23 +2,23 @@
       <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
         <view class='content-item' wx:if='{{noSearchFields}}'>
           <view class='content-hot' wx:if='{{hotType}}'>热门搜索</view>
-          <view wx:for='{{fieldsMsg}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}'>
-            <view class='fields-item-msg' bindtap='rankCatp' data-index='{{index}}'>
+          <view wx:for='{{fieldsMsg}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}' wx:key='index'>
+            <view class='fields-item-msg' bindtap='rankCatp' data-index='{{index}}' wx:key='index'>
               <view class='left-msg'>
-                <image class='fields-left-image' src='../../../assets/field-one.png' wx:if='{{item.level==1}}'></image>
-                <image class='fields-left-image' src='../../../assets/field-two.png' wx:elif='{{item.level==2}}'></image>
-                <image class='fields-left-image' src='../../../assets/field-three.png' wx:elif='{{item.level==3}}'></image>
+                <image class='fields-left-image' src='../../../assets/field-one.png' wx:if='{{item.isFirst}}'></image>
+                <!-- <image class='fields-left-image' src='../../../assets/field-two.png' wx:elif='{{item.level==2}}'></image>
+                <image class='fields-left-image' src='../../../assets/field-three.png' wx:elif='{{item.level==3}}'></image> -->
                 <view class='fieldst-msg-lef'>
                   <view class='left-title'>
-                    <view class='left-name' wx:if='{{numType==0}}'>{{item.fieldName}}</view>
-                    <view class='left-name' wx:if='{{numType==1}}'>{{item.name}}</view>
+                    <!-- <view class='left-name' wx:if='{{numType==1}}'>{{item.fieldName}}</view> -->
+                    <view class='left-name'>{{item.courseName}}</view>
                   </view>
-                  <view class='left-container' catchtap='manCatchat' data-index='{{index}}'>
+                  <!-- <view class='left-container' catchtap='manCatchat' data-index='{{index}}'>
                     <text class='left-container-text' catchtap='rankCatp' data-index='{{index}}'>人才风云榜</text>
-                  </view>
+                  </view> -->
                 </view>
               </view>
-              <view class='right-num'>{{item.innovationIndex}}</view>
+              <!-- <view class='right-num'>{{item.innovationIndex}}</view> -->
             </view>
           </view>
         </view>

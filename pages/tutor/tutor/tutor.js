@@ -11,6 +11,7 @@ Page({
     courseName: "",
     backHome: false,
     msgList: [],
+    scholarInfo: {},
     toView: "", //控制scroll滚回底部
     numToView: 0, //控制scroll滚回底部
     type: '',
@@ -31,10 +32,12 @@ Page({
     let _id = options.id
     let _name = options.name
     let _courseName = options.courseName
+    let _scholarInfo = options.scholarInfo
     this.setData({
       fieldId: _id,
       fieldName: _name,
-      courseName: _courseName
+      courseName: _courseName,
+      scholarInfo: options.scholarInfo
     })
     this.getFieldsData()
   },
@@ -456,12 +459,9 @@ Page({
    * item弹窗
    */
   fieldsBitp: function (e) {
-
     let that = this
     let _type = e.currentTarget.dataset.type
     let _loginType = 0
-    let _info_item = JSON.stringify(e.currentTarget.dataset.info)
-    let _info = encodeURIComponent(_info_item)
     if (_type == "field") {
       wx.showModal({
         content: '下载app查看领域学术圈哟',
@@ -476,7 +476,10 @@ Page({
         }
       })
     } else {
-      let id = e.currentTarget.dataset.id
+      let _fieldId = that.data.msgList[4].secondFieldId
+      let _scholarId = e.currentTarget.dataset.id
+      let _info_item = JSON.stringify(e.currentTarget.dataset.info)
+      let _scholarInfo = encodeURIComponent(_info_item)
       let typeNum = 0
       if (_type == "org") {
         typeNum = 2
@@ -485,8 +488,8 @@ Page({
       }
       
       wx.navigateTo({
-        url: '/pages/firstField/personalDetails/personalDetails?fieldId=' + id 
-        + "&type=" + typeNum + "&scholarInfo=" + _info
+        url: '/pages/firstField/personalDetails/personalDetails?fieldId=' + _fieldId 
+        + "&type=" + typeNum + "&personId=" + _scholarId + "&scholarInfo=" + _scholarInfo
       })
     }
   },

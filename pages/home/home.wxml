@@ -2,18 +2,18 @@
 <wxs module="hotel" src="../../utils/sub_line.wxs"></wxs>
 <view class="home-menu">
   <scroll-view scroll-y='true' class='scroll-view' style="height: 100%">
-    <!-- <view class='home-top'>
+    <view class='home-top'>
       <view class="top-banner">
         <!--banner图片  -->
-        <!-- <image src="../../assets/home-image.png" bindtap="homeSearch"></image>
-      </view> -->
+        <image src="../../assets/home-image.png" bindtap="homeSearch"></image>
+      </view>
       <!-- 搜索框 -->
-      <!-- <view class="seach-info" bindtap='homeSearch'>
+      <view class="seach-info" bindtap='homeSearch'>
         <image src="/assets/search-pic.png" class="search-img" mode="widthFix"> </image>
         <input placeholder='搜索' disabled='false' class='seach-info-input'></input>
       </view>
-    </view> --> 
-    <!-- <view class='back10'></view> -->
+    </view> 
+    <view class='back10'></view>
     <!-- 报告 -->
     <!-- <view class="home-report">
       <view class="home-report-item" wx:for="{{reportMsg}}" bindtap="reportBitp" wx:for-index="index" data-index='{{index}}' wx:key="index">
