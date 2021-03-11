@@ -13,6 +13,7 @@ Page({
     hotOneFieldList: [],
     hotAppletsFieldList: [],
     hotField: false,
+    is_login: true,
     reportMsg: [{
       reportImgUrl: '../../assets/report1.png',
       reportName: '人才分析列表'
@@ -158,10 +159,38 @@ Page({
 
   //搜索
   homeSearch: function (event) {
+    let that = this
     let _reportType = 0
-    wx.navigateTo({
-      url: '/pages/home/search/search?reportType=' + _reportType
-    })
+    let _token = wx.getStorageSync('token');
+    if(!_token){
+      wx.navigateTo({
+        url: '/pages/index/index?loginType=0',
+      })
+    }
+    else{
+      wx.request({
+        'url': 'http://localhost:8086/check-token',
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        data: {
+          token: _token
+        },
+        success: function(res) {
+          if(res.data.success) {
+            wx.navigateTo({
+              url: '/pages/home/search/search?reportType=' + _reportType
+            })
+          }
+          else {
+            wx.navigateTo({
+              url: '/pages/index/index?loginType=0',
+            })
+          }
+        }
+      })
+    }
   },
   /**
    * 报告列表
@@ -202,10 +231,36 @@ Page({
    */
   imageBitp: function () {
     let that = this
-    wx.navigateTo({
-      url: '/pages/tutor/tutorGuide/tutorGuide'
-    })
-
+    let _token = wx.getStorageSync('token');
+    if(!_token){
+      wx.navigateTo({
+        url: '/pages/index/index?loginType=0',
+      })
+    }
+    else{
+      wx.request({
+        'url': 'http://localhost:8086/check-token',
+        method: 'GET',
+        header: {
+          'content-type': 'application/json'
+        },
+        data: {
+          token: _token
+        },
+        success: function(res) {
+          if(res.data.success) {
+            wx.navigateTo({
+              url: '/pages/tutor/tutorGuide/tutorGuide'
+            })
+          }
+          else {
+            wx.navigateTo({
+              url: '/pages/index/index?loginType=0',
+            })
+          }
+        }
+      })
+    }
   },
   /**
    * 牛人进入个人详情
@@ -355,4 +410,5 @@ Page({
       return;
     }
   },
+
 })

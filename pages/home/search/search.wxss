@@ -142,13 +142,13 @@ swiper-item {
 .content-msg {
   display: flex;
   flex-direction: row;
-  margin: 20rpx 20rpx 0rpx 20rpx;
+  margin: 40rpx 20rpx 0rpx 20rpx;
   align-items: center;
 }
 
 .item-msg-image {
-  max-width: 96rpx;
-  max-height: 96rpx;
+  max-width: 106rpx;
+  max-height: 106rpx;
   border-radius: 25px;
 }
 
@@ -206,11 +206,11 @@ height: 40rpx
 }
 
 .university-msg-name {
-  font-size: 28rpx;
+  font-size: 40rpx;
   color: #333;
   font-weight: bold;
   margin-left: 20rpx;
-  width: 340rpx;
+  width: 400rpx;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -240,7 +240,7 @@ height: 40rpx
   width: 60%;
 }
 .left-name {
-  font-size: 28rpx;
+  font-size: 40rpx;
   color: #333;
   margin-left: 10rpx;
   overflow: hidden;
@@ -248,6 +248,7 @@ height: 40rpx
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  font-weight: 700
 }
 
 .left-container {
@@ -588,6 +589,6 @@ navigator {
 height: 400rpx;
 }
 .fields-left-image{
-  width: 66rpx;
-  height: 36rpx;
+  width: 99rpx;
+  height: 54rpx;
 }

@@ -1,6 +1,6 @@
 // 搜索
 var page = 0
-var num = 10
+var num = 30
 var type = 0
 const api = require("../../../utils/request.js")
 var cityJson = require("../../../utils/cityJson.js")
@@ -96,11 +96,11 @@ Page({
     let that = this
 
     if(that.data.currentIndex == 1) {
-      this.searchInstitutionApiNet('北京')
+      this.searchInstitutionApiNet('北京', false)
     }
     else if(that.data.currentIndex == 2) {
 
-      this.searchFieldsApiNet('计算机')
+      this.searchFieldsApiNet('计算机', false)
     }
     wx.hideLoading()
 
@@ -183,11 +183,11 @@ Page({
     } else if (_currentIndex == 1) {
       that.data.institutionMsg = []
       type = 4
-      that.searchInstitutionApiNet(that.data.searchInput)
+      that.searchInstitutionApiNet(that.data.searchInput, false)
     } else if (_currentIndex == 2) {
       that.data.fieldsMsg = []
       type = 3
-      that.searchFieldsApiNet(that.data.searchInput)
+      that.searchFieldsApiNet(that.data.searchInput, false)
     }
   },
   /**
@@ -276,7 +276,7 @@ Page({
    * 获取数据、机构
    * 机构下方也会出现一个栏，为地点
    */
-  searchInstitutionApiNet: function(searchContent) {
+  searchInstitutionApiNet: function(searchContent, isLoadMoreContent) {
     wx.showLoading({
       title: '加载中...',
       mask: true
@@ -311,12 +311,23 @@ Page({
         let code = res.data.code;
         if (code == 200) {
           if (res.data.data != null && res.data.data.length != 0) {
-            for (let i = 0; i < res.data.data.length; i++) {
+            if(isLoadMoreContent) {
               let _institutionMsg = that.data.institutionMsg
-              _institutionMsg.push(res.data.data[i])
+              for (let i = 0; i < res.data.data.length; i++) {
+                _institutionMsg.push(res.data.data[i])
+              }
               that.setData({
                 numType: 1,
                 institutionMsg: _institutionMsg,
+                isHideLoadMoreInstitution: true,
+                isLoadMoreInstitution: true,
+                noSearchInstitution: true,
+              })
+            }
+            else {
+              that.setData({
+                numType: 1,
+                institutionMsg: res.data.data,
                 isHideLoadMoreInstitution: true,
                 isLoadMoreInstitution: true,
                 noSearchInstitution: true,
@@ -387,7 +398,7 @@ Page({
   /**
    * 获取数据、领域
    */
-  searchFieldsApiNet: function(searchContent) {
+  searchFieldsApiNet: function(searchContent, isLoadMoreContent) {
     // wx.showLoading({
     //   title: '加载中...',
     //   mask: true
@@ -409,15 +420,24 @@ Page({
       success: function(res) {
         let code = res.data.code;
         if (code == 200) {
-          console.log(res);
           if (res.data.data != null && res.data.data.length != 0) {
-            for (let i = 0; i < res.data.data.length; i++) {
+            if(isLoadMoreContent) {
               let _fieldsMsg = that.data.fieldsMsg
-              _fieldsMsg.push(res.data.data[i])
-              console.log(_fieldsMsg);
+              for (let i = 0; i < res.data.data.length; i++) {
+                _fieldsMsg.push(res.data.data[i])
+              }
               that.setData({
                 numType: 1,
                 fieldsMsg: _fieldsMsg,
+                isHideLoadMoreFields: true,
+                isLoadMoreFields: true,
+                noSearchFields: true,
+              })
+            }
+            else {
+              that.setData({
+                numType: 1,
+                fieldsMsg: res.data.data,
                 isHideLoadMoreFields: true,
                 isLoadMoreFields: true,
                 noSearchFields: true,
@@ -575,9 +595,9 @@ Page({
       if (_currentIndex == 0) {
         that.searchPersonApiNet()
       } else if (_currentIndex == 1) {
-        that.searchInstitutionApiNet(that.data.searchInput)
+        that.searchInstitutionApiNet(that.data.searchInput, true)
       } else if (_currentIndex == 2) {
-        that.searchFieldsApiNet(that.data.searchInput)
+        that.searchFieldsApiNet(that.data.searchInput, true)
       }
     }
 
@@ -628,7 +648,7 @@ Page({
       } else {
         that.data.institutionMsg = []
         page = 0
-        that.searchInstitutionApiNet(that.data.searchInput)
+        that.searchInstitutionApiNet(that.data.searchInput, false)
       }
     } else if (currentIndex == 2) {
       type = 3
@@ -637,7 +657,7 @@ Page({
       } else {
         that.data.fieldsMsg = []
         page = 0
-        that.searchFieldsApiNet(that.data.searchInput)
+        that.searchFieldsApiNet(that.data.searchInput, false)
       }
     }
   },
@@ -819,6 +839,32 @@ Page({
     wx.setStorageSync("orgName", '')
     wx.setStorageSync("proName", '')
     wx.setStorageSync("cityName", '')
-  }
+  },
 
+  /**
+   * 新增接口
+   */
+
+  /**
+   * 在机构/领域页面，点击机构/领域，跳转到教师列表页面
+   */
+  scholarListBitp: function(e) {
+    let that = this
+    let id = e.currentTarget.dataset.id
+    console.log(e);
+    // 1代表高校，2代表领域
+    wx.navigateTo({
+      url: '/pages/home/scholarList/scholarList?currentIndex=' + that.data.currentIndex + '&id=' + id,
+    })
+  },
+
+  secondFieldListBitp: function(e) {
+    let that = this
+    let id = e.currentTarget.dataset.id
+    console.log(e);
+    // 1代表高校，2代表领域
+    wx.navigateTo({
+      url: '/pages/home/secondFieldList/secondFieldList?currentIndex=' + that.data.currentIndex + '&id=' + id,
+    })
+  }
 })

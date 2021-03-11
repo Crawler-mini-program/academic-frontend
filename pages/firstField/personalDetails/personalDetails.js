@@ -53,7 +53,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log(options);
     // wx.showLoading({
     //   title: '加载中...',
     //   mask: true
@@ -64,11 +63,10 @@ Page({
     let _fieldId = options.fieldId
     let _type = options.type
     let _personId = options.personId
+    console.log(_personId);
     let _scholar_str = options.scholarInfo
     let _scholar_item = decodeURIComponent(_scholar_str)
     let _scholarInfo = JSON.parse(_scholar_item)
-
-    console.log(_scholarInfo);
 
     that.setData({
       type: _type,
@@ -166,13 +164,13 @@ Page({
     let that = this
     let _token = wx.getStorageSync('token')
     let _personId = that.data.personId
+    console.log(_personId);
     wx.request({
       url: 'http://47.92.240.36/academic/api/v1/scholars/' + _personId,
       method: 'GET',
       success: function(res) {
         let code = res.data.code;
         if (code == 200) {
-          console.log(res);
           let _personMsg = res.data.data
           let _fieldsTwo = []
           for (let i = 0; i < _personMsg.fieldsTwo.length; i++) {

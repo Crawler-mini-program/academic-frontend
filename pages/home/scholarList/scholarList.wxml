@@ -1,0 +1,24 @@
+<!--pages/home/scholarList.wxml-->
+<view class="container">
+  <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+  <view wx:for='{{personMsg}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}' wx:key='index'>
+    <view class='content-item-msg' bindtap='personBitp' data-index='{{index}}'>
+      <view class='content-msg'>
+        <!-- <image class='item-msg-image' src='{{item.avgImg}}' wx:if='{{numType==0}}'></image> -->
+        <image class='item-msg-image' src='{{item.avatarUrl}}' wx:if='{{numType==1}}'></image>
+        <!-- <image class='item-msg-image' src='{{imgUrl[item.id%5]}}' wx:if='{{numType==0}}'></image>
+        <image class='item-msg-image' src='{{imgUrl[item.id%5]}}' wx:elif='{{numType==1}}'></image> -->
+        <view class='item-msg-msg'>
+          <view class='msg-name'>{{item.name}}</view>
+          <view class='msg-fields' wx:if="{{item.title!==null}}">{{item.title}}</view>
+        </view>
+      </view>
+      <view class='content-msg-bottom' wx:if="{{item.ownName!==null}}">
+        <image class='content-msg-image' src='../../../assets/location-icon.png'></image>
+        <!-- <view class='content-msg-school' wx:if='{{numType==0}}'>{{item.orgName}}</view> -->
+        <view class='content-msg-school' wx:if='{{numType==1}}'>{{item.ownName}}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+</view>

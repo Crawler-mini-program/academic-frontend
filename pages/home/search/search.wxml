@@ -13,7 +13,7 @@
   </view>
   <view class="list-tab flexR" catchtap='toggleView' wx:if='{{reportType==0}}'>
     <!-- <view class="{{nowRole==0?'checked-item':''}}" data-index="0">人才</view> -->
-    <view class="{{nowRole==1?'checked-item':''}}" data-index="1">机构</view>
+    <view class="{{nowRole==1?'checked-item':''}}" data-index="1">高校</view>
     <view class="{{nowRole==2?'checked-item':''}}" data-index="2">领域</view>
   </view>
   <!-- ----------------------筛选--人才 ---------------------->
