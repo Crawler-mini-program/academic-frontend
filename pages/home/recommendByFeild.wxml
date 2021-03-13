@@ -1,0 +1,25 @@
+<view class='top'>
+        <view class='top-back'></view>
+        <view class='top-title'>根据您选择的专业为您推荐以下老师</view>
+      </view>
+      <view style='width:100%;height:2rpx;background:#f5f5f5;margin-top:10rpx'></view>
+      <!-- 根据专业推荐老师 -->
+      <scroll-view scroll-x="true" scroll-with-animation style="width: 100%;height:365rpx;display:flex;white-space: nowrap">
+        <view wx:for="{{recommendByFieldPeopleList}}" wx:for-index="index" data-index='{{index}}' wx:for-item="item" wx:key="index" style='display: inline-block;margin-right:15rpx;margin-top:20rpx;margin-left:15rpx'>
+          <view class='genius-msg' bindtap='geniusBitp' data-geniusId='{{item.id}}'>
+            <view class='genius-msg-field'>{{item.ownName}}</view>
+            <image class='genius-msg-image' src='{{item.avatarUrl}}' binderror="onImageError" data-err-img='{{index}}'></image>
+            <view class='genius-msg-view'>
+              <view class='genius-msg-realName'>{{item.name}}</view>
+              <!-- <view class='genius-msg-rank'>排名{{item.rank}}</view> -->
+            </view>
+            <view class='genius-msg-field-num'>{{item.innovationIndex}}</view>
+            <!-- <view class='genius-msg-rank'>创新指数</view> -->
+            <!-- <view class='genius-msg-field-bottom'>
+              <view class='genius-msg-field-bottom-num1'>{{item.increase}}</view>
+              <view class='genius-msg-field-bottom-num2' wx:if='{{item.increasePercentage>0}}'>+{{item.increasePercentage}}%</view>
+              <view class='genius-msg-field-bottom-num2-false' wx:elif='{{item.increasePercentage<0}}'>{{item.increasePercentage}}%</view>
+            </view> -->
+          </view>
+        </view>
+      </scroll-view>

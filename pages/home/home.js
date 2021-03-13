@@ -1,4 +1,6 @@
-// pages/home/home.js
+ // pages/home/home.js
+ var page = 0
+var num = 30
 var app = getApp();
 var orgType = 'scholar'
 const api = require("../../utils/request.js")
@@ -9,6 +11,8 @@ Page({
    */
   data: {
     geniusPeopleList: [],
+    recommendBySchoolPeopleList : [],
+    recommendByFieldPeopleList : [],
     orgztionList: [],
     hotOneFieldList: [],
     hotAppletsFieldList: [],
@@ -44,6 +48,8 @@ Page({
   onShow: function () {
     let that = this;
     if (app.globalData.isConnected) {
+      that.recommendBySchoolApi();
+      that.recommendByFieldApi();
       // that.geniusApi()
       // that.login()
     } else {
@@ -52,6 +58,114 @@ Page({
         icon: 'none',
       })
     }
+  },
+  /**
+   * 学校推荐老师
+   */
+  recommendBySchoolApi: function () {
+    let that = this
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+    let _token = wx.getStorageSync('token')
+    if (_token) {
+      // that.hotOneField()
+      // that.hotAppletsField()
+      wx.request({
+        'url' : 'http://localhost:8086/search-scholar-by-org',
+        method : 'GET',
+        header : {
+          'token' : _token,
+          'content-type' : 'application/json'
+        },
+        data : {
+          orgId : 14298378304,
+          page_size : num,
+          page_no : page
+        },
+        success : function(res){
+          console.log(res);
+          console.log(123);
+          let code = res.data.code;
+          if(code == 200){
+            that.setData({
+              recommendBySchoolPeopleList : res.data.data,
+              hotField: true
+            })
+          }
+          wx.hideLoading()
+        }
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/index/index?loginType=0',
+      })
+    }
+
+  },
+  /**
+   * 领域推荐老师
+   */
+  recommendByFieldApi: function () {
+    let that = this
+    wx.showLoading({
+      title: '加载中...',
+      mask: true
+    })
+    let _token = wx.getStorageSync('token')
+    if (_token) {
+      // that.hotOneField()
+      // that.hotAppletsField()
+      wx.request({
+        'url' : 'http://localhost:8086/search-scholar-by-field',
+        method : 'GET',
+        header : {
+          'token' : _token,
+          'content-type' : 'application/json'
+        },
+        data : {
+          fieldId : 41517072,
+          page_size : num,
+          page_no : page
+        },
+        success : function(res){
+          console.log(res);
+          console.log(456);
+          let code = res.data.code;
+          if(code == 200){
+            that.setData({
+              recommendByFieldPeopleList : res.data.data,
+              hotField: true
+            })
+          }
+          wx.hideLoading()
+        }
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/index/index?loginType=0',
+      })
+    }
+
+  },
+  /**
+   * 推荐老师进入个人详情
+   */
+  teacherBitp: function (e) {
+    let that = this
+    if (that.data.hotField) {
+      let _geniusId = e.currentTarget.dataset.geniusid
+      let typeNum = 1
+      wx.navigateTo({
+        url: '/pages/firstField/personalDetails/personalDetails?fieldId=' + _geniusId + "&type=" + typeNum
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/index/index?loginType=0'
+      })
+    }
+
   },
   /**
    * 牛人
@@ -192,6 +306,7 @@ Page({
       })
     }
   },
+  
   /**
    * 报告列表
    */
@@ -265,21 +380,21 @@ Page({
   /**
    * 牛人进入个人详情
    */
-  geniusBitp: function (e) {
-    let that = this
-    if (that.data.hotField) {
-      let _geniusId = e.currentTarget.dataset.geniusid
-      let typeNum = 1
-      wx.navigateTo({
-        url: '/pages/firstField/personalDetails/personalDetails?fieldId=' + _geniusId + "&type=" + typeNum
-      })
-    } else {
-      wx.navigateTo({
-        url: '/pages/index/index?loginType=0'
-      })
-    }
+  // geniusBitp: function (e) {
+  //   let that = this
+  //   if (that.data.hotField) {
+  //     let _geniusId = e.currentTarget.dataset.geniusid
+  //     let typeNum = 1
+  //     wx.navigateTo({
+  //       url: '/pages/firstField/personalDetails/personalDetails?fieldId=' + _geniusId + "&type=" + typeNum
+  //     })
+  //   } else {
+  //     wx.navigateTo({
+  //       url: '/pages/index/index?loginType=0'
+  //     })
+  //   }
 
-  },
+  // },
   /**
    * 热门领域、更多，其实是进入了风云榜页面
    */

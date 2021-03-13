@@ -183,7 +183,7 @@
   margin-top: 10rpx;
   font-size: 24rpx;
   color: #333;
-  margin-left: 50rpx;
+  /* margin-left: 50rpx; */
 }
 
 .genius-msg-rank {
