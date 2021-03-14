@@ -162,6 +162,7 @@
 }
 
 .genius-msg-field {
+  min-height: 20rpx;
   font-size: 20rpx;
   color: #9b9b9b;
 }

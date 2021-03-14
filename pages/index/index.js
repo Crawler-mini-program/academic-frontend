@@ -118,7 +118,9 @@ Page({
                   },
                   success: function(res) {
                     console.log(res);
-                    wx.navigateBack()
+                    wx.navigateBack({
+                      delta: 2,
+                    })
                     if (res.statusCode === 200) {
                       // 7.小程序存储skey（自定义登录状态）到本地
                       wx.setStorageSync('userInfo', e.detail.userInfo);

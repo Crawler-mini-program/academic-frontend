@@ -1,19 +1,19 @@
 <view class='content-msg'>
-  <image src='{{personMsg.avatarHd}}' class='msg-image' wx:if='{{type==1}}'></image>
+  <image src='{{scholarInfo.avatarUrl}}' class='msg-image' wx:if='{{type==1}}'></image>
   <image src='{{personMsg.logoUrl}}' class='msg-image' wx:if='{{type==2||type==3}}' mode="aspectFill"></image>
   <view class='msg-right'>
     <view class='msg-name-content'>
-      <view class='msg-name' wx:if='{{type==1}}'>{{personMsg.name}}</view>
-      <view class='msg-name-org' wx:elif='{{type==2||type==3}}'>{{personMsg.orgName}}</view>
-      <view class='msg-position' wx:if='{{type==1&&personMsg.position!=null}}'>{{personMsg.position}}</view>
+      <view class='msg-name' wx:if='{{type==1}}'>{{scholarInfo.name}}</view>
+      <view class='msg-name-org' wx:elif='{{type==2||type==3}}'>{{scholarInfo.orgName}}</view>
+      <view class='msg-position' wx:if='{{type==1&&scholarInfo.title!=null}}'>{{scholarInfo.title}}</view>
     </view>
     <view class='msg-name-content'>
       <view style="font-size: 30rpx" wx:if='{{type==1&&scholarInfo.email!=null}}'>{{scholarInfo.email}}</view>
     </view>
     <view class='msg-right-unitorg' wx:if='{{type==1}}'>
-      <view class='msg-school'>{{personMsg.orgName}}</view>
+      <view class='msg-school'>{{scholarInfo.orgName}}</view>
       <!-- <view class='{{personMsg.department!=null?"msg-back-1":""}}'>{{personMsg.department}}</view> -->
-      <view class='msg-institution' wx:if='{{personMsg.department!=null}}'>| {{personMsg.department}}</view>
+      <view class='msg-institution' wx:if='{{scholarInfo.ownName!=null}}'>| {{scholarInfo.ownName}}</view>
     </view>
     <!-- <view class='{{type==1?"msg-num":"msg-num-"}}'>
       <view class='msg-num-left'>关注 {{personMsg.followCount}}</view>

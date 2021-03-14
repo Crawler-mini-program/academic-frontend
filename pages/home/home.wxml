@@ -29,10 +29,10 @@
     </view>
 
     <!-- 热门领域-->
-    <view class='genius-content' wx:if='{{hotField}}'>
+    <!-- <view class='genius-content' wx:if='{{hotField}}'>
       <include src="hotFields.wxml"></include>
     </view>
-    <view class='back10'></view>
+    <view class='back10'></view> -->
 
     <!-- 根据学校推荐老师 -->
     <view class="genius-content">

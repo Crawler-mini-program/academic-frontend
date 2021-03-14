@@ -16,7 +16,7 @@ Page({
     orgztionList: [],
     hotOneFieldList: [],
     hotAppletsFieldList: [],
-    hotField: false,
+    hotField: true,
     is_login: true,
     reportMsg: [{
       reportImgUrl: '../../assets/report1.png',
@@ -85,8 +85,6 @@ Page({
           page_no : page
         },
         success : function(res){
-          console.log(res);
-          console.log(123);
           let code = res.data.code;
           if(code == 200){
             that.setData({
@@ -130,8 +128,6 @@ Page({
           page_no : page
         },
         success : function(res){
-          console.log(res);
-          console.log(456);
           let code = res.data.code;
           if(code == 200){
             that.setData({
@@ -380,21 +376,33 @@ Page({
   /**
    * 牛人进入个人详情
    */
-  // geniusBitp: function (e) {
-  //   let that = this
-  //   if (that.data.hotField) {
-  //     let _geniusId = e.currentTarget.dataset.geniusid
-  //     let typeNum = 1
-  //     wx.navigateTo({
-  //       url: '/pages/firstField/personalDetails/personalDetails?fieldId=' + _geniusId + "&type=" + typeNum
-  //     })
-  //   } else {
-  //     wx.navigateTo({
-  //       url: '/pages/index/index?loginType=0'
-  //     })
-  //   }
+  geniusBitp: function (e) {
+    let that = this
+    console.log(e);
+    if (that.data.hotField) {
+      let _geniusId = e.currentTarget.dataset.geniusid
+      let typeNum = 1
+      let _reType = e.currentTarget.dataset.retype
+      console.log(_reType);
+      let _index = e.currentTarget.dataset.index
+      let _info_item
+      if(_reType == 1){
+        _info_item = JSON.stringify(that.data.recommendBySchoolPeopleList[_index]) 
+      }
+      else{
+        _info_item = JSON.stringify(that.data.recommendByFieldPeopleList[_index]) 
+      }
+      let _scholarInfo = encodeURIComponent(_info_item)
+      wx.navigateTo({
+        url: '/pages/firstField/personalDetails/personalDetails?personId=' + _geniusId + "&type=" + typeNum + "&scholarInfo=" + _scholarInfo
+      })
+    } else {
+      wx.navigateTo({
+        url: '/pages/index/index?loginType=0'
+      })
+    }
 
-  // },
+  },
   /**
    * 热门领域、更多，其实是进入了风云榜页面
    */
