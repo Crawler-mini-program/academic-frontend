@@ -48,7 +48,7 @@ Page({
   onShow: function () {
     let that = this;
     if (app.globalData.isConnected) {
-      that.recommendBySchoolApi();
+      that.recommendByOrgsApi();
       that.recommendByFieldApi();
       // that.geniusApi()
       // that.login()
@@ -62,7 +62,7 @@ Page({
   /**
    * 学校推荐老师
    */
-  recommendBySchoolApi: function () {
+  recommendByOrgsApi: function () {
     let that = this
     wx.showLoading({
       title: '加载中...',
@@ -73,14 +73,14 @@ Page({
       // that.hotOneField()
       // that.hotAppletsField()
       wx.request({
-        'url' : 'http://localhost:8086/search-scholar-by-org',
+        'url' : 'http://localhost:8086/user-search-scholar-by-org',
         method : 'GET',
         header : {
           'token' : _token,
           'content-type' : 'application/json'
         },
         data : {
-          orgId : 14298378304,
+          // orgId : 14298378304,
           page_size : num,
           page_no : page
         },
@@ -116,14 +116,14 @@ Page({
       // that.hotOneField()
       // that.hotAppletsField()
       wx.request({
-        'url' : 'http://localhost:8086/search-scholar-by-field',
+        'url' : 'http://localhost:8086//user-search-scholar-by-field',
         method : 'GET',
         header : {
           'token' : _token,
           'content-type' : 'application/json'
         },
         data : {
-          fieldId : 41517072,
+          // fieldId : 41517072,
           page_size : num,
           page_no : page
         },

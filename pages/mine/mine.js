@@ -167,5 +167,14 @@ Page({
     wx.switchTab({
       url: '/pages/home/home',
     })
+  },
+
+  /**
+   * 我的兴趣
+   */
+  interestBit: function(){
+    wx.navigateTo({
+      url: '/pages/mine/interestedField/interestedField',
+    })
   }
 })

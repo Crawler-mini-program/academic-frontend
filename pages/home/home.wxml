@@ -34,14 +34,14 @@
     </view>
     <view class='back10'></view> -->
 
-    <!-- 根据学校推荐老师 -->
+    <!-- 根据机构推荐老师 -->
     <view class="genius-content">
-      <include src="recommendBySchool.wxml" bindtap="teacherBitp"></include>
+      <include src="recommendByOrgs.wxml" bindtap="teacherBitp"></include>
     </view>
 
-    <!-- 根据专业推荐老师 -->
+    <!-- 根据领域推荐老师 -->
     <view class="genius-content">
-      <include src="recommendByFeild.wxml" ></include>
+      <include src="recommendByField.wxml" ></include>
     </view>
 
 

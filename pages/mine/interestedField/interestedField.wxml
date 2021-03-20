@@ -1,0 +1,59 @@
+<!-- 引入wxs脚本 -->
+<!-- 首页最上方的搜索栏 -->
+<wxs module="hotel" src="../../../utils/sub.wxs"></wxs>
+<view class='container'>
+  <!-- <view class="interest">我的兴趣：</view> -->
+  <view class="search-view">
+    
+    <view class="search-content">
+      <input placeholder="请输入搜索内容" class="search-input" maxlength="30" confirm-type="搜索" bindinput='listenerSearchInput' bindconfirm='toSearch'>
+      </input>
+      <image src="../../../assets/search-pic.png" class="search-icon" />
+      <view class='search-btn' bindtap="toSearch">搜索
+      </view>
+    </view>
+  </view>
+  <view class="list-tab flexR" catchtap='toggleView' wx:if='{{reportType==0}}'>
+    <!-- <view class="{{nowRole==0?'checked-item':''}}" data-index="0">人才</view> -->
+    <!-- <view>123</view> -->
+    <view class="{{nowRole==1?'checked-item':''}}" data-index="1">机构</view>
+    <view class="{{nowRole==2?'checked-item':''}}" data-index="2">领域</view>
+  </view>
+  <!-- ----------------------筛选--人才 ---------------------->
+  <view class='{{reportType==0?"tabTit box":"tabTitType box"}}' wx:if='{{screenBoo&&currentIndex==0}}'>
+    <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab">
+      <view class='tab-text'>
+        <text class='tab-name'>{{item}}</text>
+        <image src="/assets/up.png"></image>
+      </view>
+      <view style='width:2rpx;height:60rpx;background:#eee '></view>
+    </view>
+  </view>
+  <!--引用筛选项-->
+  <!-- <include src="screen.wxml"></include> -->
+
+  <!-- ----------------------筛选--机构 ---------------------->
+  <!-- <view class="tabTit box" wx:if='{{screenBoo&&currentIndex==1}}'>
+    <view class="flex1{{!tab[index]?' active':''}}" wx:for="{{tabTxt}}" wx:key="type" data-index="{{index}}" bindtap="filterTab" wx:if='{{index==3}}'>
+      <view class='tab-text'>
+        <text class='tab-name'>{{item}}</text>
+        <image src="/assets/up.png"></image>
+      </view>
+      <view style='width:2rpx;height:60rpx;background:#eee '></view>
+    </view>
+  </view> -->
+  <!-- 地点 -->
+  <!-- <include src='orgsAddress.wxml'></include> -->
+  <!--swiper 点击搜索之后出现的搜索结果 -->
+  <swiper bindchange="toggleSwiper" current='{{currentIndex}}'>
+    <!--- 人才 ---->
+    <include src='scholars.wxml'></include>
+    <!--- 机构 ---->
+    <include src='orgs.wxml'></include>
+    <!--- 领域 ---->
+    <include src='fields.wxml'></include>
+
+<!-- 遮罩层 -->
+  </swiper>
+  <view class="dialog-mask" wx:for="{{tabTxt}}" wx:key='index' style="visibility:{{!tab[index] ? 'visible':'hidden'}}" bindtap="filterTab" />
+</view>

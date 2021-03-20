@@ -26,8 +26,8 @@
     </view> -->
     <view class="about" bindtap='aboutBit'>关于我们</view>
     <view class="app" bindtap='appBit'>app下载</view>
-    <view class="app" bindtap="interestBit">我的兴趣</view>
     <view class="app" bindtap='logout'>退出登录</view>
+    <view class="app" bindtap="interestBit">我的兴趣</view>
   </view>
   <!-- <view class="contactWay" bindtap='contactBit'>联系方式</view> -->
 </view>

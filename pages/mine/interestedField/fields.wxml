@@ -1,0 +1,42 @@
+    <swiper-item catchtouchmove="stopTouchMove">
+      <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
+        <view class='content-item' wx:if='{{noSearchFields}}'>
+          <view class='interest' wx:if='{{hotType}}'>我的兴趣</view>
+          <view class="university-msg-name">{{interestedField}}</view>
+          <view wx:for='{{fieldsMsg}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}' wx:key='index'>
+            <view class='fields-item-msg' bindtap='secondFieldListBitp' data-index='{{index}}' wx:key='index' data-id='{{item.fieldId}}'>
+              <view class='left-msg'>
+                <image class='fields-left-image' src='../../../assets/field-one.png' wx:if='{{item.isFirst}}'></image>
+                <image class='fields-left-image' src='../../../assets/field-two.png' wx:else></image>
+                <!-- <image class='fields-left-image' src='../../../assets/field-three.png' wx:elif='{{item.level==3}}'></image> -->
+                <view class='fieldst-msg-lef'>
+                  <view class='left-title'>
+                    <!-- <view class='left-name' wx:if='{{numType==1}}'>{{item.fieldName}}</view> -->
+                    <view class='left-name'>{{item.courseName}}</view>
+                  </view>
+                  <!-- <view class='left-container' catchtap='manCatchat' data-index='{{index}}'>
+                    <text class='left-container-text' catchtap='rankCatp' data-index='{{index}}'>人才风云榜</text>
+                  </view> -->
+                </view>
+              </view>
+              <!-- <view class='right-num'>{{item.innovationIndex}}</view> -->
+            </view>
+          </view>
+        </view>
+        <view class='content-item-show' wx:if='{{!noSearchFields}}'>
+          <image class='item-show-image' src='../../../assets/no-search.png'></image>
+          <view class='item-show-text'>未搜索到相关内容</view>
+        </view>
+        <view class="weui-loadmore" hidden="{{isHideLoadMoreFields}}">
+          <view class="weui-loading"></view>
+          <view class="weui-loadmore__tips">正在加载</view>
+        </view>
+
+        <view class='no-more' hidden='{{isLoadMoreFields}}'>
+          <view></view>
+          <text>我也是有底线的</text>
+          <view></view>
+        </view>
+
+      </scroll-view>
+    </swiper-item>
