@@ -123,6 +123,8 @@ Page({
                     })
                     if (res.statusCode === 200) {
                       // 7.小程序存储skey（自定义登录状态）到本地
+                      wx.setStorageSync('interestedFieldName', res.data.fieldName);
+                      wx.setStorageSync('interestedOrgName', res.data.orgName);
                       wx.setStorageSync('userInfo', e.detail.userInfo);
                       wx.setStorageSync('token', res.data.token)
                     } else{

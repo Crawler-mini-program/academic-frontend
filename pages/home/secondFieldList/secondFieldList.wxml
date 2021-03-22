@@ -2,7 +2,7 @@
 <view class="container">
   <scroll-view scroll-y='true' class='scroll-view' onLoadMore='20rpx' upper-threshold='20rpx' bindscrolltolower="loadMore" style="height: 100%">
     <view wx:for='{{fieldMsg}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}' wx:key='index'>
-      <view class='fields-item-msg' bindtap='scholarListBitp' data-index='{{index}}' wx:key='index' data-id='{{item.field}}'>
+      <view class='fields-item-msg' bindtap='scholarListBitp' data-index='{{index}}' wx:key='index' data-id='{{item.field}}' data-name="{{item.name}}">
         <view class='left-msg'>
           <image class='fields-left-image' src='../../../assets/field-two.png'></image>
           <view class='fieldst-msg-lef'>

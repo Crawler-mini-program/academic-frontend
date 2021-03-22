@@ -92,7 +92,7 @@ Page({
               hotField: true
             })
           }
-          wx.hideLoading()
+         
         }
       })
     } else {
@@ -100,7 +100,7 @@ Page({
         url: '/pages/index/index?loginType=0',
       })
     }
-
+    wx.hideLoading()
   },
   /**
    * 领域推荐老师
@@ -135,7 +135,7 @@ Page({
               hotField: true
             })
           }
-          wx.hideLoading()
+          
         }
       })
     } else {
@@ -143,7 +143,7 @@ Page({
         url: '/pages/index/index?loginType=0',
       })
     }
-
+    wx.hideLoading()
   },
   /**
    * 推荐老师进入个人详情

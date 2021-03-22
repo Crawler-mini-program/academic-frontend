@@ -9,7 +9,7 @@
           <view class="university-msg-name">{{interestedOrgs}}</view>
           <view wx:for='{{institutionMsg}}' wx:for-item='item' wx:for-index='index' data-index='{{index}}' wx:key='index'>
             <!-- 机构和人才的详情页面是相似的，只是名字不同，因此这里也使用personBitp方法 -->
-            <view class='content-item-msg' bindtap='scholarListBitp' data-index='{{index}}' data-id="{{item.id}}">
+            <view class='content-item-msg' bindtap='scholarListBitp' data-index='{{index}}' data-id="{{item.id}}" data-name='{{item.name}}'>
               <view class='content-msg'>
                 <!-- <image class='item-msg-image' src='{{item.avgImg}}' wx:if='{{numType==0}}'></image> -->
                 <image class='item-msg-image' src='{{item.avatarUrl}}'></image>

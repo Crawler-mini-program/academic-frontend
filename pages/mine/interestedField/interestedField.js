@@ -96,10 +96,11 @@ Page({
       mask: true
     })
     let that = this;
-    let _userInfo = wx.getStorageSync('userInfo');
-    if(_userInfo.fieldName){
+    let _fieldName = wx.getStorageSync('interestedFieldName');
+    let _orgName = wx.getStorageSync('interestedOrgName');
+    if(_fieldName){
       that.setData({
-        interestedField : _userInfo.fieldName
+        interestedField : _fieldName
       })
     }
     else{
@@ -109,9 +110,9 @@ Page({
     }
     // console.log(_userInfo.fieldName);
     // console.log(that.interestedField);
-    if(_userInfo.orgName){
+    if(_orgName){
       that.setData({
-        interestedOrgs : _userInfo.orgName,
+        interestedOrgs : _orgName,
       })
     }else{
       that.setData({
@@ -877,11 +878,41 @@ Page({
   scholarListBitp: function(e) {
     let that = this
     let id = e.currentTarget.dataset.id
+    let _token = wx.getStorageSync('token');
+    let name = e.currentTarget.dataset.name
     console.log(e);
-    wx.showToast({
-      title: '设置成功！',
-      icon: 'none'
-    })
+    if(_token){
+      wx.request({
+        url: 'http://localhost:8086//change-org',
+        method : 'GET',
+        header : {
+          'token' : _token,
+          'content-type' : 'application/json'
+        },
+        data:{
+          'orgid' : id,
+          // 'orgname' : '北京航空航天大学'
+          'orgname' : name
+        },
+        success:function(res){
+          let code = res.data.code;
+          if(code == 0){
+            wx.setStorageSync('interestedOrgName', name);
+            wx.showToast({
+              title: '设置成功',
+            })
+            wx.switchTab({
+              url: '/pages/mine/mine',
+            })
+          }
+        }
+      })
+    }else {
+      wx.navigateTo({
+        url: '/pages/index/index?loginType=0',
+      })
+    }
+    wx.hideLoading()
 
     // 1代表高校，2代表领域
     // wx.navigateTo({
@@ -925,5 +956,6 @@ Page({
     wx.navigateTo({
       url: '/pages/home/secondFieldList/secondFieldList?currentIndex=' + that.data.currentIndex + '&id=' + id,
     })
+    
   }
 })

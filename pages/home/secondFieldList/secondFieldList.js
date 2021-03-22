@@ -137,10 +137,40 @@ Page({
   scholarListBitp: function(e) {
     let that = this
     let id = e.currentTarget.dataset.id
-    // 1代表高校，2代表领域
-    wx.navigateTo({
-      url: '/pages/home/scholarList/scholarList?currentIndex=' + that.data.currentIndex + '&id=' + id,
-    })
+    let name = e.currentTarget.dataset.name
+    let _token = wx.getStorageSync('token');
+    console.log(e);
+    if(_token){
+      wx.request({
+        url: 'http://localhost:8086//change-field',
+        method : 'GET',
+        header : {
+          'token' : _token,
+          'content-type' : 'application/json'
+        },
+        data:{
+          'fieldid' : id,
+          'fieldname' : name
+        },
+        success:function(res){
+          let code = res.data.code;
+          if(code == 0){
+            wx.setStorageSync('interestedFieldName', name);
+            wx.showToast({
+              title: '设置成功',
+            })
+            wx.switchTab({
+              url: '/pages/mine/mine',
+            })
+          }
+        }
+      })
+    }else {
+      wx.navigateTo({
+        url: '/pages/index/index?loginType=0',
+      })
+    }
+    wx.hideLoading()
   },
 
 })
